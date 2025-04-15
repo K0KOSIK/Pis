@@ -39,10 +39,6 @@ namespace Pis
                     Deputy_Director form3 = new Deputy_Director(this);
                     form3.Show();
                 }
-                else
-                {
-                    MessageBox.Show("Неправильный логин или пароль");
-                }
                 this.Hide();
                 textBox1.Text = "";
                 textBox2.Text = "";
