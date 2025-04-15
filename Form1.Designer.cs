@@ -115,6 +115,7 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(button1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

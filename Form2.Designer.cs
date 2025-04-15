@@ -30,6 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
+            bt_exit = new Button();
             button7 = new Button();
             button6 = new Button();
             button5 = new Button();
@@ -45,7 +46,6 @@
             dataGridView3 = new DataGridView();
             dataGridView2 = new DataGridView();
             panel3 = new Panel();
-            bt_exit = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -81,6 +81,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 25);
             panel1.TabIndex = 1;
+            // 
+            // bt_exit
+            // 
+            bt_exit.BackColor = Color.IndianRed;
+            bt_exit.Dock = DockStyle.Right;
+            bt_exit.FlatAppearance.BorderSize = 0;
+            bt_exit.FlatAppearance.MouseDownBackColor = Color.IndianRed;
+            bt_exit.FlatAppearance.MouseOverBackColor = Color.IndianRed;
+            bt_exit.FlatStyle = FlatStyle.Flat;
+            bt_exit.Location = new Point(775, 0);
+            bt_exit.Name = "bt_exit";
+            bt_exit.Size = new Size(25, 25);
+            bt_exit.TabIndex = 7;
+            bt_exit.UseVisualStyleBackColor = false;
+            bt_exit.Click += bt_exit_Click;
             // 
             // button7
             // 
@@ -229,21 +244,6 @@
             panel3.Size = new Size(800, 50);
             panel3.TabIndex = 7;
             // 
-            // bt_exit
-            // 
-            bt_exit.BackColor = Color.IndianRed;
-            bt_exit.Dock = DockStyle.Right;
-            bt_exit.FlatAppearance.BorderSize = 0;
-            bt_exit.FlatAppearance.MouseDownBackColor = Color.IndianRed;
-            bt_exit.FlatAppearance.MouseOverBackColor = Color.IndianRed;
-            bt_exit.FlatStyle = FlatStyle.Flat;
-            bt_exit.Location = new Point(775, 0);
-            bt_exit.Name = "bt_exit";
-            bt_exit.Size = new Size(25, 25);
-            bt_exit.TabIndex = 7;
-            bt_exit.UseVisualStyleBackColor = false;
-            bt_exit.Click += bt_exit_Click;
-            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -252,6 +252,7 @@
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
