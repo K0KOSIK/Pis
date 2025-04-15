@@ -39,7 +39,13 @@ namespace Pis
                     Deputy_Director form3 = new Deputy_Director(this);
                     form3.Show();
                 }
-                this.Hide();
+                if (user.Role == "разработчик")
+                {
+                    MessageBox.Show(user.Role);
+                    Deputy_Director form3 = new Deputy_Director(this);
+                    form3.Show();
+                }
+                    this.Hide();
                 textBox1.Text = "";
                 textBox2.Text = "";
             }
