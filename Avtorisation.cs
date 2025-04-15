@@ -20,30 +20,39 @@ namespace Pis
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Ispr2525PiskunovDvKursovayaContext context = new();
-            User? user = context.Users
-                .Where(user => user.Username == textBox1.Text && user.Password == textBox2.Text)
-                .Include(user => user.Roles)
-                .FirstOrDefault();
-            if (user.Role == "Администратор")
+            try
             {
-                MessageBox.Show(user.Role);
-                Admin form2 = new Admin(this);
-                form2.Show();
+                Ispr2525PiskunovDvKursovayaContext context = new();
+                User? user = context.Users
+                    .Where(user => user.Username == textBox1.Text && user.Password == textBox2.Text)
+                    .Include(user => user.Roles)
+                    .FirstOrDefault();
+                if (user.Role == "Администратор")
+                {
+                    MessageBox.Show(user.Role);
+                    Admin form2 = new Admin(this);
+                    form2.Show();
+                }
+                if (user.Role == "зам директора")
+                {
+                    MessageBox.Show(user.Role);
+                    Deputy_Director form3 = new Deputy_Director(this);
+                    form3.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный логин или пароль");
+                }
+                this.Hide();
+                textBox1.Text = "";
+                textBox2.Text = "";
             }
-            if (user.Role == "зам директора")
-            {
-                MessageBox.Show(user.Role);
-                Deputy_Director form3 = new Deputy_Director(this);
-                form3.Show();
-            }
-            else
-            {
+            catch (Exception ex) 
+            { 
                 MessageBox.Show("Неправильный логин или пароль");
+                textBox1.Text = "";
+                textBox2.Text = "";
             }
-            this.Hide();
-            textBox1.Text = "";
-            textBox2.Text = "";
         }
 
         private void bt_exit_Click(object sender, EventArgs e)
