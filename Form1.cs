@@ -9,6 +9,10 @@ namespace Pis
         public Form1()
         {
             InitializeComponent();
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -40,6 +44,7 @@ namespace Pis
         {
             this.Close();
         }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

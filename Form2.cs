@@ -13,16 +13,6 @@ namespace Pis.Models
 {
     public partial class Form2 : Form
     {
-        //public Form2()
-        //{
-        //    InitializeComponent();
-        //    this.FormClosed += Form2_FormClosed;
-        //}
-        //private void Form2_FormClosed(object sender, FormClosedEventArgs e)
-        //{
-        //    Form1 form1 = new Form1();
-        //    form1.Show();
-        //}
         private Form1 _form1;
 
         public Form2(Form1 form1)
@@ -39,6 +29,7 @@ namespace Pis.Models
         private void Form2_Load(object sender, EventArgs e)
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
+            
             dataGridView1.DataSource = context.AlertLogs.ToList();
             dataGridView2.DataSource = context.DeviceTypes.ToList();
             dataGridView3.DataSource = context.MonitoringData.ToList();
@@ -147,6 +138,11 @@ namespace Pis.Models
         private void bt_min_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void bt_delete_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -112,6 +112,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 25);
             panel1.TabIndex = 9;
+            panel1.MouseDown += panel1_MouseDown;
             // 
             // bt_min
             // 
@@ -154,7 +155,6 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(button1);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

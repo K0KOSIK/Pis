@@ -69,6 +69,7 @@
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(800, 372);
             dataGridView1.TabIndex = 0;
             // 
@@ -89,6 +90,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 25);
             panel1.TabIndex = 1;
+            panel1.MouseDown += panel1_MouseDown;
             // 
             // bt_min
             // 
@@ -226,6 +228,7 @@
             dataGridView7.Dock = DockStyle.Fill;
             dataGridView7.Location = new Point(0, 0);
             dataGridView7.Name = "dataGridView7";
+            dataGridView7.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView7.Size = new Size(800, 372);
             dataGridView7.TabIndex = 6;
             // 
@@ -235,6 +238,7 @@
             dataGridView6.Dock = DockStyle.Fill;
             dataGridView6.Location = new Point(0, 0);
             dataGridView6.Name = "dataGridView6";
+            dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView6.Size = new Size(800, 372);
             dataGridView6.TabIndex = 5;
             // 
@@ -244,6 +248,7 @@
             dataGridView5.Dock = DockStyle.Fill;
             dataGridView5.Location = new Point(0, 0);
             dataGridView5.Name = "dataGridView5";
+            dataGridView5.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView5.Size = new Size(800, 372);
             dataGridView5.TabIndex = 4;
             // 
@@ -253,6 +258,7 @@
             dataGridView4.Dock = DockStyle.Fill;
             dataGridView4.Location = new Point(0, 0);
             dataGridView4.Name = "dataGridView4";
+            dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView4.Size = new Size(800, 372);
             dataGridView4.TabIndex = 3;
             // 
@@ -262,6 +268,7 @@
             dataGridView3.Dock = DockStyle.Fill;
             dataGridView3.Location = new Point(0, 0);
             dataGridView3.Name = "dataGridView3";
+            dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView3.Size = new Size(800, 372);
             dataGridView3.TabIndex = 2;
             // 
@@ -271,6 +278,7 @@
             dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.Location = new Point(0, 0);
             dataGridView2.Name = "dataGridView2";
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.Size = new Size(800, 372);
             dataGridView2.TabIndex = 1;
             // 
@@ -293,6 +301,7 @@
             bt_delete.TabIndex = 2;
             bt_delete.Text = "Удалить";
             bt_delete.UseVisualStyleBackColor = true;
+            bt_delete.Click += bt_delete_Click;
             // 
             // bt_edit
             // 
@@ -321,7 +330,6 @@
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "Form2";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
