@@ -41,12 +41,6 @@
             button2 = new Button();
             button1 = new Button();
             panel2 = new Panel();
-            dataGridView7 = new DataGridView();
-            dataGridView6 = new DataGridView();
-            dataGridView5 = new DataGridView();
-            dataGridView4 = new DataGridView();
-            dataGridView3 = new DataGridView();
-            dataGridView2 = new DataGridView();
             panel3 = new Panel();
             bt_delete = new Button();
             bt_edit = new Button();
@@ -54,12 +48,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -209,78 +197,12 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(dataGridView7);
-            panel2.Controls.Add(dataGridView6);
-            panel2.Controls.Add(dataGridView5);
-            panel2.Controls.Add(dataGridView4);
-            panel2.Controls.Add(dataGridView3);
-            panel2.Controls.Add(dataGridView2);
             panel2.Controls.Add(dataGridView1);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 78);
             panel2.Name = "panel2";
             panel2.Size = new Size(800, 372);
             panel2.TabIndex = 2;
-            // 
-            // dataGridView7
-            // 
-            dataGridView7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView7.Dock = DockStyle.Fill;
-            dataGridView7.Location = new Point(0, 0);
-            dataGridView7.Name = "dataGridView7";
-            dataGridView7.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView7.Size = new Size(800, 372);
-            dataGridView7.TabIndex = 6;
-            // 
-            // dataGridView6
-            // 
-            dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView6.Dock = DockStyle.Fill;
-            dataGridView6.Location = new Point(0, 0);
-            dataGridView6.Name = "dataGridView6";
-            dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView6.Size = new Size(800, 372);
-            dataGridView6.TabIndex = 5;
-            // 
-            // dataGridView5
-            // 
-            dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView5.Dock = DockStyle.Fill;
-            dataGridView5.Location = new Point(0, 0);
-            dataGridView5.Name = "dataGridView5";
-            dataGridView5.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView5.Size = new Size(800, 372);
-            dataGridView5.TabIndex = 4;
-            // 
-            // dataGridView4
-            // 
-            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Dock = DockStyle.Fill;
-            dataGridView4.Location = new Point(0, 0);
-            dataGridView4.Name = "dataGridView4";
-            dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView4.Size = new Size(800, 372);
-            dataGridView4.TabIndex = 3;
-            // 
-            // dataGridView3
-            // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Dock = DockStyle.Fill;
-            dataGridView3.Location = new Point(0, 0);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView3.Size = new Size(800, 372);
-            dataGridView3.TabIndex = 2;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(0, 0);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.Size = new Size(800, 372);
-            dataGridView2.TabIndex = 1;
             // 
             // panel3
             // 
@@ -339,12 +261,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -357,16 +273,10 @@
         private Button button1;
         private Button button3;
         private Panel panel2;
-        private DataGridView dataGridView3;
-        private DataGridView dataGridView2;
         private Button button4;
         private Button button7;
         private Button button6;
         private Button button5;
-        private DataGridView dataGridView7;
-        private DataGridView dataGridView6;
-        private DataGridView dataGridView5;
-        private DataGridView dataGridView4;
         private Button bt_exit;
         private Panel panel3;
         private Button bt_add;

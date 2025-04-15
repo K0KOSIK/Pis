@@ -28,92 +28,57 @@ namespace Pis.Models
         }
         private void Admin_Load(object sender, EventArgs e)
         {
-            Ispr2525PiskunovDvKursovayaContext context = new();
             
-            dataGridView1.DataSource = context.AlertLogs.ToList();
-            dataGridView2.DataSource = context.DeviceTypes.ToList();
-            dataGridView3.DataSource = context.MonitoringData.ToList();
-            dataGridView4.DataSource = context.PerformanceReports.ToList();
-            dataGridView5.DataSource = context.PlcDevices.ToList();
-            dataGridView6.DataSource = context.Severities.ToList();
-            dataGridView7.DataSource = context.Statuses.ToList();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.Show();
-            dataGridView2.Hide();
-            dataGridView3.Hide();
-            dataGridView4.Hide();
-            dataGridView5.Hide();
-            dataGridView6.Hide();
-            dataGridView7.Hide();
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.AlertLogs.ToList();
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
-            dataGridView2.Show();
-            dataGridView3.Hide();
-            dataGridView4.Hide();
-            dataGridView5.Hide();
-            dataGridView6.Hide();
-            dataGridView7.Hide();
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.DeviceTypes.ToList();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
-            dataGridView2.Hide();
-            dataGridView3.Show();
-            dataGridView4.Hide();
-            dataGridView5.Hide();
-            dataGridView6.Hide();
-            dataGridView7.Hide();
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.MonitoringData.ToList();
+            dataGridView1.Columns[5].Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
-            dataGridView2.Hide();
-            dataGridView3.Hide();
-            dataGridView4.Show();
-            dataGridView5.Hide();
-            dataGridView6.Hide();
-            dataGridView7.Hide();
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.PerformanceReports.ToList();
+            dataGridView1.Columns[5].Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
-            dataGridView2.Hide();
-            dataGridView3.Hide();
-            dataGridView4.Hide();
-            dataGridView5.Show();
-            dataGridView6.Hide();
-            dataGridView7.Hide();
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.PlcDevices.ToList();
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
-            dataGridView2.Hide();
-            dataGridView3.Hide();
-            dataGridView4.Hide();
-            dataGridView5.Hide();
-            dataGridView6.Show();
-            dataGridView7.Hide();
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.Severities.ToList();
+            dataGridView1.Columns[3].Visible = false;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
-            dataGridView2.Hide();
-            dataGridView3.Hide();
-            dataGridView4.Hide();
-            dataGridView5.Hide();
-            dataGridView6.Hide();
-            dataGridView7.Show();
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.Statuses.ToList();
         }
 
         private void bt_exit_Click(object sender, EventArgs e)

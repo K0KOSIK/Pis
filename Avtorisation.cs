@@ -39,18 +39,24 @@ namespace Pis
                     Deputy_Director form3 = new Deputy_Director(this);
                     form3.Show();
                 }
+                if (user.Role == "директор")
+                {
+                    //MessageBox.Show(user.Role);
+                    //Deputy_Director form3 = new Deputy_Director(this);
+                    //form3.Show();
+                }
                 if (user.Role == "разработчик")
                 {
                     MessageBox.Show(user.Role);
-                    Deputy_Director form3 = new Deputy_Director(this);
-                    form3.Show();
+                    Developer form4 = new Developer(this);
+                    form4.Show();
                 }
-                    this.Hide();
+                this.Hide();
                 textBox1.Text = "";
                 textBox2.Text = "";
             }
-            catch (Exception ex) 
-            { 
+            catch (Exception ex)
+            {
                 MessageBox.Show("Неправильный логин или пароль");
                 textBox1.Text = "";
                 textBox2.Text = "";
