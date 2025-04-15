@@ -32,6 +32,12 @@ namespace Pis.Models
             button6.Visible= false;
             button7.Visible= false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
@@ -54,6 +60,16 @@ namespace Pis.Models
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PlcDevices.ToList();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void bt_exit_Click(object sender, EventArgs e)
