@@ -30,6 +30,8 @@
         {
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
+            bt_min = new Button();
+            bt_max = new Button();
             bt_exit = new Button();
             button7 = new Button();
             button6 = new Button();
@@ -46,6 +48,9 @@
             dataGridView3 = new DataGridView();
             dataGridView2 = new DataGridView();
             panel3 = new Panel();
+            bt_delete = new Button();
+            bt_edit = new Button();
+            bt_add = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -55,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -63,11 +69,13 @@
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(800, 375);
+            dataGridView1.Size = new Size(800, 372);
             dataGridView1.TabIndex = 0;
             // 
             // panel1
             // 
+            panel1.Controls.Add(bt_min);
+            panel1.Controls.Add(bt_max);
             panel1.Controls.Add(bt_exit);
             panel1.Controls.Add(button7);
             panel1.Controls.Add(button6);
@@ -82,13 +90,43 @@
             panel1.Size = new Size(800, 25);
             panel1.TabIndex = 1;
             // 
+            // bt_min
+            // 
+            bt_min.BackColor = Color.DeepSkyBlue;
+            bt_min.Dock = DockStyle.Right;
+            bt_min.FlatAppearance.BorderSize = 0;
+            bt_min.FlatAppearance.MouseDownBackColor = Color.Blue;
+            bt_min.FlatAppearance.MouseOverBackColor = Color.Blue;
+            bt_min.FlatStyle = FlatStyle.Flat;
+            bt_min.Location = new Point(725, 0);
+            bt_min.Name = "bt_min";
+            bt_min.Size = new Size(25, 25);
+            bt_min.TabIndex = 9;
+            bt_min.UseVisualStyleBackColor = false;
+            bt_min.Click += bt_min_Click;
+            // 
+            // bt_max
+            // 
+            bt_max.BackColor = Color.LimeGreen;
+            bt_max.Dock = DockStyle.Right;
+            bt_max.FlatAppearance.BorderSize = 0;
+            bt_max.FlatAppearance.MouseDownBackColor = Color.Green;
+            bt_max.FlatAppearance.MouseOverBackColor = Color.Green;
+            bt_max.FlatStyle = FlatStyle.Flat;
+            bt_max.Location = new Point(750, 0);
+            bt_max.Name = "bt_max";
+            bt_max.Size = new Size(25, 25);
+            bt_max.TabIndex = 8;
+            bt_max.UseVisualStyleBackColor = false;
+            bt_max.Click += bt_max_Click;
+            // 
             // bt_exit
             // 
             bt_exit.BackColor = Color.IndianRed;
             bt_exit.Dock = DockStyle.Right;
             bt_exit.FlatAppearance.BorderSize = 0;
-            bt_exit.FlatAppearance.MouseDownBackColor = Color.IndianRed;
-            bt_exit.FlatAppearance.MouseOverBackColor = Color.IndianRed;
+            bt_exit.FlatAppearance.MouseDownBackColor = Color.Red;
+            bt_exit.FlatAppearance.MouseOverBackColor = Color.Red;
             bt_exit.FlatStyle = FlatStyle.Flat;
             bt_exit.Location = new Point(775, 0);
             bt_exit.Name = "bt_exit";
@@ -177,9 +215,9 @@
             panel2.Controls.Add(dataGridView2);
             panel2.Controls.Add(dataGridView1);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 75);
+            panel2.Location = new Point(0, 78);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 375);
+            panel2.Size = new Size(800, 372);
             panel2.TabIndex = 2;
             // 
             // dataGridView7
@@ -188,7 +226,7 @@
             dataGridView7.Dock = DockStyle.Fill;
             dataGridView7.Location = new Point(0, 0);
             dataGridView7.Name = "dataGridView7";
-            dataGridView7.Size = new Size(800, 375);
+            dataGridView7.Size = new Size(800, 372);
             dataGridView7.TabIndex = 6;
             // 
             // dataGridView6
@@ -197,7 +235,7 @@
             dataGridView6.Dock = DockStyle.Fill;
             dataGridView6.Location = new Point(0, 0);
             dataGridView6.Name = "dataGridView6";
-            dataGridView6.Size = new Size(800, 375);
+            dataGridView6.Size = new Size(800, 372);
             dataGridView6.TabIndex = 5;
             // 
             // dataGridView5
@@ -206,7 +244,7 @@
             dataGridView5.Dock = DockStyle.Fill;
             dataGridView5.Location = new Point(0, 0);
             dataGridView5.Name = "dataGridView5";
-            dataGridView5.Size = new Size(800, 375);
+            dataGridView5.Size = new Size(800, 372);
             dataGridView5.TabIndex = 4;
             // 
             // dataGridView4
@@ -215,7 +253,7 @@
             dataGridView4.Dock = DockStyle.Fill;
             dataGridView4.Location = new Point(0, 0);
             dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(800, 375);
+            dataGridView4.Size = new Size(800, 372);
             dataGridView4.TabIndex = 3;
             // 
             // dataGridView3
@@ -224,7 +262,7 @@
             dataGridView3.Dock = DockStyle.Fill;
             dataGridView3.Location = new Point(0, 0);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(800, 375);
+            dataGridView3.Size = new Size(800, 372);
             dataGridView3.TabIndex = 2;
             // 
             // dataGridView2
@@ -233,27 +271,59 @@
             dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.Location = new Point(0, 0);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(800, 375);
+            dataGridView2.Size = new Size(800, 372);
             dataGridView2.TabIndex = 1;
             // 
             // panel3
             // 
+            panel3.Controls.Add(bt_delete);
+            panel3.Controls.Add(bt_edit);
+            panel3.Controls.Add(bt_add);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 25);
             panel3.Name = "panel3";
-            panel3.Size = new Size(800, 50);
+            panel3.Size = new Size(800, 53);
             panel3.TabIndex = 7;
+            // 
+            // bt_delete
+            // 
+            bt_delete.Location = new Point(165, 6);
+            bt_delete.Name = "bt_delete";
+            bt_delete.Size = new Size(75, 40);
+            bt_delete.TabIndex = 2;
+            bt_delete.Text = "Удалить";
+            bt_delete.UseVisualStyleBackColor = true;
+            // 
+            // bt_edit
+            // 
+            bt_edit.Location = new Point(84, 6);
+            bt_edit.Name = "bt_edit";
+            bt_edit.Size = new Size(75, 40);
+            bt_edit.TabIndex = 1;
+            bt_edit.Text = "Изменить";
+            bt_edit.UseVisualStyleBackColor = true;
+            // 
+            // bt_add
+            // 
+            bt_add.Location = new Point(3, 6);
+            bt_add.Name = "bt_add";
+            bt_add.Size = new Size(75, 40);
+            bt_add.TabIndex = 0;
+            bt_add.Text = "Добавить";
+            bt_add.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form2";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             FormClosed += Form2_FormClosed;
@@ -267,6 +337,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -290,5 +361,10 @@
         private DataGridView dataGridView4;
         private Button bt_exit;
         private Panel panel3;
+        private Button bt_add;
+        private Button bt_max;
+        private Button bt_delete;
+        private Button bt_edit;
+        private Button bt_min;
     }
 }
