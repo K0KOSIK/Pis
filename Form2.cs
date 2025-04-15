@@ -123,5 +123,10 @@ namespace Pis.Models
             dataGridView6.Hide();
             dataGridView7.Show();
         }
+
+        private void bt_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

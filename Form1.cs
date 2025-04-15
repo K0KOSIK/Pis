@@ -34,5 +34,10 @@ namespace Pis
                 MessageBox.Show("Неправильный логин или пароль");
             }
         }
+
+        private void bt_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

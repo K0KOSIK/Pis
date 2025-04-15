@@ -44,6 +44,8 @@
             dataGridView4 = new DataGridView();
             dataGridView3 = new DataGridView();
             dataGridView2 = new DataGridView();
+            panel3 = new Panel();
+            bt_exit = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -61,11 +63,12 @@
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(800, 400);
+            dataGridView1.Size = new Size(800, 375);
             dataGridView1.TabIndex = 0;
             // 
             // panel1
             // 
+            panel1.Controls.Add(bt_exit);
             panel1.Controls.Add(button7);
             panel1.Controls.Add(button6);
             panel1.Controls.Add(button5);
@@ -76,14 +79,14 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 50);
+            panel1.Size = new Size(800, 25);
             panel1.TabIndex = 1;
             // 
             // button7
             // 
             button7.Location = new Point(495, 0);
             button7.Name = "button7";
-            button7.Size = new Size(85, 50);
+            button7.Size = new Size(85, 25);
             button7.TabIndex = 6;
             button7.Text = "Status";
             button7.UseVisualStyleBackColor = true;
@@ -93,7 +96,7 @@
             // 
             button6.Location = new Point(410, 0);
             button6.Name = "button6";
-            button6.Size = new Size(85, 50);
+            button6.Size = new Size(85, 25);
             button6.TabIndex = 5;
             button6.Text = "Severity";
             button6.UseVisualStyleBackColor = true;
@@ -103,7 +106,7 @@
             // 
             button5.Location = new Point(325, 0);
             button5.Name = "button5";
-            button5.Size = new Size(85, 50);
+            button5.Size = new Size(85, 25);
             button5.TabIndex = 4;
             button5.Text = "PLC_Devices";
             button5.UseVisualStyleBackColor = true;
@@ -113,7 +116,7 @@
             // 
             button4.Location = new Point(240, 0);
             button4.Name = "button4";
-            button4.Size = new Size(85, 50);
+            button4.Size = new Size(85, 25);
             button4.TabIndex = 3;
             button4.Text = "Performance Reports";
             button4.UseVisualStyleBackColor = true;
@@ -123,7 +126,7 @@
             // 
             button3.Location = new Point(160, 0);
             button3.Name = "button3";
-            button3.Size = new Size(80, 50);
+            button3.Size = new Size(85, 25);
             button3.TabIndex = 2;
             button3.Text = "MonitoringData";
             button3.UseVisualStyleBackColor = true;
@@ -133,7 +136,7 @@
             // 
             button2.Location = new Point(80, 0);
             button2.Name = "button2";
-            button2.Size = new Size(80, 50);
+            button2.Size = new Size(85, 25);
             button2.TabIndex = 1;
             button2.Text = "Device_Type";
             button2.UseVisualStyleBackColor = true;
@@ -143,7 +146,7 @@
             // 
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
-            button1.Size = new Size(80, 50);
+            button1.Size = new Size(85, 25);
             button1.TabIndex = 0;
             button1.Text = "AlertLogs";
             button1.UseVisualStyleBackColor = true;
@@ -159,9 +162,9 @@
             panel2.Controls.Add(dataGridView2);
             panel2.Controls.Add(dataGridView1);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 50);
+            panel2.Location = new Point(0, 75);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 400);
+            panel2.Size = new Size(800, 375);
             panel2.TabIndex = 2;
             // 
             // dataGridView7
@@ -170,7 +173,7 @@
             dataGridView7.Dock = DockStyle.Fill;
             dataGridView7.Location = new Point(0, 0);
             dataGridView7.Name = "dataGridView7";
-            dataGridView7.Size = new Size(800, 400);
+            dataGridView7.Size = new Size(800, 375);
             dataGridView7.TabIndex = 6;
             // 
             // dataGridView6
@@ -179,7 +182,7 @@
             dataGridView6.Dock = DockStyle.Fill;
             dataGridView6.Location = new Point(0, 0);
             dataGridView6.Name = "dataGridView6";
-            dataGridView6.Size = new Size(800, 400);
+            dataGridView6.Size = new Size(800, 375);
             dataGridView6.TabIndex = 5;
             // 
             // dataGridView5
@@ -188,7 +191,7 @@
             dataGridView5.Dock = DockStyle.Fill;
             dataGridView5.Location = new Point(0, 0);
             dataGridView5.Name = "dataGridView5";
-            dataGridView5.Size = new Size(800, 400);
+            dataGridView5.Size = new Size(800, 375);
             dataGridView5.TabIndex = 4;
             // 
             // dataGridView4
@@ -197,7 +200,7 @@
             dataGridView4.Dock = DockStyle.Fill;
             dataGridView4.Location = new Point(0, 0);
             dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(800, 400);
+            dataGridView4.Size = new Size(800, 375);
             dataGridView4.TabIndex = 3;
             // 
             // dataGridView3
@@ -206,7 +209,7 @@
             dataGridView3.Dock = DockStyle.Fill;
             dataGridView3.Location = new Point(0, 0);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(800, 400);
+            dataGridView3.Size = new Size(800, 375);
             dataGridView3.TabIndex = 2;
             // 
             // dataGridView2
@@ -215,8 +218,31 @@
             dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.Location = new Point(0, 0);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(800, 400);
+            dataGridView2.Size = new Size(800, 375);
             dataGridView2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 25);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(800, 50);
+            panel3.TabIndex = 7;
+            // 
+            // bt_exit
+            // 
+            bt_exit.BackColor = Color.IndianRed;
+            bt_exit.Dock = DockStyle.Right;
+            bt_exit.FlatAppearance.BorderSize = 0;
+            bt_exit.FlatAppearance.MouseDownBackColor = Color.IndianRed;
+            bt_exit.FlatAppearance.MouseOverBackColor = Color.IndianRed;
+            bt_exit.FlatStyle = FlatStyle.Flat;
+            bt_exit.Location = new Point(775, 0);
+            bt_exit.Name = "bt_exit";
+            bt_exit.Size = new Size(25, 25);
+            bt_exit.TabIndex = 7;
+            bt_exit.UseVisualStyleBackColor = false;
+            bt_exit.Click += bt_exit_Click;
             // 
             // Form2
             // 
@@ -224,6 +250,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panel2);
+            Controls.Add(panel3);
             Controls.Add(panel1);
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
@@ -260,5 +287,7 @@
         private DataGridView dataGridView6;
         private DataGridView dataGridView5;
         private DataGridView dataGridView4;
+        private Button bt_exit;
+        private Panel panel3;
     }
 }

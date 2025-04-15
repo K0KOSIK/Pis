@@ -33,6 +33,9 @@
             textBox2 = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            bt_exit = new Button();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -77,11 +80,36 @@
             label2.TabIndex = 4;
             label2.Text = "label2";
             // 
+            // bt_exit
+            // 
+            bt_exit.BackColor = Color.IndianRed;
+            bt_exit.Dock = DockStyle.Right;
+            bt_exit.FlatAppearance.BorderSize = 0;
+            bt_exit.FlatAppearance.MouseDownBackColor = Color.IndianRed;
+            bt_exit.FlatAppearance.MouseOverBackColor = Color.IndianRed;
+            bt_exit.FlatStyle = FlatStyle.Flat;
+            bt_exit.Location = new Point(775, 0);
+            bt_exit.Name = "bt_exit";
+            bt_exit.Size = new Size(25, 25);
+            bt_exit.TabIndex = 8;
+            bt_exit.UseVisualStyleBackColor = false;
+            bt_exit.Click += bt_exit_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(bt_exit);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 25);
+            panel1.TabIndex = 9;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox2);
@@ -91,6 +119,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             FormClosed += Form1_FormClosed;
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -102,5 +131,7 @@
         private TextBox textBox2;
         private Label label1;
         private Label label2;
+        private Button bt_exit;
+        private Panel panel1;
     }
 }
