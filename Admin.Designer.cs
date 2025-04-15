@@ -1,6 +1,6 @@
 ﻿namespace Pis.Models
 {
-    partial class Form2
+    partial class Admin
     {
         /// <summary>
         /// Required designer variable.
@@ -321,7 +321,7 @@
             bt_add.Text = "Добавить";
             bt_add.UseVisualStyleBackColor = true;
             // 
-            // Form2
+            // Admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -330,12 +330,12 @@
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
-            Name = "Form2";
+            Name = "Admin";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
-            FormClosed += Form2_FormClosed;
-            Load += Form2_Load;
+            FormClosed += Admin_FormClosed;
+            Load += Admin_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

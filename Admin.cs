@@ -11,22 +11,22 @@ using System.Windows.Forms;
 
 namespace Pis.Models
 {
-    public partial class Form2 : Form
+    public partial class Admin : Form
     {
-        private Form1 _form1;
+        private Avtorisation _form1;
 
-        public Form2(Form1 form1)
+        public Admin(Avtorisation form1)
         {
             InitializeComponent();
             _form1 = form1;
-            this.FormClosed += Form2_FormClosed;
+            this.FormClosed += Admin_FormClosed;
         }
 
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        private void Admin_FormClosed(object sender, FormClosedEventArgs e)
         {
             _form1.Show();
         }
-        private void Form2_Load(object sender, EventArgs e)
+        private void Admin_Load(object sender, EventArgs e)
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             

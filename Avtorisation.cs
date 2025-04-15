@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 
 namespace Pis
 {
-    public partial class Form1 : Form
+    public partial class Avtorisation : Form
     {
-        public Form1()
+        public Avtorisation()
         {
             InitializeComponent();
             this.Text = string.Empty;
@@ -25,19 +25,25 @@ namespace Pis
                 .Where(user => user.Username == textBox1.Text && user.Password == textBox2.Text)
                 .Include(user => user.Roles)
                 .FirstOrDefault();
-            if (user != null)
+            if (user.Role == "Администратор")
             {
                 MessageBox.Show(user.Role);
-                Form2 form2 = new Form2(this);
+                Admin form2 = new Admin(this);
                 form2.Show();
-                this.Hide();
-                textBox1.Text = "";
-                textBox2.Text = "";
+            }
+            if (user.Role == "зам директора")
+            {
+                MessageBox.Show(user.Role);
+                Deputy_Director form3 = new Deputy_Director(this);
+                form3.Show();
             }
             else
             {
                 MessageBox.Show("Неправильный логин или пароль");
             }
+            this.Hide();
+            textBox1.Text = "";
+            textBox2.Text = "";
         }
 
         private void bt_exit_Click(object sender, EventArgs e)

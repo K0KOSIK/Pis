@@ -1,6 +1,6 @@
 ﻿namespace Pis
 {
-    partial class Form1
+    partial class Avtorisation
     {
         /// <summary>
         ///  Required designer variable.
@@ -64,6 +64,7 @@
             textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             textBox2.Location = new Point(359, 191);
             textBox2.Name = "textBox2";
+            textBox2.PasswordChar = '●';
             textBox2.Size = new Size(100, 23);
             textBox2.TabIndex = 2;
             // 
@@ -144,7 +145,7 @@
             bt_max.UseVisualStyleBackColor = false;
             bt_max.Click += bt_max_Click;
             // 
-            // Form1
+            // Avtorisation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -155,7 +156,7 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(button1);
-            Name = "Form1";
+            Name = "Avtorisation";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             FormClosed += Form1_FormClosed;
