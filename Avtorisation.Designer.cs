@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            Avtorises = new Button();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             label1 = new Label();
@@ -37,56 +37,72 @@
             panel1 = new Panel();
             bt_min = new Button();
             bt_max = new Button();
+            SMS = new Label();
+            logs = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // Avtorises
             // 
-            button1.Anchor = AnchorStyles.Top;
-            button1.Location = new Point(372, 319);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Войти";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            Avtorises.Anchor = AnchorStyles.Top;
+            Avtorises.BackColor = SystemColors.GradientActiveCaption;
+            Avtorises.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            Avtorises.FlatAppearance.BorderSize = 0;
+            Avtorises.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
+            Avtorises.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
+            Avtorises.FlatStyle = FlatStyle.Flat;
+            Avtorises.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            Avtorises.ForeColor = SystemColors.ButtonHighlight;
+            Avtorises.Location = new Point(411, 278);
+            Avtorises.Name = "Avtorises";
+            Avtorises.Size = new Size(93, 47);
+            Avtorises.TabIndex = 0;
+            Avtorises.Text = "ВОЙТИ";
+            Avtorises.UseVisualStyleBackColor = false;
+            Avtorises.Click += button1_Click;
+            Avtorises.MouseEnter += Avtorises_MouseEnter;
+            Avtorises.MouseLeave += Avtorises_MouseLeave;
             // 
             // textBox1
             // 
             textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            textBox1.Location = new Point(359, 122);
+            textBox1.Location = new Point(201, 250);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
+            textBox1.Size = new Size(160, 23);
             textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
             textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            textBox2.Location = new Point(359, 191);
+            textBox2.Location = new Point(201, 331);
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '●';
-            textBox2.Size = new Size(100, 23);
+            textBox2.Size = new Size(160, 23);
             textBox2.TabIndex = 2;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label1.AutoSize = true;
-            label1.Location = new Point(359, 104);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(201, 226);
             label1.Name = "label1";
-            label1.Size = new Size(41, 15);
+            label1.Size = new Size(59, 21);
             label1.TabIndex = 3;
-            label1.Text = "Логин";
+            label1.Text = "LOGIN";
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label2.AutoSize = true;
-            label2.Location = new Point(359, 173);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(201, 304);
             label2.Name = "label2";
-            label2.Size = new Size(49, 15);
+            label2.Size = new Size(98, 21);
             label2.TabIndex = 4;
-            label2.Text = "Пароль";
+            label2.Text = "PASSWORD";
             // 
             // bt_exit
             // 
@@ -145,17 +161,42 @@
             bt_max.UseVisualStyleBackColor = false;
             bt_max.Click += bt_max_Click;
             // 
+            // SMS
+            // 
+            SMS.AutoSize = true;
+            SMS.Font = new Font("Segoe UI Semibold", 48F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
+            SMS.ForeColor = SystemColors.ButtonHighlight;
+            SMS.Location = new Point(323, 28);
+            SMS.Name = "SMS";
+            SMS.Size = new Size(157, 86);
+            SMS.TabIndex = 10;
+            SMS.Text = "SMS";
+            // 
+            // logs
+            // 
+            logs.AutoSize = true;
+            logs.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            logs.ForeColor = SystemColors.ButtonHighlight;
+            logs.Location = new Point(249, 114);
+            logs.Name = "logs";
+            logs.Size = new Size(302, 50);
+            logs.TabIndex = 11;
+            logs.Text = "АВТОРИЗАЦИЯ";
+            // 
             // Avtorisation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(logs);
+            Controls.Add(SMS);
             Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Controls.Add(button1);
+            Controls.Add(Avtorises);
             Name = "Avtorisation";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
@@ -167,7 +208,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button Avtorises;
         private TextBox textBox1;
         private TextBox textBox2;
         private Label label1;
@@ -176,5 +217,7 @@
         private Panel panel1;
         private Button bt_min;
         private Button bt_max;
+        private Label SMS;
+        private Label logs;
     }
 }

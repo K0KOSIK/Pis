@@ -76,5 +76,15 @@ namespace Pis
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void Avtorises_MouseEnter(object sender, EventArgs e)
+        {
+            Avtorises.ForeColor = Color.FromArgb(48, 119, 140);
+        }
+
+        private void Avtorises_MouseLeave(object sender, EventArgs e)
+        {
+            Avtorises.ForeColor = Color.FromKnownColor(KnownColor.White);
+        }
     }
 }
