@@ -121,6 +121,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.Controls.Add(bt_min);
             panel1.Controls.Add(bt_max);
             panel1.Controls.Add(bt_exit);
@@ -163,6 +164,7 @@
             // 
             // SMS
             // 
+            SMS.Anchor = AnchorStyles.Top;
             SMS.AutoSize = true;
             SMS.Font = new Font("Segoe UI Semibold", 48F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
             SMS.ForeColor = SystemColors.ButtonHighlight;
@@ -174,6 +176,7 @@
             // 
             // logs
             // 
+            logs.Anchor = AnchorStyles.Top;
             logs.AutoSize = true;
             logs.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             logs.ForeColor = SystemColors.ButtonHighlight;
