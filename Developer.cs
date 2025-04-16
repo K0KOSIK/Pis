@@ -54,7 +54,7 @@ namespace Pis.Models
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PerformanceReports.ToList();
-            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[7].Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)

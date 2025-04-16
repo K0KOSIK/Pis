@@ -46,21 +46,23 @@ namespace Pis.Models
 
         private void button3_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.MonitoringData.ToList();
             dataGridView1.Columns[5].Visible = false;
-
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PerformanceReports.ToList();
-            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[7].Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PlcDevices.ToList();
             dataGridView1.Columns[4].Visible = false;
