@@ -180,11 +180,11 @@
             logs.AutoSize = true;
             logs.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             logs.ForeColor = SystemColors.ButtonHighlight;
-            logs.Location = new Point(249, 114);
+            logs.Location = new Point(225, 114);
             logs.Name = "logs";
-            logs.Size = new Size(302, 50);
+            logs.Size = new Size(360, 50);
             logs.TabIndex = 11;
-            logs.Text = "АВТОРИЗАЦИЯ";
+            logs.Text = "АВТОМАТИЗАЦИЯ";
             // 
             // Avtorisation
             // 
