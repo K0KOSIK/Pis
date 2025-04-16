@@ -121,7 +121,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.GradientActiveCaption;
+            panel1.BackColor = SystemColors.GradientInactiveCaption;
             panel1.Controls.Add(bt_min);
             panel1.Controls.Add(bt_max);
             panel1.Controls.Add(bt_exit);

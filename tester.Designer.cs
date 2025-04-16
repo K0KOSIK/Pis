@@ -1,6 +1,6 @@
 ﻿namespace Pis.Models
 {
-    partial class Deputy_Director
+    partial class tester
     {
         /// <summary>
         /// Required designer variable.
@@ -129,8 +129,7 @@
             // button7
             // 
             button7.BackColor = Color.FromArgb(128, 128, 255);
-            button7.Dock = DockStyle.Left;
-            button7.Location = new Point(510, 0);
+            button7.Location = new Point(495, 0);
             button7.Name = "button7";
             button7.Size = new Size(85, 25);
             button7.TabIndex = 6;
@@ -141,8 +140,7 @@
             // button6
             // 
             button6.BackColor = Color.FromArgb(128, 128, 255);
-            button6.Dock = DockStyle.Left;
-            button6.Location = new Point(425, 0);
+            button6.Location = new Point(410, 0);
             button6.Name = "button6";
             button6.Size = new Size(85, 25);
             button6.TabIndex = 5;
@@ -153,8 +151,7 @@
             // button5
             // 
             button5.BackColor = Color.FromArgb(128, 128, 255);
-            button5.Dock = DockStyle.Left;
-            button5.Location = new Point(340, 0);
+            button5.Location = new Point(325, 0);
             button5.Name = "button5";
             button5.Size = new Size(85, 25);
             button5.TabIndex = 4;
@@ -165,8 +162,7 @@
             // button4
             // 
             button4.BackColor = Color.FromArgb(128, 128, 255);
-            button4.Dock = DockStyle.Left;
-            button4.Location = new Point(255, 0);
+            button4.Location = new Point(240, 0);
             button4.Name = "button4";
             button4.Size = new Size(85, 25);
             button4.TabIndex = 3;
@@ -177,8 +173,7 @@
             // button3
             // 
             button3.BackColor = Color.FromArgb(128, 128, 255);
-            button3.Dock = DockStyle.Left;
-            button3.Location = new Point(170, 0);
+            button3.Location = new Point(160, 0);
             button3.Name = "button3";
             button3.Size = new Size(85, 25);
             button3.TabIndex = 2;
@@ -189,8 +184,7 @@
             // button2
             // 
             button2.BackColor = Color.FromArgb(128, 128, 255);
-            button2.Dock = DockStyle.Left;
-            button2.Location = new Point(85, 0);
+            button2.Location = new Point(80, 0);
             button2.Name = "button2";
             button2.Size = new Size(85, 25);
             button2.TabIndex = 1;
@@ -201,7 +195,6 @@
             // button1
             // 
             button1.BackColor = Color.FromArgb(128, 128, 255);
-            button1.Dock = DockStyle.Left;
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
             button1.Size = new Size(85, 25);
@@ -262,7 +255,7 @@
             bt_add.Text = "Добавить";
             bt_add.UseVisualStyleBackColor = false;
             // 
-            // Deputy_Director
+            // Admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -272,12 +265,12 @@
             Controls.Add(panel3);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Deputy_Director";
+            Name = "Admin";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
-            FormClosed += Deputy_Director_FormClosed;
-            Load += Deputy_Director_Load;
+            FormClosed += tester_FormClosed;
+            Load += tester_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -290,9 +283,12 @@
         private DataGridView dataGridView1;
         private Panel panel1;
         private Button button2;
+        private Button button1;
         private Button button3;
         private Panel panel2;
         private Button button4;
+        private Button button7;
+        private Button button6;
         private Button button5;
         private Button bt_exit;
         private Panel panel3;
@@ -301,8 +297,5 @@
         private Button bt_delete;
         private Button bt_edit;
         private Button bt_min;
-        private Button button7;
-        private Button button6;
-        private Button button1;
     }
 }

@@ -271,6 +271,7 @@
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Developer";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;

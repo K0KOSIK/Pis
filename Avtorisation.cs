@@ -51,6 +51,12 @@ namespace Pis
                     Developer form4 = new Developer(this);
                     form4.Show();
                 }
+                if (user.Role == "тестировщик")
+                {
+                    MessageBox.Show(user.Role);
+                    tester form5 = new tester(this);
+                    form5.Show();
+                }
                 this.Hide();
                 textBox1.Text = "";
                 textBox2.Text = "";
