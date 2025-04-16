@@ -63,6 +63,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.Controls.Add(bt_min);
             panel1.Controls.Add(bt_max);
             panel1.Controls.Add(bt_exit);
@@ -127,72 +128,79 @@
             // 
             // button7
             // 
+            button7.BackColor = Color.FromArgb(128, 128, 255);
             button7.Location = new Point(495, 0);
             button7.Name = "button7";
             button7.Size = new Size(85, 25);
             button7.TabIndex = 6;
             button7.Text = "Status";
-            button7.UseVisualStyleBackColor = true;
+            button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 
             // button6
             // 
+            button6.BackColor = Color.FromArgb(128, 128, 255);
             button6.Location = new Point(410, 0);
             button6.Name = "button6";
             button6.Size = new Size(85, 25);
             button6.TabIndex = 5;
             button6.Text = "Severity";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
             // button5
             // 
+            button5.BackColor = Color.FromArgb(128, 128, 255);
             button5.Location = new Point(325, 0);
             button5.Name = "button5";
             button5.Size = new Size(85, 25);
             button5.TabIndex = 4;
             button5.Text = "PLC_Devices";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
             // button4
             // 
+            button4.BackColor = Color.FromArgb(128, 128, 255);
             button4.Location = new Point(240, 0);
             button4.Name = "button4";
             button4.Size = new Size(85, 25);
             button4.TabIndex = 3;
             button4.Text = "Performance Reports";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // button3
             // 
+            button3.BackColor = Color.FromArgb(128, 128, 255);
             button3.Location = new Point(160, 0);
             button3.Name = "button3";
             button3.Size = new Size(85, 25);
             button3.TabIndex = 2;
             button3.Text = "MonitoringData";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.FromArgb(128, 128, 255);
             button2.Location = new Point(80, 0);
             button2.Name = "button2";
             button2.Size = new Size(85, 25);
             button2.TabIndex = 1;
             button2.Text = "Device_Type";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(128, 128, 255);
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
             button1.Size = new Size(85, 25);
             button1.TabIndex = 0;
             button1.Text = "AlertLogs";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panel2
@@ -206,6 +214,7 @@
             // 
             // panel3
             // 
+            panel3.BackColor = SystemColors.ActiveCaption;
             panel3.Controls.Add(bt_delete);
             panel3.Controls.Add(bt_edit);
             panel3.Controls.Add(bt_add);
@@ -217,31 +226,34 @@
             // 
             // bt_delete
             // 
+            bt_delete.BackColor = SystemColors.Highlight;
             bt_delete.Location = new Point(165, 6);
             bt_delete.Name = "bt_delete";
             bt_delete.Size = new Size(75, 40);
             bt_delete.TabIndex = 2;
             bt_delete.Text = "Удалить";
-            bt_delete.UseVisualStyleBackColor = true;
+            bt_delete.UseVisualStyleBackColor = false;
             bt_delete.Click += bt_delete_Click;
             // 
             // bt_edit
             // 
+            bt_edit.BackColor = SystemColors.Highlight;
             bt_edit.Location = new Point(84, 6);
             bt_edit.Name = "bt_edit";
             bt_edit.Size = new Size(75, 40);
             bt_edit.TabIndex = 1;
             bt_edit.Text = "Изменить";
-            bt_edit.UseVisualStyleBackColor = true;
+            bt_edit.UseVisualStyleBackColor = false;
             // 
             // bt_add
             // 
+            bt_add.BackColor = SystemColors.Highlight;
             bt_add.Location = new Point(3, 6);
             bt_add.Name = "bt_add";
             bt_add.Size = new Size(75, 40);
             bt_add.TabIndex = 0;
             bt_add.Text = "Добавить";
-            bt_add.UseVisualStyleBackColor = true;
+            bt_add.UseVisualStyleBackColor = false;
             // 
             // Admin
             // 
