@@ -41,9 +41,9 @@ namespace Pis
                 }
                 if (user.Role == "директор")
                 {
-                    //MessageBox.Show(user.Role);
-                    //Deputy_Director form3 = new Deputy_Director(this);
-                    //form3.Show();
+                    MessageBox.Show(user.Role);
+                    Deputy_Director form3 = new Deputy_Director(this);
+                    form3.Show();
                 }
                 if (user.Role == "разработчик")
                 {
