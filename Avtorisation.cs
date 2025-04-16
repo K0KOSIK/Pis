@@ -42,7 +42,7 @@ namespace Pis
                 if (user.Role == "директор")
                 {
                     MessageBox.Show(user.Role);
-                    Deputy_Director form3 = new Deputy_Director(this);
+                    director form3 = new director(this);
                     form3.Show();
                 }
                 if (user.Role == "разработчик")

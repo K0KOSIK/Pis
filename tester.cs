@@ -17,10 +17,9 @@ namespace Pis.Models
 
         public tester(Avtorisation form1)
         {
-            button1.Visible = false;
-            button2.Visible = false;
-            button6.Visible = false;
-            button7.Visible = false;
+            InitializeComponent();
+            _form1 = form1;
+            this.FormClosed += tester_FormClosed;
         }
 
         private void tester_FormClosed(object sender, FormClosedEventArgs e)
@@ -29,7 +28,10 @@ namespace Pis.Models
         }
         private void tester_Load(object sender, EventArgs e)
         {
-            
+            button1.Visible = false;
+            button2.Visible = false;
+            button6.Visible = false;
+            button7.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,6 +48,7 @@ namespace Pis.Models
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.MonitoringData.ToList();
+            dataGridView1.Columns[5].Visible = false;
 
         }
 
