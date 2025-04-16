@@ -49,6 +49,7 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.MonitoringData.ToList();
             dataGridView1.Columns[5].Visible = false;
+            
 
         }
 
