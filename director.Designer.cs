@@ -53,6 +53,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
@@ -255,7 +256,7 @@
             bt_add.Text = "Добавить";
             bt_add.UseVisualStyleBackColor = false;
             // 
-            // Admin
+            // director
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -265,7 +266,7 @@
             Controls.Add(panel3);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Admin";
+            Name = "director";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
