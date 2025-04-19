@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,36 @@ namespace Pis.Models
     {
         private Avtorisation _form1;
 
+        private enum ActiveEntity { AlertLogs, Device_Type, PerformanceReports, MonitoringData, PLC_Devices, Severity, Status }
+        private ActiveEntity activeEntity;
+
+        private void UpdateInfo()
+        {
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            var AlertLogs = context.AlertLogs
+                .Include(x => x.PlcDevicesIdPlcDevices)
+                .OrderBy(x => x.IdAlertLogs)
+                .Select(x => new
+                {
+                    x.IdAlertLogs,
+                    x.Timestamp,
+                    x.AlertMessage,
+                    x.Severity,
+                    x.PlcDevicesIdPlcDevices
+
+                });
+        }
+
         public Deputy_Director(Avtorisation form1)
         {
             InitializeComponent();
             _form1 = form1;
             this.FormClosed += Deputy_Director_FormClosed;
+            activeEntity = ActiveEntity.AlertLogs;
         }
 
         private void Deputy_Director_FormClosed(object sender, FormClosedEventArgs e)
@@ -35,13 +61,14 @@ namespace Pis.Models
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            activeEntity = ActiveEntity.AlertLogs;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.DeviceTypes.ToList();
+            activeEntity = ActiveEntity.Device_Type;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -49,6 +76,7 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.MonitoringData.ToList();
             dataGridView1.Columns[5].Visible = false;
+            activeEntity = ActiveEntity.MonitoringData;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -56,6 +84,7 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PerformanceReports.ToList();
             dataGridView1.Columns[5].Visible = false;
+            activeEntity = ActiveEntity.PerformanceReports;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -65,16 +94,17 @@ namespace Pis.Models
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
+            activeEntity = ActiveEntity.PLC_Devices;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            activeEntity = ActiveEntity.Severity;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            
+            activeEntity = ActiveEntity.Status;
         }
 
         private void bt_exit_Click(object sender, EventArgs e)
@@ -110,7 +140,31 @@ namespace Pis.Models
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
+            if(activeEntity == ActiveEntity.AlertLogs)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext context = new();
+                    var AlertLogs = context.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        AlertLogs.ExecuteDelete();
+                        context.SaveChanges();
+                        UpdateInfo();
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+            }
+
             
         }
+
     }
 }
