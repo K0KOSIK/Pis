@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,44 @@ namespace Pis.Models
     public partial class Admin : Form
     {
         private Avtorisation _form1;
+
+        private void UpdateInfo()
+        {
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            var AlertLogs = context.AlertLogs
+                .Include(x => x.PlcDevicesIdPlcDevices)
+                .OrderBy(x => x.IdAlertLogs)
+                .Select(x => new
+                {
+                    x.IdAlertLogs,
+                    x.Timestamp,
+                    x.AlertMessage,
+                    x.Severity,
+                    x.PlcDevicesIdPlcDevices
+
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext contex = new();
+            var DeviceTypes = contex.DeviceTypes
+                .OrderBy(x => x.IdDeviceType)
+                .Select(x => new
+                {
+                    x.IdDeviceType,
+                    x.Device,
+
+                });
+        }
+
+        private enum ActiveEntity { AlertLogs, Device_Type, PerformanceReports, MonitoringData, PLC_Devices, Severity, Status }
+        private ActiveEntity activeEntity;
 
         public Admin(Avtorisation form1)
         {
@@ -37,12 +76,14 @@ namespace Pis.Models
             dataGridView1.DataSource = context.AlertLogs.ToList();
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
+            activeEntity = ActiveEntity.AlertLogs;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.DeviceTypes.ToList();
+            activeEntity = ActiveEntity.Device_Type;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -50,6 +91,7 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.MonitoringData.ToList();
             dataGridView1.Columns[5].Visible = false;
+            activeEntity = ActiveEntity.MonitoringData;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -57,6 +99,7 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PerformanceReports.ToList();
             dataGridView1.Columns[5].Visible = false;
+            activeEntity = ActiveEntity.PerformanceReports;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -66,6 +109,7 @@ namespace Pis.Models
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
+            activeEntity = ActiveEntity.PLC_Devices;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -73,12 +117,14 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.Severities.ToList();
             dataGridView1.Columns[3].Visible = false;
+            activeEntity = ActiveEntity.Severity;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.Statuses.ToList();
+            activeEntity = ActiveEntity.Status;
         }
 
         private void bt_exit_Click(object sender, EventArgs e)
@@ -114,7 +160,76 @@ namespace Pis.Models
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
-            
+            if (activeEntity == ActiveEntity.AlertLogs)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext context = new();
+                    var AlertLogs = context.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        AlertLogs.ExecuteDelete();
+                        context.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+            }
+
+            if (activeEntity == ActiveEntity.Device_Type)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex = new();
+                    var DeviceTypes = contex.DeviceTypes.Where(x => x.IdDeviceType == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        DeviceTypes.ExecuteDelete();
+                        contex.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+            }
+            if (activeEntity == ActiveEntity.PerformanceReports)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex = new();
+                    var PerformanceReports = contex.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        PerformanceReports.ExecuteDelete();
+                        contex.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+            }
         }
     }
 }
