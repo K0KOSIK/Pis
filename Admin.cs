@@ -25,10 +25,10 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             var AlertLogs = context.AlertLogs
                 .Include(x => x.PlcDevicesIdPlcDevices)
-                .OrderBy(x => x.IdAlertLogs)
+                .OrderBy(x => x.IdPerformanceRepots)
                 .Select(x => new
                 {
-                    x.IdAlertLogs,
+                    x.IdPerformanceRepots,
                     x.Timestamp,
                     x.AlertMessage,
                     x.Severity,
@@ -47,6 +47,26 @@ namespace Pis.Models
                 {
                     x.IdDeviceType,
                     x.Device,
+
+                });
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context2 = new();
+            var PerformanceReports = context.AlertLogs
+                .Include(x => x.PlcDevicesIdPlcDevices)
+                .OrderBy(x => x.IdPerformanceRepots)
+                .Select(x => new
+                {
+                    x.IdPerformanceRepots,
+                    x.Startime,
+                    x.Endtime,
+                    x.TotalRuntime,
+                    x.Downtime,
+                    x.Efficiency,
+                    x.PlcDevicesIdPlcDevices,
+
 
                 });
         }
@@ -165,7 +185,7 @@ namespace Pis.Models
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
                     Ispr2525PiskunovDvKursovayaContext context = new();
-                    var AlertLogs = context.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    var AlertLogs = context.AlertLogs.Where(x => x.IdPerformanceRepots == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
                         AlertLogs.ExecuteDelete();
@@ -211,12 +231,12 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex = new();
-                    var PerformanceReports = contex.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    Ispr2525PiskunovDvKursovayaContext contex2 = new();
+                    var PerformanceReports = contex2.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
                         PerformanceReports.ExecuteDelete();
-                        contex.SaveChanges();
+                        contex2.SaveChanges();
                         UpdateInfo();
                     }
                     catch (Exception ex)

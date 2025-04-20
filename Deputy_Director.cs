@@ -28,10 +28,10 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             var AlertLogs = context.AlertLogs
                 .Include(x => x.PlcDevicesIdPlcDevices)
-                .OrderBy(x => x.IdAlertLogs)
+                .OrderBy(x => x.IdPerformanceRepots)
                 .Select(x => new
                 {
-                    x.IdAlertLogs,
+                    x.IdPerformanceRepots,
                     x.Timestamp,
                     x.AlertMessage,
                     x.Severity,
@@ -145,7 +145,7 @@ namespace Pis.Models
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
                     Ispr2525PiskunovDvKursovayaContext context = new();
-                    var AlertLogs = context.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    var AlertLogs = context.AlertLogs.Where(x => x.IdPerformanceRepots == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
                         AlertLogs.ExecuteDelete();
