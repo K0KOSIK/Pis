@@ -43,10 +43,10 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             var AlertLogs = context.AlertLogs
                 .Include(x => x.PlcDevicesIdPlcDevices)
-                .OrderBy(x => x.IdPerformanceRepots)
+                .OrderBy(x => x.IdAlertLogs)
                 .Select(x => new
                 {
-                    x.IdPerformanceRepots,
+                    x.IdAlertLogs,
                     x.Timestamp,
                     x.AlertMessage,
                     x.Severity,

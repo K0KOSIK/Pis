@@ -18,6 +18,4 @@ public partial class AlertLog
     public virtual PlcDevice PlcDevicesIdPlcDevicesNavigation { get; set; } = null!;
 
     public virtual ICollection<Severity> Severities { get; set; } = new List<Severity>();
-    public object PLC_Devices_idPLC_Devices { get; internal set; }
-    public object IdPerformanceRepots { get; internal set; }
 }

@@ -46,11 +46,11 @@ public partial class Ispr2525PiskunovDvKursovayaContext : DbContext
 
         modelBuilder.Entity<AlertLog>(entity =>
         {
-            entity.HasKey(e => e.IdPerformanceRepots).HasName("PRIMARY");
+            entity.HasKey(e => e.IdAlertLogs).HasName("PRIMARY");
 
             entity.HasIndex(e => e.PlcDevicesIdPlcDevices, "fk_AlertLogs_PLC_Devices1_idx");
 
-            entity.Property(e => e.IdPerformanceRepots).HasColumnName("idAlertLogs");
+            entity.Property(e => e.IdAlertLogs).HasColumnName("idAlertLogs");
             entity.Property(e => e.AlertMessage).HasColumnType("tinytext");
             entity.Property(e => e.PlcDevicesIdPlcDevices).HasColumnName("PLC_Devices_idPLC_Devices");
             entity.Property(e => e.Severity).HasColumnType("enum('Низкий','Средний','Высокий')");
