@@ -16,6 +16,24 @@ namespace Pis.Models
     {
         private Avtorisation _form1;
 
+       
+
+        public Admin(Avtorisation form1)
+        {
+            InitializeComponent();
+            _form1 = form1;
+            this.FormClosed += Admin_FormClosed;
+        }
+
+        private void Admin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _form1.Show();
+        }
+        private void Admin_Load(object sender, EventArgs e)
+        {
+            activeEntity = ActiveEntity.AlertLogs;
+        }
+
         private void UpdateInfo()
         {
             if (dataGridView1.DataSource != null)
@@ -54,14 +72,14 @@ namespace Pis.Models
                 dataGridView1.DataSource = null;
             }
             Ispr2525PiskunovDvKursovayaContext context2 = new();
-            var PerformanceReports = context.AlertLogs
+            var PerformanceReports = context.PerformanceReports
                 .Include(x => x.PlcDevicesIdPlcDevices)
-                .OrderBy(x => x.IdPerformanceRepots)
+                .OrderBy(x => x.IdPerformanceReports)
                 .Select(x => new
                 {
-                    x.IdPerformanceRepots,
-                    x.Startime,
-                    x.Endtime,
+                    x.IdPerformanceReports,
+                    x.StartTime,
+                    x.EndTime,
                     x.TotalRuntime,
                     x.Downtime,
                     x.Efficiency,
@@ -73,21 +91,6 @@ namespace Pis.Models
 
         private enum ActiveEntity { AlertLogs, Device_Type, PerformanceReports, MonitoringData, PLC_Devices, Severity, Status }
         private ActiveEntity activeEntity;
-
-        public Admin(Avtorisation form1)
-        {
-            InitializeComponent();
-            _form1 = form1;
-            this.FormClosed += Admin_FormClosed;
-        }
-
-        private void Admin_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _form1.Show();
-        private void Admin_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -184,7 +187,7 @@ namespace Pis.Models
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
                     Ispr2525PiskunovDvKursovayaContext context = new();
-                    var AlertLogs = context.AlertLogs.Where(x => x.IdPerformanceRepots == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    var AlertLogs = context.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
                         AlertLogs.ExecuteDelete();
