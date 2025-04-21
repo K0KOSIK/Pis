@@ -34,6 +34,60 @@ namespace Pis.Models
                     x.Device,
 
                 });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context3 = new();
+            var MonitoringData = context3.MonitoringData
+                .Include(x => x.PlcDevicesIdPlcDevices)
+                .OrderBy(x => x.IdMonitoringData)
+                .Select(x => new
+                {
+                    x.IdMonitoringData,
+                    x.Timestamp,
+                    x.Temperature,
+                    x.Load,
+                    x.PlcDevicesIdPlcDevices
+
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context2 = new();
+            var PerformanceReports = context2.PerformanceReports
+                .Include(x => x.PlcDevicesIdPlcDevices)
+                .OrderBy(x => x.IdPerformanceReports)
+                .Select(x => new
+                {
+                    x.IdPerformanceReports,
+                    x.StartTime,
+                    x.EndTime,
+                    x.TotalRuntime,
+                    x.Downtime,
+                    x.Efficiency,
+                    x.PlcDevicesIdPlcDevices,
+
+
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context4 = new();
+            var PLC_Devices = context4.PlcDevices
+                .OrderBy(x => x.IdPlcDevices)
+                .Select(x => new
+                {
+                    x.IdPlcDevices,
+                    x.DeviceName,
+                    x.DeviceType,
+                    x.Status,
+                });
         }
 
         public Deputy_Director(Avtorisation form1)
@@ -53,6 +107,7 @@ namespace Pis.Models
             button1.Visible= false;
             button6.Visible= false;
             button7.Visible= false;
+            activeEntity = ActiveEntity.AlertLogs;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -159,7 +214,82 @@ namespace Pis.Models
                 }
             }
 
-            
+            if (activeEntity == ActiveEntity.MonitoringData)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex3 = new();
+                    var MonitoringData = contex3.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        MonitoringData.ExecuteDelete();
+                        contex3.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+            if (activeEntity == ActiveEntity.PerformanceReports)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex2 = new();
+                    var PerformanceReports = contex2.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        PerformanceReports.ExecuteDelete();
+                        contex2.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+            if (activeEntity == ActiveEntity.PLC_Devices)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex4 = new();
+                    var PLC_Devices = contex4.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        PLC_Devices.ExecuteDelete();
+                        contex4.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+
         }
 
     }

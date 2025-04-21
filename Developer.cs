@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,86 @@ namespace Pis.Models
     {
         private Avtorisation _form1;
 
+
+        private enum ActiveEntity { AlertLogs, Device_Type, PerformanceReports, MonitoringData, PLC_Devices, Severity, Status }
+        private ActiveEntity activeEntity;
+
         public Developer(Avtorisation form1)
         {
             InitializeComponent();
             _form1 = form1;
             this.FormClosed += Developer_FormClosed;
+        }
+
+        private void UpdateInfo()
+        {
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context3 = new();
+            var MonitoringData = context3.MonitoringData
+                .Include(x => x.PlcDevicesIdPlcDevices)
+                .OrderBy(x => x.IdMonitoringData)
+                .Select(x => new
+                {
+                    x.IdMonitoringData,
+                    x.Timestamp,
+                    x.Temperature,
+                    x.Load,
+                    x.PlcDevicesIdPlcDevices
+
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context2 = new();
+            var PerformanceReports = context2.PerformanceReports
+                .Include(x => x.PlcDevicesIdPlcDevices)
+                .OrderBy(x => x.IdPerformanceReports)
+                .Select(x => new
+                {
+                    x.IdPerformanceReports,
+                    x.StartTime,
+                    x.EndTime,
+                    x.TotalRuntime,
+                    x.Downtime,
+                    x.Efficiency,
+                    x.PlcDevicesIdPlcDevices,
+
+
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context4 = new();
+            var PLC_Devices = context4.PlcDevices
+                .OrderBy(x => x.IdPlcDevices)
+                .Select(x => new
+                {
+                    x.IdPlcDevices,
+                    x.DeviceName,
+                    x.DeviceType,
+                    x.Status,
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context6 = new();
+            var Status = context6.Statuses
+                .OrderBy(x => x.IdStatus)
+                .Select(x => new
+                {
+                    x.IdStatus,
+                    x.Status1,
+
+                });
         }
 
         private void Developer_FormClosed(object sender, FormClosedEventArgs e)
@@ -31,16 +107,18 @@ namespace Pis.Models
             button1.Visible = false;
             button2.Visible = false;
             button6.Visible = false;
+            activeEntity = ActiveEntity.AlertLogs;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            activeEntity = ActiveEntity.AlertLogs;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            activeEntity = ActiveEntity.AlertLogs;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -48,6 +126,7 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.MonitoringData.ToList();
             dataGridView1.Columns[5].Visible = false;
+            activeEntity = ActiveEntity.MonitoringData;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -55,6 +134,7 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PerformanceReports.ToList();
             dataGridView1.Columns[5].Visible = false;
+            activeEntity = ActiveEntity.PerformanceReports;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -64,11 +144,12 @@ namespace Pis.Models
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
+            activeEntity = ActiveEntity.PLC_Devices;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            activeEntity = ActiveEntity.AlertLogs;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -110,7 +191,105 @@ namespace Pis.Models
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
+            if (activeEntity == ActiveEntity.MonitoringData)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex3 = new();
+                    var MonitoringData = contex3.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        MonitoringData.ExecuteDelete();
+                        contex3.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
 
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+            if (activeEntity == ActiveEntity.PerformanceReports)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex2 = new();
+                    var PerformanceReports = contex2.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        PerformanceReports.ExecuteDelete();
+                        contex2.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+            if (activeEntity == ActiveEntity.PLC_Devices)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex4 = new();
+                    var PLC_Devices = contex4.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        PLC_Devices.ExecuteDelete();
+                        contex4.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+            if (activeEntity == ActiveEntity.Status)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex6 = new();
+                    var Status = contex6.Statuses.Where(x => x.IdStatus == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        Status.ExecuteDelete();
+                        contex6.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
         }
     }
 }

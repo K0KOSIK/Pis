@@ -130,7 +130,8 @@
             // button7
             // 
             button7.BackColor = Color.FromArgb(128, 128, 255);
-            button7.Location = new Point(495, 0);
+            button7.Dock = DockStyle.Left;
+            button7.Location = new Point(510, 0);
             button7.Name = "button7";
             button7.Size = new Size(85, 25);
             button7.TabIndex = 6;
@@ -141,7 +142,8 @@
             // button6
             // 
             button6.BackColor = Color.FromArgb(128, 128, 255);
-            button6.Location = new Point(410, 0);
+            button6.Dock = DockStyle.Left;
+            button6.Location = new Point(425, 0);
             button6.Name = "button6";
             button6.Size = new Size(85, 25);
             button6.TabIndex = 5;
@@ -152,7 +154,8 @@
             // button5
             // 
             button5.BackColor = Color.FromArgb(128, 128, 255);
-            button5.Location = new Point(325, 0);
+            button5.Dock = DockStyle.Left;
+            button5.Location = new Point(340, 0);
             button5.Name = "button5";
             button5.Size = new Size(85, 25);
             button5.TabIndex = 4;
@@ -163,7 +166,8 @@
             // button4
             // 
             button4.BackColor = Color.FromArgb(128, 128, 255);
-            button4.Location = new Point(240, 0);
+            button4.Dock = DockStyle.Left;
+            button4.Location = new Point(255, 0);
             button4.Name = "button4";
             button4.Size = new Size(85, 25);
             button4.TabIndex = 3;
@@ -174,7 +178,8 @@
             // button3
             // 
             button3.BackColor = Color.FromArgb(128, 128, 255);
-            button3.Location = new Point(160, 0);
+            button3.Dock = DockStyle.Left;
+            button3.Location = new Point(170, 0);
             button3.Name = "button3";
             button3.Size = new Size(85, 25);
             button3.TabIndex = 2;
@@ -185,7 +190,8 @@
             // button2
             // 
             button2.BackColor = Color.FromArgb(128, 128, 255);
-            button2.Location = new Point(80, 0);
+            button2.Dock = DockStyle.Left;
+            button2.Location = new Point(85, 0);
             button2.Name = "button2";
             button2.Size = new Size(85, 25);
             button2.TabIndex = 1;
@@ -196,6 +202,7 @@
             // button1
             // 
             button1.BackColor = Color.FromArgb(128, 128, 255);
+            button1.Dock = DockStyle.Left;
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
             button1.Size = new Size(85, 25);
