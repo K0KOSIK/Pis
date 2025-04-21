@@ -67,12 +67,13 @@ namespace Pis.Models
                     x.Device,
 
                 });
+
             if (dataGridView1.DataSource != null)
             {
                 dataGridView1.DataSource = null;
             }
             Ispr2525PiskunovDvKursovayaContext context2 = new();
-            var PerformanceReports = context.PerformanceReports
+            var PerformanceReports = context2.PerformanceReports
                 .Include(x => x.PlcDevicesIdPlcDevices)
                 .OrderBy(x => x.IdPerformanceReports)
                 .Select(x => new
@@ -85,6 +86,69 @@ namespace Pis.Models
                     x.Efficiency,
                     x.PlcDevicesIdPlcDevices,
 
+
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context3 = new();
+            var MonitoringData = context3.MonitoringData
+                .Include(x => x.PlcDevicesIdPlcDevices)
+                .OrderBy(x => x.IdMonitoringData)
+                .Select(x => new
+                {
+                    x.IdMonitoringData,
+                    x.Timestamp,
+                    x.Temperature,
+                    x.Load,
+                    x.PlcDevicesIdPlcDevices
+
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context4 = new();
+            var PLC_Devices = context4.PlcDevices
+                .OrderBy(x => x.IdPlcDevices)
+                .Select(x => new
+                {
+                    x.IdPlcDevices,
+                    x.DeviceName,
+                    x.DeviceType,
+                    x.Status,
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context5 = new();
+            var Severity = context5.Severities
+                .Include(x => x.AlertLogsIdAlertLogs)
+                .OrderBy(x => x.IdSeverity)
+                .Select(x => new
+                {
+                    x.IdSeverity,
+                    x.Severity1,
+                    x.AlertLogsIdAlertLogs,
+
+                });
+
+            if (dataGridView1.DataSource != null)
+            {
+                dataGridView1.DataSource = null;
+            }
+            Ispr2525PiskunovDvKursovayaContext context6 = new();
+            var Status = context6.Statuses
+                .OrderBy(x => x.IdStatus)
+                .Select(x => new
+                {
+                    x.IdStatus,
+                    x.Status1,
 
                 });
         }
@@ -251,6 +315,107 @@ namespace Pis.Models
                 {
                     MessageBox.Show("Выберете строчку для удаления");
                 }
+
+            }
+
+            if (activeEntity == ActiveEntity.MonitoringData)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex3 = new();
+                    var MonitoringData = contex3.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        MonitoringData.ExecuteDelete();
+                        contex3.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+            if (activeEntity == ActiveEntity.PLC_Devices)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex4 = new();
+                    var PLC_Devices = contex4.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        PLC_Devices.ExecuteDelete();
+                        contex4.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+            if (activeEntity == ActiveEntity.Severity)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex5 = new();
+                    var Severity = contex5.Severities.Where(x => x.IdSeverity == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        Severity.ExecuteDelete();
+                        contex5.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
+            }
+
+            if (activeEntity == ActiveEntity.Status)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    Ispr2525PiskunovDvKursovayaContext contex6 = new();
+                    var Status = contex6.Statuses.Where(x => x.IdStatus == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        Status.ExecuteDelete();
+                        contex6.SaveChanges();
+                        UpdateInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не получилось удалить: " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Выберете строчку для удаления");
+                }
+
             }
         }
     }

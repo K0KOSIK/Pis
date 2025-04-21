@@ -26,16 +26,12 @@ namespace Pis.Models
                 dataGridView1.DataSource = null;
             }
             Ispr2525PiskunovDvKursovayaContext context = new();
-            var AlertLogs = context.AlertLogs
-                .Include(x => x.PlcDevicesIdPlcDevices)
-                .OrderBy(x => x.IdAlertLogs)
+            var Device_Type = context.DeviceTypes
+                .OrderBy(x => x.IdDeviceType)
                 .Select(x => new
                 {
-                    x.IdAlertLogs,
-                    x.Timestamp,
-                    x.AlertMessage,
-                    x.Severity,
-                    x.PlcDevicesIdPlcDevices
+                    x.IdDeviceType,
+                    x.Device,
 
                 });
         }
@@ -140,15 +136,15 @@ namespace Pis.Models
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
-            if(activeEntity == ActiveEntity.AlertLogs)
+            if(activeEntity == ActiveEntity.Device_Type)
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
                     Ispr2525PiskunovDvKursovayaContext context = new();
-                    var AlertLogs = context.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                    var Device_Type = context.DeviceTypes.Where(x => x.IdDeviceType == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        AlertLogs.ExecuteDelete();
+                        Device_Type.ExecuteDelete();
                         context.SaveChanges();
                         UpdateInfo();
                     } catch (Exception ex)
