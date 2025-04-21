@@ -189,6 +189,7 @@ namespace Pis.Models
                         PerformanceReports.ExecuteDelete();
                         contex2.SaveChanges();
                         UpdateInfo();
+                        dataGridView1.DataSource = contex2.PerformanceReports.ToList();
                     }
                     catch (Exception ex)
                     {
@@ -214,6 +215,7 @@ namespace Pis.Models
                         MonitoringData.ExecuteDelete();
                         contex3.SaveChanges();
                         UpdateInfo();
+                        dataGridView1.DataSource = contex3.MonitoringData.ToList();
                     }
                     catch (Exception ex)
                     {
@@ -239,6 +241,7 @@ namespace Pis.Models
                         PLC_Devices.ExecuteDelete();
                         contex4.SaveChanges();
                         UpdateInfo();
+                        dataGridView1.DataSource = contex4.PlcDevices.ToList();
                     }
                     catch (Exception ex)
                     {
