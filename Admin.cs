@@ -84,7 +84,6 @@ namespace Pis.Models
         private void Admin_FormClosed(object sender, FormClosedEventArgs e)
         {
             _form1.Show();
-        }
         private void Admin_Load(object sender, EventArgs e)
         {
             
