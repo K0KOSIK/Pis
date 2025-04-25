@@ -17,7 +17,7 @@ namespace Pis.Models
     {
         private Avtorisation _form1;
 
-       
+
 
         public Admin(Avtorisation form1)
         {
@@ -427,6 +427,12 @@ namespace Pis.Models
                 }
 
             }
+        }
+
+        private void bt_edit_Click(object sender, EventArgs e)
+        {
+           
+
         }
     }
 }
