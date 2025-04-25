@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
+            input = new TextBox();
+            input2 = new TextBox();
+            input3 = new TextBox();
+            input6 = new TextBox();
+            input4 = new TextBox();
+            input5 = new TextBox();
+            input7 = new TextBox();
             table1 = new Label();
             table2 = new Label();
             table3 = new Label();
@@ -46,58 +46,58 @@
             save = new Button();
             SuspendLayout();
             // 
-            // textBox1
+            // input
             // 
-            textBox1.Location = new Point(50, 45);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 0;
+            input.Location = new Point(50, 45);
+            input.Name = "input";
+            input.Size = new Size(100, 23);
+            input.TabIndex = 0;
             // 
-            // textBox2
+            // input2
             // 
-            textBox2.Location = new Point(50, 116);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 1;
+            input2.Location = new Point(50, 116);
+            input2.Name = "input2";
+            input2.Size = new Size(100, 23);
+            input2.TabIndex = 1;
             // 
-            // textBox3
+            // input3
             // 
-            textBox3.Location = new Point(50, 189);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 2;
+            input3.Location = new Point(50, 189);
+            input3.Name = "input3";
+            input3.Size = new Size(100, 23);
+            input3.TabIndex = 2;
             // 
-            // textBox4
+            // input6
             // 
-            textBox4.ForeColor = SystemColors.ButtonHighlight;
-            textBox4.Location = new Point(244, 189);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 3;
+            input6.ForeColor = SystemColors.ButtonHighlight;
+            input6.Location = new Point(244, 189);
+            input6.Name = "input6";
+            input6.Size = new Size(100, 23);
+            input6.TabIndex = 3;
             // 
-            // textBox5
+            // input4
             // 
-            textBox5.ForeColor = SystemColors.ButtonHighlight;
-            textBox5.Location = new Point(244, 45);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 4;
+            input4.ForeColor = SystemColors.ButtonHighlight;
+            input4.Location = new Point(244, 45);
+            input4.Name = "input4";
+            input4.Size = new Size(100, 23);
+            input4.TabIndex = 4;
             // 
-            // textBox6
+            // input5
             // 
-            textBox6.ForeColor = SystemColors.ButtonHighlight;
-            textBox6.Location = new Point(244, 116);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(100, 23);
-            textBox6.TabIndex = 5;
+            input5.ForeColor = SystemColors.ButtonHighlight;
+            input5.Location = new Point(244, 116);
+            input5.Name = "input5";
+            input5.Size = new Size(100, 23);
+            input5.TabIndex = 5;
             // 
-            // textBox7
+            // input7
             // 
-            textBox7.ForeColor = SystemColors.ButtonHighlight;
-            textBox7.Location = new Point(422, 45);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(100, 23);
-            textBox7.TabIndex = 6;
+            input7.ForeColor = SystemColors.ButtonHighlight;
+            input7.Location = new Point(422, 45);
+            input7.Name = "input7";
+            input7.Size = new Size(100, 23);
+            input7.TabIndex = 6;
             // 
             // table1
             // 
@@ -219,13 +219,13 @@
             Controls.Add(table3);
             Controls.Add(table2);
             Controls.Add(table1);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(input7);
+            Controls.Add(input5);
+            Controls.Add(input4);
+            Controls.Add(input6);
+            Controls.Add(input3);
+            Controls.Add(input2);
+            Controls.Add(input);
             Name = "editing";
             Text = "editing";
             ResumeLayout(false);
@@ -234,13 +234,13 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
+        private TextBox input;
+        private TextBox input2;
+        private TextBox input3;
+        private TextBox input6;
+        private TextBox input4;
+        private TextBox input5;
+        private TextBox input7;
         private Label table1;
         private Label table2;
         private Label table3;

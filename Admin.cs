@@ -431,7 +431,18 @@ namespace Pis.Models
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                var editing = new editing(input.Text, input2.Text, input3.Text, input4.Text, input5.Text, input6.Text, input7.Text);
+                if (editing.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            catch
+            { 
+            
+            }
 
         }
     }
