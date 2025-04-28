@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pis.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Pis
 {
-    public partial class editing : Form
+    public partial class Editing : Form
     {
         public int IdAlertLogs { get; set; }
 
@@ -18,7 +19,7 @@ namespace Pis
 
         public string AlertMessage { get; set; } 
 
-        public string Severity { get; set; }
+        //public string Severity { get; set; }
 
         public int PlcDevicesIdPlcDevices { get; set; }
 
@@ -80,12 +81,13 @@ namespace Pis
 
 
 
-        public editing(string IdAlertLogs, string Timestamp, string AlertMessage, string Severity, string PlcDevicesIdPlcDevices)
+        public Editing(ActiveEntity activeEntity,string IdAlertLogs, string Timestamp, string AlertMessage, string Severity, string PlcDevicesIdPlcDevices)
         {
             InitializeComponent();
-            if( Role ==  "Администратор")
+            x = activeEntity;
+            if(true)
             {   
-                if()
+                
                  
                 input.Text = IdAlertLogs;
                 input2.Text = Timestamp;
@@ -101,7 +103,35 @@ namespace Pis
 
         private void save_Click(object sender, EventArgs e)
         {
-
+            switch (x)
+            {
+                case ActiveEntity.AlertLogs:
+                    AlertLog alertLog = new();
+                    alertLog.IdAlertLogs = Convert.ToInt32(input.Text);
+                    alertLog.Timestamp = Convert.ToDateTime(input2.Text);
+                    alertLog.AlertMessage = input3.Text;
+                    alertLog.Severity = input4.Text;
+                    alertLog.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
+                    Ispr2525PiskunovDvKursovayaContext context = new();
+                    context.Update(alertLog);
+                    context.SaveChanges();
+                    break;
+                case ActiveEntity.Device_Type:
+                    break;
+                case ActiveEntity.PerformanceReports:
+                    break;
+                case ActiveEntity.MonitoringData:
+                    break;
+                case ActiveEntity.PLC_Devices:
+                    break;
+                case ActiveEntity.Severity:
+                    break;
+                case ActiveEntity.Status:
+                    break;
+                default:
+                    break;
+            }
+            //  другая форма (переход)
         }
 
         private void editing_Load(object sender, EventArgs e)

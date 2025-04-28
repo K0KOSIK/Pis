@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+п»їusing Microsoft.EntityFrameworkCore;
 using Pis.Models;
 using System.Runtime.InteropServices;
 
@@ -27,31 +27,31 @@ namespace Pis
                     .Where(user => user.Username == textBox1.Text && user.Password == textBox2.Text)
                     .Include(user => user.Roles)
                     .FirstOrDefault();
-                if (user.Role == "Администратор")
+                if (true)
                 {
                     MessageBox.Show(user.Role);
                     Admin form2 = new Admin(this);
                     form2.Show();
                 }
-                if (user.Role == "зам директора")
+                if (user.Role == "Г§Г Г¬ Г¤ГЁГ°ГҐГЄГІГ®Г°Г ")
                 {
                     MessageBox.Show(user.Role);
                     Deputy_Director form3 = new Deputy_Director(this);
                     form3.Show();
                 }
-                if (user.Role == "директор")
+                if (user.Role == "Г¤ГЁГ°ГҐГЄГІГ®Г°")
                 {
                     MessageBox.Show(user.Role);
                     director form3 = new director(this);
                     form3.Show();
                 }
-                if (user.Role == "разработчик")
+                if (user.Role == "Г°Г Г§Г°Г ГЎГ®ГІГ·ГЁГЄ")
                 {
                     MessageBox.Show(user.Role);
                     Developer form4 = new Developer(this);
                     form4.Show();
                 }
-                if (user.Role == "тестировщик")
+                if (user.Role == "ГІГҐГ±ГІГЁГ°Г®ГўГ№ГЁГЄ")
                 {
                     MessageBox.Show(user.Role);
                     tester form5 = new tester(this);
@@ -63,7 +63,7 @@ namespace Pis
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Неправильный логин или пароль");
+                MessageBox.Show("ГЌГҐГЇГ°Г ГўГЁГ«ГјГ­Г»Г© Г«Г®ГЈГЁГ­ ГЁГ«ГЁ ГЇГ Г°Г®Г«Гј");
                 textBox1.Text = "";
                 textBox2.Text = "";
             }

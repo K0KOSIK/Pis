@@ -1,6 +1,6 @@
 ﻿namespace Pis
 {
-    partial class editing
+    partial class Editing
     {
         /// <summary>
         /// Required designer variable.

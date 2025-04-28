@@ -55,106 +55,105 @@ namespace Pis.Models
 
                 });
 
-            if (dataGridView1.DataSource != null)
-            {
-                dataGridView1.DataSource = null;
-            }
-            Ispr2525PiskunovDvKursovayaContext contex = new();
-            var DeviceTypes = contex.DeviceTypes
-                .OrderBy(x => x.IdDeviceType)
-                .Select(x => new
-                {
-                    x.IdDeviceType,
-                    x.Device,
+            //if (dataGridView1.DataSource != null)
+            //{
+            //    dataGridView1.DataSource = null;
+            //}
+            //Ispr2525PiskunovDvKursovayaContext contex = new();
+            //var DeviceTypes = contex.DeviceTypes
+            //    .OrderBy(x => x.IdDeviceType)
+            //    .Select(x => new
+            //    {
+            //        x.IdDeviceType,
+            //        x.Device,
 
-                });
+            //    });
 
-            if (dataGridView1.DataSource != null)
-            {
-                dataGridView1.DataSource = null;
-            }
-            Ispr2525PiskunovDvKursovayaContext context2 = new();
-            var PerformanceReports = context2.PerformanceReports
-                .Include(x => x.PlcDevicesIdPlcDevices)
-                .OrderBy(x => x.IdPerformanceReports)
-                .Select(x => new
-                {
-                    x.IdPerformanceReports,
-                    x.StartTime,
-                    x.EndTime,
-                    x.TotalRuntime,
-                    x.Downtime,
-                    x.Efficiency,
-                    x.PlcDevicesIdPlcDevices,
+            //if (dataGridView1.DataSource != null)
+            //{
+            //    dataGridView1.DataSource = null;
+            //}
+            //Ispr2525PiskunovDvKursovayaContext context2 = new();
+            //var PerformanceReports = context2.PerformanceReports
+            //    .Include(x => x.PlcDevicesIdPlcDevices)
+            //    .OrderBy(x => x.IdPerformanceReports)
+            //    .Select(x => new
+            //    {
+            //        x.IdPerformanceReports,
+            //        x.StartTime,
+            //        x.EndTime,
+            //        x.TotalRuntime,
+            //        x.Downtime,
+            //        x.Efficiency,
+            //        x.PlcDevicesIdPlcDevices,
 
 
-                });
+            //    });
 
-            if (dataGridView1.DataSource != null)
-            {
-                dataGridView1.DataSource = null;
-            }
-            Ispr2525PiskunovDvKursovayaContext context3 = new();
-            var MonitoringData = context3.MonitoringData
-                .Include(x => x.PlcDevicesIdPlcDevices)
-                .OrderBy(x => x.IdMonitoringData)
-                .Select(x => new
-                {
-                    x.IdMonitoringData,
-                    x.Timestamp,
-                    x.Temperature,
-                    x.Load,
-                    x.PlcDevicesIdPlcDevices
+            //if (dataGridView1.DataSource != null)
+            //{
+            //    dataGridView1.DataSource = null;
+            //}
+            //Ispr2525PiskunovDvKursovayaContext context3 = new();
+            //var MonitoringData = context3.MonitoringData
+            //    .Include(x => x.PlcDevicesIdPlcDevices)
+            //    .OrderBy(x => x.IdMonitoringData)
+            //    .Select(x => new
+            //    {
+            //        x.IdMonitoringData,
+            //        x.Timestamp,
+            //        x.Temperature,
+            //        x.Load,
+            //        x.PlcDevicesIdPlcDevices
 
-                });
+            //    });
 
-            if (dataGridView1.DataSource != null)
-            {
-                dataGridView1.DataSource = null;
-            }
-            Ispr2525PiskunovDvKursovayaContext context4 = new();
-            var PLC_Devices = context4.PlcDevices
-                .OrderBy(x => x.IdPlcDevices)
-                .Select(x => new
-                {
-                    x.IdPlcDevices,
-                    x.DeviceName,
-                    x.DeviceType,
-                    x.Status,
-                });
+            //if (dataGridView1.DataSource != null)
+            //{
+            //    dataGridView1.DataSource = null;
+            //}
+            //Ispr2525PiskunovDvKursovayaContext context4 = new();
+            //var PLC_Devices = context4.PlcDevices
+            //    .OrderBy(x => x.IdPlcDevices)
+            //    .Select(x => new
+            //    {
+            //        x.IdPlcDevices,
+            //        x.DeviceName,
+            //        x.DeviceType,
+            //        x.Status,
+            //    });
 
-            if (dataGridView1.DataSource != null)
-            {
-                dataGridView1.DataSource = null;
-            }
-            Ispr2525PiskunovDvKursovayaContext context5 = new();
-            var Severity = context5.Severities
-                .Include(x => x.AlertLogsIdAlertLogs)
-                .OrderBy(x => x.IdSeverity)
-                .Select(x => new
-                {
-                    x.IdSeverity,
-                    x.Severity1,
-                    x.AlertLogsIdAlertLogs,
+            //if (dataGridView1.DataSource != null)
+            //{
+            //    dataGridView1.DataSource = null;
+            //}
+            //Ispr2525PiskunovDvKursovayaContext context5 = new();
+            //var Severity = context5.Severities
+            //    .Include(x => x.AlertLogsIdAlertLogs)
+            //    .OrderBy(x => x.IdSeverity)
+            //    .Select(x => new
+            //    {
+            //        x.IdSeverity,
+            //        x.Severity1,
+            //        x.AlertLogsIdAlertLogs,
 
-                });
+            //    });
 
-            if (dataGridView1.DataSource != null)
-            {
-                dataGridView1.DataSource = null;
-            }
-            Ispr2525PiskunovDvKursovayaContext context6 = new();
-            var Status = context6.Statuses
-                .OrderBy(x => x.IdStatus)
-                .Select(x => new
-                {
-                    x.IdStatus,
-                    x.Status1,
+            //if (dataGridView1.DataSource != null)
+            //{
+            //    dataGridView1.DataSource = null;
+            //}
+            //Ispr2525PiskunovDvKursovayaContext context6 = new();
+            //var Status = context6.Statuses
+            //    .OrderBy(x => x.IdStatus)
+            //    .Select(x => new
+            //    {
+            //        x.IdStatus,
+            //        x.Status1,
 
-                });
+            //    });
         }
 
-        private enum ActiveEntity { AlertLogs, Device_Type, PerformanceReports, MonitoringData, PLC_Devices, Severity, Status }
         private ActiveEntity activeEntity;
 
         private void button1_Click(object sender, EventArgs e)
@@ -433,7 +432,7 @@ namespace Pis.Models
         {
             try
             {
-                var editing = new editing(input.Text, input2.Text, input3.Text, input4.Text, input5.Text, input6.Text, input7.Text);
+                var editing = new Editing(activeEntity, ((int)dataGridView1.SelectedRows[0].Cells[0].Value).ToString(), ((DateTime)dataGridView1.SelectedRows[0].Cells[1].Value).ToString(), (string)dataGridView1.SelectedRows[0].Cells[2].Value, (string)dataGridView1.SelectedRows[0].Cells[3].Value, ((int)dataGridView1.SelectedRows[0].Cells[4].Value).ToString());
                 if (editing.ShowDialog() == DialogResult.OK)
                 {
 
