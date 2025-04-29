@@ -438,9 +438,9 @@ namespace Pis.Models
 
                 }
             }
-            catch
+            catch (Exception ex)
             { 
-            
+                MessageBox.Show("Не получилось изменить: " + ex.Message);
             }
 
         }
