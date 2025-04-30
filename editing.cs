@@ -137,7 +137,6 @@ namespace Pis
                     alertLog.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
                     Ispr2525PiskunovDvKursovayaContext context = new();
                     context.Update(alertLog);
-                    context.SaveChanges();
                     break;
                 case ActiveEntity.Device_Type:
                     break;
@@ -154,6 +153,7 @@ namespace Pis
                 default:
                     break;
             }
+            this.Close();
             //  другая форма (переход)
         }
 
@@ -169,6 +169,7 @@ namespace Pis
                 case ActiveEntity.AlertLogs:
                     Ispr2525PiskunovDvKursovayaContext context = new();
                     context.SaveChanges();
+                    this.Close();
                     break;
                 case ActiveEntity.Device_Type:
                     break;

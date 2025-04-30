@@ -271,7 +271,7 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
-            FormClosed += Admin_FormClosed;
+            //FormClosed += Admin_FormClosed;
             Load += Admin_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
@@ -282,7 +282,7 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        public DataGridView dataGridView1;
         private Panel panel1;
         private Button button2;
         private Button button1;

@@ -444,7 +444,7 @@ namespace Pis.Models
                 editing.ShowDialog();
                 if (editing.ShowDialog() == DialogResult.OK)
                 {
-
+                    dataGridView1.Refresh();
                 }
             }
             catch (Exception ex)
