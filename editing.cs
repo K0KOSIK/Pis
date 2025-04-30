@@ -188,11 +188,3 @@ namespace Pis
         }
     }
 }
-//public class AlertLogs
-//{
-//    public int IdAlertLogs { get; set; }
-//    public DateTime Timestamp { get; set; }
-//    public string AlertMessage { get; set; }
-//    public string Severity { get; set; }
-//    public int PlcDevicesIdPlcDevices { get; set; }
-//}
