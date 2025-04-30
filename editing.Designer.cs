@@ -32,7 +32,6 @@
             input2 = new TextBox();
             input3 = new TextBox();
             input6 = new TextBox();
-            input4 = new TextBox();
             input5 = new TextBox();
             input7 = new TextBox();
             table1 = new Label();
@@ -44,6 +43,7 @@
             table7 = new Label();
             cancellation = new Button();
             save = new Button();
+            input4 = new DomainUpDown();
             SuspendLayout();
             // 
             // input
@@ -69,23 +69,15 @@
             // 
             // input6
             // 
-            input6.ForeColor = SystemColors.ButtonHighlight;
+            input6.ForeColor = SystemColors.WindowText;
             input6.Location = new Point(244, 189);
             input6.Name = "input6";
             input6.Size = new Size(100, 23);
             input6.TabIndex = 3;
             // 
-            // input4
-            // 
-            input4.ForeColor = SystemColors.ButtonHighlight;
-            input4.Location = new Point(244, 45);
-            input4.Name = "input4";
-            input4.Size = new Size(100, 23);
-            input4.TabIndex = 4;
-            // 
             // input5
             // 
-            input5.ForeColor = SystemColors.ButtonHighlight;
+            input5.ForeColor = SystemColors.WindowText;
             input5.Location = new Point(244, 116);
             input5.Name = "input5";
             input5.Size = new Size(100, 23);
@@ -93,7 +85,7 @@
             // 
             // input7
             // 
-            input7.ForeColor = SystemColors.ButtonHighlight;
+            input7.ForeColor = SystemColors.WindowText;
             input7.Location = new Point(422, 45);
             input7.Name = "input7";
             input7.Size = new Size(100, 23);
@@ -185,6 +177,7 @@
             cancellation.TabIndex = 14;
             cancellation.Text = "Отмена";
             cancellation.UseVisualStyleBackColor = false;
+            cancellation.Click += cancellation_Click;
             // 
             // save
             // 
@@ -204,12 +197,23 @@
             save.UseVisualStyleBackColor = false;
             save.Click += save_Click;
             // 
-            // editing
+            // input4
+            // 
+            input4.Items.Add("Высокий");
+            input4.Items.Add("Средний");
+            input4.Items.Add("Низкий");
+            input4.Location = new Point(244, 45);
+            input4.Name = "input4";
+            input4.Size = new Size(120, 23);
+            input4.TabIndex = 16;
+            // 
+            // Editing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(input4);
             Controls.Add(save);
             Controls.Add(cancellation);
             Controls.Add(table7);
@@ -221,12 +225,11 @@
             Controls.Add(table1);
             Controls.Add(input7);
             Controls.Add(input5);
-            Controls.Add(input4);
             Controls.Add(input6);
             Controls.Add(input3);
             Controls.Add(input2);
             Controls.Add(input);
-            Name = "editing";
+            Name = "Editing";
             Text = "editing";
             ResumeLayout(false);
             PerformLayout();
@@ -238,7 +241,7 @@
         private TextBox input2;
         private TextBox input3;
         private TextBox input6;
-        private TextBox input4;
+        
         private TextBox input5;
         private TextBox input7;
         private Label table1;
@@ -250,5 +253,6 @@
         private Label table7;
         private Button cancellation;
         private Button save;
+        private DomainUpDown input4;
     }
 }

@@ -432,7 +432,16 @@ namespace Pis.Models
         {
             try
             {
-                var editing = new Editing(activeEntity, ((int)dataGridView1.SelectedRows[0].Cells[0].Value).ToString(), ((DateTime)dataGridView1.SelectedRows[0].Cells[1].Value).ToString(), (string)dataGridView1.SelectedRows[0].Cells[2].Value, (string)dataGridView1.SelectedRows[0].Cells[3].Value, ((int)dataGridView1.SelectedRows[0].Cells[4].Value).ToString());
+                var alertLogs = new AlertLog
+                {
+                    IdAlertLogs = ((int)dataGridView1.SelectedRows[0].Cells[0].Value),
+                    Timestamp = ((DateTime)dataGridView1.SelectedRows[0].Cells[1].Value),
+                    AlertMessage = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
+                    Severity = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
+                    PlcDevicesIdPlcDevices = ((int)dataGridView1.SelectedRows[0].Cells[4].Value)
+                };
+                var editing = new Editing(ActiveEntity.AlertLogs, alertLogs);
+                editing.ShowDialog();
                 if (editing.ShowDialog() == DialogResult.OK)
                 {
 

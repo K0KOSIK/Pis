@@ -17,7 +17,7 @@ namespace Pis
 
         public DateTime Timestamp { get; set; }
 
-        public string AlertMessage { get; set; } 
+        public string AlertMessage { get; set; }
 
         //public string Severity { get; set; }
 
@@ -81,25 +81,48 @@ namespace Pis
 
 
 
-        public Editing(ActiveEntity activeEntity,string IdAlertLogs, string Timestamp, string AlertMessage, string Severity, string PlcDevicesIdPlcDevices)
+        public Editing(ActiveEntity activeEntity, object entityData)
         {
             InitializeComponent();
             x = activeEntity;
-            if(true)
-            {   
-                
-                 
-                input.Text = IdAlertLogs;
-                input2.Text = Timestamp;
-                input3.Text = AlertMessage;
-                input4.Text = Severity;
-                input5.Text = PlcDevicesIdPlcDevices;
-                input6.Visible = false;
-                input7.Visible = false;
-                
-            }
-
+            ConfigureForm(entityData);
         }
+
+        private void ConfigureForm(object entityData)
+        {
+            switch (x)
+            {
+                case ActiveEntity.AlertLogs:
+                    BindAlertLogs((AlertLog)entityData);
+                    break;
+                case ActiveEntity.PerformanceReports:
+                    //BindPerformanceReports((PerformanceReports)entityData);
+                    break;
+                    // Добавьте другие сущности по аналогии
+            }
+        }
+
+        private void BindAlertLogs(AlertLog alertLogs)
+        {
+            // Привязка данных к TextBox'ам
+            input.DataBindings.Add("Text", alertLogs, nameof(alertLogs.IdAlertLogs));
+            input2.DataBindings.Add("Text", alertLogs, nameof(alertLogs.Timestamp));
+            input3.DataBindings.Add("Text", alertLogs, nameof(alertLogs.AlertMessage));
+            input4.DataBindings.Add("Text", alertLogs, nameof(alertLogs.Severity));
+            input5.DataBindings.Add("Text", alertLogs, nameof(alertLogs.PlcDevicesIdPlcDevices));
+
+            // Скрыть ненужные поля
+            input6.Visible = false;
+            input7.Visible = false;
+        }
+
+        //private void BindPerformanceReports(PerformanceReports reports)
+        //{
+        //    // Пример для другой сущности
+        //    input.DataBindings.Add("Text", reports, nameof(reports.StartTime));
+        //    input2.DataBindings.Add("Text", reports, nameof(reports.EndTime));
+        //    // ... остальные поля
+        //}
 
         private void save_Click(object sender, EventArgs e)
         {
@@ -138,5 +161,38 @@ namespace Pis
         {
 
         }
+
+        private void cancellation_Click(object sender, EventArgs e)
+        {
+            switch (x)
+            {
+                case ActiveEntity.AlertLogs:
+                    Ispr2525PiskunovDvKursovayaContext context = new();
+                    context.SaveChanges();
+                    break;
+                case ActiveEntity.Device_Type:
+                    break;
+                case ActiveEntity.PerformanceReports:
+                    break;
+                case ActiveEntity.MonitoringData:
+                    break;
+                case ActiveEntity.PLC_Devices:
+                    break;
+                case ActiveEntity.Severity:
+                    break;
+                case ActiveEntity.Status:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
+//public class AlertLogs
+//{
+//    public int IdAlertLogs { get; set; }
+//    public DateTime Timestamp { get; set; }
+//    public string AlertMessage { get; set; }
+//    public string Severity { get; set; }
+//    public int PlcDevicesIdPlcDevices { get; set; }
+//}
