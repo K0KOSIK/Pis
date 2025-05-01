@@ -487,8 +487,8 @@ namespace Pis.Models
                     var performanceReport = new PerformanceReport
                     {
                         IdPerformanceReports = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        StartTime = (DateTime)dataGridView1.SelectedRows[0].Cells[1].Value,
-                        EndTime = (DateTime)dataGridView1.SelectedRows[0].Cells[2].Value,
+                        StartTime = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        EndTime = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
                         TotalRuntime = (decimal)dataGridView1.SelectedRows[0].Cells[3].Value,
                         Downtime = (decimal)dataGridView1.SelectedRows[0].Cells[4].Value,
                         Efficiency = (decimal)dataGridView1.SelectedRows[0].Cells[5].Value,

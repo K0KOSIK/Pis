@@ -184,8 +184,8 @@ namespace Pis
                 case ActiveEntity.PerformanceReports:
                     PerformanceReport performanceReport = new();
                     performanceReport.IdPerformanceReports = Convert.ToInt32(input.Text);
-                    performanceReport.StartTime = Convert.ToDateTime(input2.Text);
-                    performanceReport.EndTime = Convert.ToDateTime(input3.Text);
+                    performanceReport.StartTime = input2.Text;
+                    performanceReport.EndTime = input3.Text;
                     performanceReport.TotalRuntime = Convert.ToDecimal(input8.Text);
                     performanceReport.Downtime = Convert.ToDecimal(input5.Text);
                     performanceReport.Efficiency = Convert.ToDecimal(input6.Text);
