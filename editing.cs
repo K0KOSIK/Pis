@@ -111,6 +111,9 @@ namespace Pis
                 case ActiveEntity.Severity:
                     BindSeverity((Severity)entityData);
                     break;
+                case ActiveEntity.Status:
+                    BindStatus((Status)entityData);
+                    break;
 
 
                     // Добавьте другие сущности по аналогии MonitoringDatum monitoringDatum
@@ -237,6 +240,31 @@ namespace Pis
 
             // ... остальные поля
         }
+        private void BindStatus(Status status)
+        {
+            // Привязка данных к TextBox'ам
+            input.DataBindings.Add("Text", status, nameof(status.IdStatus));
+            input4.DataBindings.Add("Text", status, nameof(status.Status1));
+            List<string> Status = new List<string>
+        {
+            "Работает", "Остановлено", "В ремонте",
+        };
+            input4.Items.Clear();
+            input4.Items.AddRange(Status);
+
+            // Скрыть ненужные поля
+            table2.Visible = false;
+            input2.Visible = false;
+            input3.Visible = false;
+            input5.Visible = false;
+            input6.Visible = false;
+            table6.Visible = false;
+            input7.Visible = false;
+            table7.Visible = false;
+            input8.Visible = false;
+            table5.Visible = false;
+            table3.Visible = false;
+        }
 
 
 
@@ -307,6 +335,12 @@ namespace Pis
                     context6.SaveChanges();
                     break;
                 case ActiveEntity.Status:
+                    Status status = new();
+                    status.IdStatus = Convert.ToInt32(input.Text);
+                    status.Status1 = input4.Text;
+                    Ispr2525PiskunovDvKursovayaContext context7 = new();
+                    context7.Update(status);
+                    context7.SaveChanges();
                     break;
                 default:
                     break;
