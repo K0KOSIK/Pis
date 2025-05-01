@@ -105,6 +105,9 @@ namespace Pis
                 case ActiveEntity.MonitoringData:
                     BindMonitoringData((MonitoringDatum)entityData);
                     break;
+                case ActiveEntity.PLC_Devices:
+                    BindPLC_Devices((PlcDevice)entityData);
+                    break;
 
 
                     // Добавьте другие сущности по аналогии MonitoringDatum monitoringDatum
@@ -119,8 +122,15 @@ namespace Pis
             input3.DataBindings.Add("Text", alertLogs, nameof(alertLogs.AlertMessage));
             input4.DataBindings.Add("Text", alertLogs, nameof(alertLogs.Severity));
             input5.DataBindings.Add("Text", alertLogs, nameof(alertLogs.PlcDevicesIdPlcDevices));
+            List<string> statesAlertlogs = new List<string>
+        {
+            "Высокий", "Средний", "Низкий",
+        };
+            input4.Items.Clear();
+            input4.Items.AddRange(statesAlertlogs);
 
             // Скрыть ненужные поля
+            input8.Visible = false;
             input6.Visible = false;
             table6.Visible = false;
             input7.Visible = false;
@@ -176,6 +186,30 @@ namespace Pis
             table7.Visible = false;
             input4.Visible = false;
         }
+        private void BindPLC_Devices(PlcDevice pLC_Devices)
+        {
+            // Привязка данных к TextBox'ам
+            input.DataBindings.Add("Text", pLC_Devices, nameof(pLC_Devices.IdPlcDevices));
+            input2.DataBindings.Add("Text", pLC_Devices, nameof(pLC_Devices.DeviceName));
+            input3.DataBindings.Add("Text", pLC_Devices, nameof(pLC_Devices.DeviceType));
+            input4.DataBindings.Add("Text", pLC_Devices, nameof(pLC_Devices.Status));
+            List<string> statesPLCDev = new List<string>
+        {
+            "Работает", "Остановлено", "В ремонте",
+        };
+            input4.Items.Clear();
+            input4.Items.AddRange(statesPLCDev);
+
+            // Скрыть ненужные поля
+            input5.Visible = false; 
+            input6.Visible = false;
+            table6.Visible = false;
+            input7.Visible = false;
+            table7.Visible = false;
+            input8.Visible = false;
+            table5.Visible = false;
+        }
+
 
 
         private void save_Click(object sender, EventArgs e)
@@ -224,9 +258,16 @@ namespace Pis
                     Ispr2525PiskunovDvKursovayaContext context4 = new();
                     context4.Update(monitoringDatum);
                     context4.SaveChanges();
-
                     break;
                 case ActiveEntity.PLC_Devices:
+                    PlcDevice plcDevice = new();
+                    plcDevice.IdPlcDevices = Convert.ToInt32(input.Text);
+                    plcDevice.DeviceName = input2.Text;
+                    plcDevice.DeviceType = input3.Text;
+                    plcDevice.Status = input4.Text;
+                    Ispr2525PiskunovDvKursovayaContext context5 = new();
+                    context5.Update(plcDevice);
+                    context5.SaveChanges();
                     break;
                 case ActiveEntity.Severity:
                     break;

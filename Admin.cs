@@ -536,6 +536,32 @@ namespace Pis.Models
                     MessageBox.Show("Не получилось изменить: " + ex.Message);
                 }
             }
+             if (activeEntity == ActiveEntity.PLC_Devices)
+            {
+                try
+                {
+                    var pLC_Devices = new PlcDevice
+                    {
+                        IdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
+                        DeviceName = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        DeviceType = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
+                        Status = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context4 = new();
+                        dataGridView1.DataSource = context4.PlcDevices.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                }
+            }
 
         }
     }
