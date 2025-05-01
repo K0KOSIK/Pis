@@ -139,6 +139,8 @@ namespace Pis
             table6.Visible = false;
             input7.Visible = false;
             table7.Visible = false;
+            input8.Visible = false;
+            
             // ... остальные поля
         }
 
@@ -148,7 +150,8 @@ namespace Pis
             input.DataBindings.Add("Text", performanceReports, nameof(performanceReports.IdPerformanceReports));
             input2.DataBindings.Add("Text", performanceReports, nameof(performanceReports.StartTime));
             input3.DataBindings.Add("Text", performanceReports, nameof(performanceReports.EndTime));
-            input4.DataBindings.Add("Text", performanceReports, nameof(performanceReports.TotalRuntime));
+            input4.Visible = false;
+            input8.DataBindings.Add("Text", performanceReports, nameof(performanceReports.TotalRuntime));
             input5.DataBindings.Add("Text", performanceReports, nameof(performanceReports.Downtime));
             input6.DataBindings.Add("Text", performanceReports, nameof(performanceReports.Efficiency));
             input7.DataBindings.Add("Text", performanceReports, nameof(performanceReports.PlcDevicesIdPlcDevices));
@@ -183,9 +186,9 @@ namespace Pis
                     performanceReport.IdPerformanceReports = Convert.ToInt32(input.Text);
                     performanceReport.StartTime = Convert.ToDateTime(input2.Text);
                     performanceReport.EndTime = Convert.ToDateTime(input3.Text);
-                    performanceReport.TotalRuntime = Convert.ToInt32(input4.Text);
-                    performanceReport.Downtime = Convert.ToInt32(input5.Text);
-                    performanceReport.Efficiency = Convert.ToInt32(input6.Text);
+                    performanceReport.TotalRuntime = Convert.ToDecimal(input8.Text);
+                    performanceReport.Downtime = Convert.ToDecimal(input5.Text);
+                    performanceReport.Efficiency = Convert.ToDecimal(input6.Text);
                     performanceReport.PlcDevicesIdPlcDevices = Convert.ToInt32(input7.Text);
                     Ispr2525PiskunovDvKursovayaContext context3 = new();
                     context3.Update(performanceReport);

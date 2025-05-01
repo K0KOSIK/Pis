@@ -44,6 +44,7 @@
             cancellation = new Button();
             save = new Button();
             input4 = new DomainUpDown();
+            input8 = new TextBox();
             SuspendLayout();
             // 
             // input
@@ -207,12 +208,20 @@
             input4.Size = new Size(120, 23);
             input4.TabIndex = 16;
             // 
+            // input8
+            // 
+            input8.Location = new Point(244, 45);
+            input8.Name = "input8";
+            input8.Size = new Size(100, 23);
+            input8.TabIndex = 17;
+            // 
             // Editing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(input8);
             Controls.Add(input4);
             Controls.Add(save);
             Controls.Add(cancellation);
@@ -255,5 +264,6 @@
         private Button cancellation;
         private Button save;
         private DomainUpDown input4;
+        private TextBox input8;
     }
 }

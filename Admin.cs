@@ -489,9 +489,9 @@ namespace Pis.Models
                         IdPerformanceReports = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
                         StartTime = (DateTime)dataGridView1.SelectedRows[0].Cells[1].Value,
                         EndTime = (DateTime)dataGridView1.SelectedRows[0].Cells[2].Value,
-                        TotalRuntime = (Single)dataGridView1.SelectedRows[0].Cells[3].Value,
-                        Downtime = (Single)dataGridView1.SelectedRows[0].Cells[4].Value,
-                        Efficiency = (Single)dataGridView1.SelectedRows[0].Cells[5].Value,
+                        TotalRuntime = (decimal)dataGridView1.SelectedRows[0].Cells[3].Value,
+                        Downtime = (decimal)dataGridView1.SelectedRows[0].Cells[4].Value,
+                        Efficiency = (decimal)dataGridView1.SelectedRows[0].Cells[5].Value,
                         PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[6].Value,
                     };
                     this.Hide();

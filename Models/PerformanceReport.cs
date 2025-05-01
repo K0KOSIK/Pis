@@ -11,11 +11,11 @@ public partial class PerformanceReport
 
     public DateTime EndTime { get; set; } 
 
-    public float TotalRuntime { get; set; }
+    public decimal TotalRuntime { get; set; }
 
-    public float Downtime { get; set; }
+    public decimal Downtime { get; set; }
 
-    public float Efficiency { get; set; }
+    public decimal Efficiency { get; set; }
 
     public int PlcDevicesIdPlcDevices { get; set; }
 
