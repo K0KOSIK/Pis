@@ -102,9 +102,12 @@ namespace Pis
                 case ActiveEntity.PerformanceReports:
                     BindPerformanceReports((PerformanceReport)entityData);
                     break;
+                case ActiveEntity.MonitoringData:
+                    BindMonitoringData((MonitoringDatum)entityData);
+                    break;
 
 
-                    // Добавьте другие сущности по аналогии
+                    // Добавьте другие сущности по аналогии MonitoringDatum monitoringDatum
             }
         }
 
@@ -157,6 +160,23 @@ namespace Pis
             input7.DataBindings.Add("Text", performanceReports, nameof(performanceReports.PlcDevicesIdPlcDevices));
         }
 
+        private void BindMonitoringData(MonitoringDatum MonitoringDatum)
+        {
+            // Привязка данных к TextBox'ам
+            input.DataBindings.Add("Text", MonitoringDatum, nameof(MonitoringDatum.IdMonitoringData));
+            input2.DataBindings.Add("Text", MonitoringDatum, nameof(MonitoringDatum.Timestamp));
+            input3.DataBindings.Add("Text", MonitoringDatum, nameof(MonitoringDatum.Temperature));
+            input8.DataBindings.Add("Text", MonitoringDatum, nameof(MonitoringDatum.Load));
+            input5.DataBindings.Add("Text", MonitoringDatum, nameof(MonitoringDatum.PlcDevicesIdPlcDevices));
+
+            // Скрыть ненужные поля
+            input6.Visible = false;
+            table6.Visible = false;
+            input7.Visible = false;
+            table7.Visible = false;
+            input4.Visible = false;
+        }
+
 
         private void save_Click(object sender, EventArgs e)
         {
@@ -195,6 +215,16 @@ namespace Pis
                     context3.SaveChanges();
                     break;
                 case ActiveEntity.MonitoringData:
+                    MonitoringDatum monitoringDatum = new();
+                    monitoringDatum.IdMonitoringData = Convert.ToInt32(input.Text);
+                    monitoringDatum.Timestamp = input2.Text;
+                    monitoringDatum.Temperature = input3.Text;
+                    monitoringDatum.Load = input8.Text;
+                    monitoringDatum.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
+                    Ispr2525PiskunovDvKursovayaContext context4 = new();
+                    context4.Update(monitoringDatum);
+                    context4.SaveChanges();
+
                     break;
                 case ActiveEntity.PLC_Devices:
                     break;
@@ -233,12 +263,20 @@ namespace Pis
                     context3.SaveChanges();
                     break;
                 case ActiveEntity.MonitoringData:
+                    Ispr2525PiskunovDvKursovayaContext context4 = new();
+                    context4.SaveChanges();
                     break;
                 case ActiveEntity.PLC_Devices:
+                    Ispr2525PiskunovDvKursovayaContext context5 = new();
+                    context5.SaveChanges();
                     break;
                 case ActiveEntity.Severity:
+                    Ispr2525PiskunovDvKursovayaContext context6 = new();
+                    context6.SaveChanges();
                     break;
                 case ActiveEntity.Status:
+                    Ispr2525PiskunovDvKursovayaContext context7 = new();
+                    context7.SaveChanges();
                     break;
                 default:
                     break;

@@ -238,6 +238,7 @@
             Controls.Add(input3);
             Controls.Add(input2);
             Controls.Add(input);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Editing";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "editing";
