@@ -95,8 +95,8 @@ namespace Pis
                 case ActiveEntity.AlertLogs:
                     BindAlertLogs((AlertLog)entityData);
                     break;
-                case ActiveEntity.PerformanceReports:
-                    //BindPerformanceReports((PerformanceReports)entityData);
+                case ActiveEntity.Device_Type:
+                    BindDeviceType((DeviceType)entityData);
                     break;
                     // Добавьте другие сущности по аналогии
             }
@@ -113,16 +113,28 @@ namespace Pis
 
             // Скрыть ненужные поля
             input6.Visible = false;
+            table6.Visible = false;
             input7.Visible = false;
+            table7.Visible = false;
         }
 
-        //private void BindPerformanceReports(PerformanceReports reports)
-        //{
-        //    // Пример для другой сущности
-        //    input.DataBindings.Add("Text", reports, nameof(reports.StartTime));
-        //    input2.DataBindings.Add("Text", reports, nameof(reports.EndTime));
-        //    // ... остальные поля
-        //}
+        private void BindDeviceType(DeviceType deviceType)
+        {
+            // Пример для другой сущности
+            input.DataBindings.Add("Text", deviceType, nameof(deviceType.IdDeviceType));
+            input2.DataBindings.Add("Text", deviceType, nameof(deviceType.Device));
+            input3.Visible = false;
+            table3.Visible = false;
+            input4.Visible = false;
+            table4.Visible = false;
+            input5.Visible = false;
+            table5.Visible = false;
+            input6.Visible = false;
+            table6.Visible = false;
+            input7.Visible = false;
+            table7.Visible = false;
+            // ... остальные поля
+        }
 
         private void save_Click(object sender, EventArgs e)
         {
@@ -140,6 +152,12 @@ namespace Pis
                     context.SaveChanges();
                     break;
                 case ActiveEntity.Device_Type:
+                    DeviceType deviceType = new();
+                    deviceType.IdDeviceType = Convert.ToInt32(input.Text);
+                    deviceType.Device = input2.Text;
+                    Ispr2525PiskunovDvKursovayaContext context2 = new();
+                    context2.Update(deviceType);
+                    context2.SaveChanges();
                     break;
                 case ActiveEntity.PerformanceReports:
                     break;
@@ -154,6 +172,9 @@ namespace Pis
                 default:
                     break;
             }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+
             //  другая форма (переход)
         }
 
@@ -171,6 +192,8 @@ namespace Pis
                     context.SaveChanges();
                     break;
                 case ActiveEntity.Device_Type:
+                    Ispr2525PiskunovDvKursovayaContext context2 = new();
+                    context2.SaveChanges();
                     break;
                 case ActiveEntity.PerformanceReports:
                     break;
@@ -185,6 +208,8 @@ namespace Pis
                 default:
                     break;
             }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

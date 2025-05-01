@@ -230,6 +230,7 @@
             Controls.Add(input2);
             Controls.Add(input);
             Name = "Editing";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "editing";
             ResumeLayout(false);
             PerformLayout();
