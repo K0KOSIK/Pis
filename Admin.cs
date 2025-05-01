@@ -562,6 +562,31 @@ namespace Pis.Models
                     MessageBox.Show("Не получилось изменить: " + ex.Message);
                 }
             }
+            if (activeEntity == ActiveEntity.Severity)
+            {
+                try
+                {
+                    var severity = new Severity
+                    {
+                        IdSeverity = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
+                        Severity1 = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        AlertLogsIdAlertLogs = (int)dataGridView1.SelectedRows[0].Cells[2].Value,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.Severity, severity);
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context5 = new();
+                        dataGridView1.DataSource = context5.Severities.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                }
+            }
 
         }
     }

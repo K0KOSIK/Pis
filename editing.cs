@@ -108,6 +108,9 @@ namespace Pis
                 case ActiveEntity.PLC_Devices:
                     BindPLC_Devices((PlcDevice)entityData);
                     break;
+                case ActiveEntity.Severity:
+                    BindSeverity((Severity)entityData);
+                    break;
 
 
                     // Добавьте другие сущности по аналогии MonitoringDatum monitoringDatum
@@ -209,6 +212,31 @@ namespace Pis
             input8.Visible = false;
             table5.Visible = false;
         }
+        private void BindSeverity(Severity severity)
+        {
+            // Пример для другой сущности
+            input.DataBindings.Add("Text", severity, nameof(severity.IdSeverity));
+            input4.DataBindings.Add("Text", severity, nameof(severity.Severity1));
+            input3.DataBindings.Add("Text", severity, nameof(severity.AlertLogsIdAlertLogs));
+            List<string> statesSeverity = new List<string>
+        {
+            "Высокий", "Средний", "Низкий",
+        };
+            input4.Items.Clear();
+            input4.Items.AddRange(statesSeverity);
+            input2.Visible = false;
+            table4.Visible = false;
+            input5.Visible = false;
+            table5.Visible = false;
+            input6.Visible = false;
+            table6.Visible = false;
+            input7.Visible = false;
+            table7.Visible = false;
+            input8.Visible = false;
+            table2.Visible = false;
+
+            // ... остальные поля
+        }
 
 
 
@@ -270,6 +298,13 @@ namespace Pis
                     context5.SaveChanges();
                     break;
                 case ActiveEntity.Severity:
+                    Severity severity = new();
+                    severity.IdSeverity = Convert.ToInt32(input.Text);
+                    severity.Severity1 = input4.Text;
+                    severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text);
+                    Ispr2525PiskunovDvKursovayaContext context6 = new();
+                    context6.Update(severity);
+                    context6.SaveChanges();
                     break;
                 case ActiveEntity.Status:
                     break;
