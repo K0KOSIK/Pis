@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Pis
 {
@@ -98,6 +99,11 @@ namespace Pis
                 case ActiveEntity.Device_Type:
                     BindDeviceType((DeviceType)entityData);
                     break;
+                case ActiveEntity.PerformanceReports:
+                    BindPerformanceReports((PerformanceReport)entityData);
+                    break;
+
+
                     // Добавьте другие сущности по аналогии
             }
         }
@@ -136,6 +142,19 @@ namespace Pis
             // ... остальные поля
         }
 
+        private void BindPerformanceReports(PerformanceReport performanceReports)
+        {
+            // Привязка данных к TextBox'ам
+            input.DataBindings.Add("Text", performanceReports, nameof(performanceReports.IdPerformanceReports));
+            input2.DataBindings.Add("Text", performanceReports, nameof(performanceReports.StartTime));
+            input3.DataBindings.Add("Text", performanceReports, nameof(performanceReports.EndTime));
+            input4.DataBindings.Add("Text", performanceReports, nameof(performanceReports.TotalRuntime));
+            input5.DataBindings.Add("Text", performanceReports, nameof(performanceReports.Downtime));
+            input6.DataBindings.Add("Text", performanceReports, nameof(performanceReports.Efficiency));
+            input7.DataBindings.Add("Text", performanceReports, nameof(performanceReports.PlcDevicesIdPlcDevices));
+        }
+
+
         private void save_Click(object sender, EventArgs e)
         {
             switch (x)
@@ -160,6 +179,17 @@ namespace Pis
                     context2.SaveChanges();
                     break;
                 case ActiveEntity.PerformanceReports:
+                    PerformanceReport performanceReport = new();
+                    performanceReport.IdPerformanceReports = Convert.ToInt32(input.Text);
+                    performanceReport.StartTime = Convert.ToDateTime(input2.Text);
+                    performanceReport.EndTime = Convert.ToDateTime(input3.Text);
+                    performanceReport.TotalRuntime = Convert.ToInt32(input4.Text);
+                    performanceReport.Downtime = Convert.ToInt32(input5.Text);
+                    performanceReport.Efficiency = Convert.ToInt32(input6.Text);
+                    performanceReport.PlcDevicesIdPlcDevices = Convert.ToInt32(input7.Text);
+                    Ispr2525PiskunovDvKursovayaContext context3 = new();
+                    context3.Update(performanceReport);
+                    context3.SaveChanges();
                     break;
                 case ActiveEntity.MonitoringData:
                     break;
@@ -196,6 +226,8 @@ namespace Pis
                     context2.SaveChanges();
                     break;
                 case ActiveEntity.PerformanceReports:
+                    Ispr2525PiskunovDvKursovayaContext context3 = new();
+                    context3.SaveChanges();
                     break;
                 case ActiveEntity.MonitoringData:
                     break;

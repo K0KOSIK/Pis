@@ -7,9 +7,9 @@ public partial class PerformanceReport
 {
     public int IdPerformanceReports { get; set; }
 
-    public string StartTime { get; set; } = null!;
+    public DateTime StartTime { get; set; } 
 
-    public string EndTime { get; set; } = null!;
+    public DateTime EndTime { get; set; } 
 
     public float TotalRuntime { get; set; }
 
