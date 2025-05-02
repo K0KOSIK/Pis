@@ -252,6 +252,7 @@
             bt_edit.TabIndex = 1;
             bt_edit.Text = "Изменить";
             bt_edit.UseVisualStyleBackColor = false;
+            bt_edit.Click += bt_edit_Click;
             // 
             // bt_add
             // 

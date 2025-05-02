@@ -27,31 +27,31 @@ namespace Pis
                     .Where(user => user.Username == textBox1.Text && user.Password == textBox2.Text)
                     .Include(user => user.Roles)
                     .FirstOrDefault();
-                if (true)
+                if (user.Role == "Администратор")
                 {
                     MessageBox.Show(user.Role);
                     Admin form2 = new Admin(this);
                     form2.Show();
                 }
-                if (user.Role == "çàì äèðåêòîðà")
+                if (user.Role == "зам директора")
                 {
                     MessageBox.Show(user.Role);
                     Deputy_Director form3 = new Deputy_Director(this);
                     form3.Show();
                 }
-                if (user.Role == "äèðåêòîð")
+                if (user.Role == "директор")
                 {
                     MessageBox.Show(user.Role);
                     director form3 = new director(this);
                     form3.Show();
                 }
-                if (user.Role == "ðàçðàáîò÷èê")
+                if (user.Role == "разработчик")
                 {
                     MessageBox.Show(user.Role);
                     Developer form4 = new Developer(this);
                     form4.Show();
                 }
-                if (user.Role == "òåñòèðîâùèê")
+                if (user.Role == "тестировщик")
                 {
                     MessageBox.Show(user.Role);
                     tester form5 = new tester(this);
@@ -63,7 +63,7 @@ namespace Pis
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Íåïðàâèëüíûé ëîãèí èëè ïàðîëü");
+                MessageBox.Show("Неправильный логин или пароль:");
                 textBox1.Text = "";
                 textBox2.Text = "";
             }

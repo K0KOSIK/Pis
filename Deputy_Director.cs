@@ -16,7 +16,7 @@ namespace Pis.Models
     {
         private Avtorisation _form1;
 
-        private enum ActiveEntity { AlertLogs, Device_Type, PerformanceReports, MonitoringData, PLC_Devices, Severity, Status }
+       
         private ActiveEntity activeEntity;
 
         private void UpdateInfo()
@@ -104,9 +104,9 @@ namespace Pis.Models
         }
         private void Deputy_Director_Load(object sender, EventArgs e)
         {
-            button1.Visible= false;
-            button6.Visible= false;
-            button7.Visible= false;
+            button1.Visible = false;
+            button6.Visible = false;
+            button7.Visible = false;
             activeEntity = ActiveEntity.AlertLogs;
         }
 
@@ -191,7 +191,7 @@ namespace Pis.Models
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
-            if(activeEntity == ActiveEntity.Device_Type)
+            if (activeEntity == ActiveEntity.Device_Type)
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
@@ -203,7 +203,8 @@ namespace Pis.Models
                         context.SaveChanges();
                         UpdateInfo();
                         dataGridView1.DataSource = context.DeviceTypes.ToList();
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Не получилось удалить: " + ex.Message);
                     }
@@ -296,5 +297,118 @@ namespace Pis.Models
 
         }
 
+        private void bt_edit_Click(object sender, EventArgs e)
+        {
+           
+            if (activeEntity == ActiveEntity.Device_Type)
+            {
+                try
+                {
+                    var deviceType = new DeviceType
+                    {
+                        IdDeviceType = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
+                        Device = (string)dataGridView1.SelectedRows[0].Cells[1].Value
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.Device_Type, deviceType);
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context1 = new();
+                        dataGridView1.DataSource = context1.DeviceTypes.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.PerformanceReports)
+            {
+                try
+                {
+                    var performanceReport = new PerformanceReport
+                    {
+                        IdPerformanceReports = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
+                        StartTime = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        EndTime = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
+                        TotalRuntime = (decimal)dataGridView1.SelectedRows[0].Cells[3].Value,
+                        Downtime = (decimal)dataGridView1.SelectedRows[0].Cells[4].Value,
+                        Efficiency = (decimal)dataGridView1.SelectedRows[0].Cells[5].Value,
+                        PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[6].Value,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context2 = new();
+                        dataGridView1.DataSource = context2.PerformanceReports.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.MonitoringData)
+            {
+                try
+                {
+                    var monitoringDatum = new MonitoringDatum
+                    {
+                        IdMonitoringData = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
+                        Timestamp = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        Temperature = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
+                        Load = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
+                        PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[4].Value,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context3 = new();
+                        dataGridView1.DataSource = context3.MonitoringData.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.PLC_Devices)
+            {
+                try
+                {
+                    var pLC_Devices = new PlcDevice
+                    {
+                        IdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
+                        DeviceName = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        DeviceType = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
+                        Status = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context4 = new();
+                        dataGridView1.DataSource = context4.PlcDevices.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                }
+            }
+           
+        }
     }
 }
+    
+
