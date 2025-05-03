@@ -637,7 +637,7 @@ namespace Pis.Models
                     var alertLogs = new AlertLog
                     {
                         IdAlertLogs = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
-                        Timestamp = DateTime.MinValue,
+                        Timestamp = DateTime.Now,
                         AlertMessage = "",
                         Severity = "",
                         PlcDevicesIdPlcDevices = 0

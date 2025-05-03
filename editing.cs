@@ -81,6 +81,7 @@ namespace Pis
         public ActiveEntity x { get; set; }
 
         public IsEdit isEdit;
+        public IsError isError;
 
 
 
@@ -285,6 +286,12 @@ namespace Pis
                     alertLog.AlertMessage = input3.Text;
                     alertLog.Severity = input4.Text;
                     alertLog.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
+                    if (Convert.ToInt32(input5.Text) < 1 || Convert.ToInt32(input5.Text) > 5)
+                    {
+                        MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
                     Ispr2525PiskunovDvKursovayaContext context = new();
                     if (isEdit == IsEdit.Y)
                         context.Update(alertLog);
@@ -372,8 +379,11 @@ namespace Pis
                 default:
                     break;
             }
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (isError == IsError.N)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
 
             //  другая форма (переход)
         }
