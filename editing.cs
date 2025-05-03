@@ -80,6 +80,8 @@ namespace Pis
 
         public ActiveEntity x { get; set; }
 
+        public bool isEdit;
+
 
 
         public Editing(ActiveEntity activeEntity, object entityData)
@@ -270,6 +272,7 @@ namespace Pis
 
         private void save_Click(object sender, EventArgs e)
         {
+
             switch (x)
             {
                 case ActiveEntity.AlertLogs:
@@ -280,7 +283,10 @@ namespace Pis
                     alertLog.Severity = input4.Text;
                     alertLog.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
                     Ispr2525PiskunovDvKursovayaContext context = new();
-                    context.Update(alertLog);
+                    if (isEdit == true)
+                        context.Update(alertLog);
+                    if (isEdit == false)
+                        context.Add(alertLog);
                     context.SaveChanges();
                     break;
                 case ActiveEntity.Device_Type:
@@ -288,7 +294,10 @@ namespace Pis
                     deviceType.IdDeviceType = Convert.ToInt32(input.Text);
                     deviceType.Device = input2.Text;
                     Ispr2525PiskunovDvKursovayaContext context2 = new();
-                    context2.Update(deviceType);
+                    if (isEdit == true)
+                        context2.Update(deviceType);
+                    if (isEdit == false) 
+                        context2.Add(deviceType);
                     context2.SaveChanges();
                     break;
                 case ActiveEntity.PerformanceReports:
@@ -301,7 +310,10 @@ namespace Pis
                     performanceReport.Efficiency = Convert.ToDecimal(input6.Text);
                     performanceReport.PlcDevicesIdPlcDevices = Convert.ToInt32(input7.Text);
                     Ispr2525PiskunovDvKursovayaContext context3 = new();
-                    context3.Update(performanceReport);
+                    if (isEdit == true)
+                        context3.Update(performanceReport);
+                    if (isEdit == false)
+                        context3.Add(performanceReport);
                     context3.SaveChanges();
                     break;
                 case ActiveEntity.MonitoringData:
@@ -312,7 +324,10 @@ namespace Pis
                     monitoringDatum.Load = input8.Text;
                     monitoringDatum.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
                     Ispr2525PiskunovDvKursovayaContext context4 = new();
-                    context4.Update(monitoringDatum);
+                    if (isEdit == true)
+                        context4.Update(monitoringDatum);
+                    if (isEdit == false)
+                        context4.Add(monitoringDatum);
                     context4.SaveChanges();
                     break;
                 case ActiveEntity.PLC_Devices:
@@ -322,7 +337,10 @@ namespace Pis
                     plcDevice.DeviceType = input3.Text;
                     plcDevice.Status = input4.Text;
                     Ispr2525PiskunovDvKursovayaContext context5 = new();
-                    context5.Update(plcDevice);
+                    if (isEdit == true)
+                        context5.Update(plcDevice);
+                    if (isEdit == false)
+                        context5.Add(plcDevice);
                     context5.SaveChanges();
                     break;
                 case ActiveEntity.Severity:
@@ -331,7 +349,10 @@ namespace Pis
                     severity.Severity1 = input4.Text;
                     severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text);
                     Ispr2525PiskunovDvKursovayaContext context6 = new();
-                    context6.Update(severity);
+                    if (isEdit == true)
+                        context6.Update(severity);
+                    if (isEdit == false)
+                        context6.Add(severity);
                     context6.SaveChanges();
                     break;
                 case ActiveEntity.Status:
@@ -339,7 +360,10 @@ namespace Pis
                     status.IdStatus = Convert.ToInt32(input.Text);
                     status.Status1 = input4.Text;
                     Ispr2525PiskunovDvKursovayaContext context7 = new();
-                    context7.Update(status);
+                    if (isEdit == true)
+                        context7.Update(status);
+                    if (isEdit == false)
+                        context7.Add(status);
                     context7.SaveChanges();
                     break;
                 default:
@@ -358,41 +382,44 @@ namespace Pis
 
         private void cancellation_Click(object sender, EventArgs e)
         {
-            switch (x)
+            if (isEdit == true)
             {
-                case ActiveEntity.AlertLogs:
-                    Ispr2525PiskunovDvKursovayaContext context = new();
-                    context.SaveChanges();
-                    break;
-                case ActiveEntity.Device_Type:
-                    Ispr2525PiskunovDvKursovayaContext context2 = new();
-                    context2.SaveChanges();
-                    break;
-                case ActiveEntity.PerformanceReports:
-                    Ispr2525PiskunovDvKursovayaContext context3 = new();
-                    context3.SaveChanges();
-                    break;
-                case ActiveEntity.MonitoringData:
-                    Ispr2525PiskunovDvKursovayaContext context4 = new();
-                    context4.SaveChanges();
-                    break;
-                case ActiveEntity.PLC_Devices:
-                    Ispr2525PiskunovDvKursovayaContext context5 = new();
-                    context5.SaveChanges();
-                    break;
-                case ActiveEntity.Severity:
-                    Ispr2525PiskunovDvKursovayaContext context6 = new();
-                    context6.SaveChanges();
-                    break;
-                case ActiveEntity.Status:
-                    Ispr2525PiskunovDvKursovayaContext context7 = new();
-                    context7.SaveChanges();
-                    break;
-                default:
-                    break;
+                switch (x)
+                {
+                    case ActiveEntity.AlertLogs:
+                        Ispr2525PiskunovDvKursovayaContext context = new();
+                        context.SaveChanges();
+                        break;
+                    case ActiveEntity.Device_Type:
+                        Ispr2525PiskunovDvKursovayaContext context2 = new();
+                        context2.SaveChanges();
+                        break;
+                    case ActiveEntity.PerformanceReports:
+                        Ispr2525PiskunovDvKursovayaContext context3 = new();
+                        context3.SaveChanges();
+                        break;
+                    case ActiveEntity.MonitoringData:
+                        Ispr2525PiskunovDvKursovayaContext context4 = new();
+                        context4.SaveChanges();
+                        break;
+                    case ActiveEntity.PLC_Devices:
+                        Ispr2525PiskunovDvKursovayaContext context5 = new();
+                        context5.SaveChanges();
+                        break;
+                    case ActiveEntity.Severity:
+                        Ispr2525PiskunovDvKursovayaContext context6 = new();
+                        context6.SaveChanges();
+                        break;
+                    case ActiveEntity.Status:
+                        Ispr2525PiskunovDvKursovayaContext context7 = new();
+                        context7.SaveChanges();
+                        break;
+                    default:
+                        break;
+                }
             }
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
         }
     }
 }
