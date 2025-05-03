@@ -80,7 +80,7 @@ namespace Pis
 
         public ActiveEntity x { get; set; }
 
-        public bool isEdit;
+        public IsEdit isEdit;
 
 
 
@@ -126,7 +126,7 @@ namespace Pis
         {
             // Привязка данных к TextBox'ам
             input.DataBindings.Add("Text", alertLogs, nameof(alertLogs.IdAlertLogs));
-            input2.DataBindings.Add("Text", alertLogs, nameof(alertLogs.Timestamp));
+            dateTimePicker1.DataBindings.Add("Text", alertLogs, nameof(alertLogs.Timestamp));
             input3.DataBindings.Add("Text", alertLogs, nameof(alertLogs.AlertMessage));
             input4.DataBindings.Add("Text", alertLogs, nameof(alertLogs.Severity));
             input5.DataBindings.Add("Text", alertLogs, nameof(alertLogs.PlcDevicesIdPlcDevices));
@@ -161,7 +161,8 @@ namespace Pis
             input7.Visible = false;
             table7.Visible = false;
             input8.Visible = false;
-            
+            dateTimePicker1.Visible = false;
+
             // ... остальные поля
         }
 
@@ -216,6 +217,7 @@ namespace Pis
             table7.Visible = false;
             input8.Visible = false;
             table5.Visible = false;
+            dateTimePicker1.Visible = false;
         }
         private void BindSeverity(Severity severity)
         {
@@ -266,6 +268,7 @@ namespace Pis
             input8.Visible = false;
             table5.Visible = false;
             table3.Visible = false;
+            dateTimePicker1.Visible = false;
         }
 
 
@@ -278,14 +281,14 @@ namespace Pis
                 case ActiveEntity.AlertLogs:
                     AlertLog alertLog = new();
                     alertLog.IdAlertLogs = Convert.ToInt32(input.Text);
-                    alertLog.Timestamp = Convert.ToDateTime(input2.Text);
+                    alertLog.Timestamp = dateTimePicker1.Value;
                     alertLog.AlertMessage = input3.Text;
                     alertLog.Severity = input4.Text;
                     alertLog.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
                     Ispr2525PiskunovDvKursovayaContext context = new();
-                    if (isEdit == true)
+                    if (isEdit == IsEdit.Y)
                         context.Update(alertLog);
-                    if (isEdit == false)
+                    if (isEdit == IsEdit.N)
                         context.Add(alertLog);
                     context.SaveChanges();
                     break;
@@ -294,9 +297,9 @@ namespace Pis
                     deviceType.IdDeviceType = Convert.ToInt32(input.Text);
                     deviceType.Device = input2.Text;
                     Ispr2525PiskunovDvKursovayaContext context2 = new();
-                    if (isEdit == true)
+                    if (isEdit == IsEdit.Y)
                         context2.Update(deviceType);
-                    if (isEdit == false) 
+                    if (isEdit == IsEdit.N) 
                         context2.Add(deviceType);
                     context2.SaveChanges();
                     break;
@@ -310,9 +313,9 @@ namespace Pis
                     performanceReport.Efficiency = Convert.ToDecimal(input6.Text);
                     performanceReport.PlcDevicesIdPlcDevices = Convert.ToInt32(input7.Text);
                     Ispr2525PiskunovDvKursovayaContext context3 = new();
-                    if (isEdit == true)
+                    if (isEdit == IsEdit.Y)
                         context3.Update(performanceReport);
-                    if (isEdit == false)
+                    if (isEdit == IsEdit.N)
                         context3.Add(performanceReport);
                     context3.SaveChanges();
                     break;
@@ -324,9 +327,9 @@ namespace Pis
                     monitoringDatum.Load = input8.Text;
                     monitoringDatum.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
                     Ispr2525PiskunovDvKursovayaContext context4 = new();
-                    if (isEdit == true)
+                    if (isEdit == IsEdit.Y)
                         context4.Update(monitoringDatum);
-                    if (isEdit == false)
+                    if (isEdit == IsEdit.N)
                         context4.Add(monitoringDatum);
                     context4.SaveChanges();
                     break;
@@ -337,9 +340,9 @@ namespace Pis
                     plcDevice.DeviceType = input3.Text;
                     plcDevice.Status = input4.Text;
                     Ispr2525PiskunovDvKursovayaContext context5 = new();
-                    if (isEdit == true)
+                    if (isEdit == IsEdit.Y)
                         context5.Update(plcDevice);
-                    if (isEdit == false)
+                    if (isEdit == IsEdit.N)
                         context5.Add(plcDevice);
                     context5.SaveChanges();
                     break;
@@ -349,9 +352,9 @@ namespace Pis
                     severity.Severity1 = input4.Text;
                     severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text);
                     Ispr2525PiskunovDvKursovayaContext context6 = new();
-                    if (isEdit == true)
+                    if (isEdit == IsEdit.Y)
                         context6.Update(severity);
-                    if (isEdit == false)
+                    if (isEdit == IsEdit.N)
                         context6.Add(severity);
                     context6.SaveChanges();
                     break;
@@ -360,9 +363,9 @@ namespace Pis
                     status.IdStatus = Convert.ToInt32(input.Text);
                     status.Status1 = input4.Text;
                     Ispr2525PiskunovDvKursovayaContext context7 = new();
-                    if (isEdit == true)
+                    if (isEdit == IsEdit.Y)
                         context7.Update(status);
-                    if (isEdit == false)
+                    if (isEdit == IsEdit.N)
                         context7.Add(status);
                     context7.SaveChanges();
                     break;
@@ -382,7 +385,7 @@ namespace Pis
 
         private void cancellation_Click(object sender, EventArgs e)
         {
-            if (isEdit == true)
+            if (isEdit == IsEdit.Y)
             {
                 switch (x)
                 {

@@ -45,6 +45,7 @@
             save = new Button();
             input4 = new DomainUpDown();
             input8 = new TextBox();
+            dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
             // input
@@ -215,12 +216,22 @@
             input8.Size = new Size(100, 23);
             input8.TabIndex = 17;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(12, 116);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 18;
+            // 
             // Editing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(dateTimePicker1);
             Controls.Add(input8);
             Controls.Add(input4);
             Controls.Add(save);
@@ -266,5 +277,6 @@
         private Button save;
         private DomainUpDown input4;
         private TextBox input8;
+        private DateTimePicker dateTimePicker1;
     }
 }

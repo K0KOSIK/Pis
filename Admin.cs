@@ -16,11 +16,6 @@ namespace Pis.Models
     public partial class Admin : Form
     {
         private Avtorisation _form1;
-        public bool IsEdit
-        {
-            get { return isEdit; }
-            set { isEdit = value; }
-        }
         public Admin(Avtorisation form1)
         {
             InitializeComponent();
@@ -56,6 +51,8 @@ namespace Pis.Models
                     x.PlcDevicesIdPlcDevices
 
                 });
+            //dataGridView1.Columns[5].Visible = false;
+            //dataGridView1.Columns[6].Visible = false;
 
             if (dataGridView1.DataSource != null)
             {
@@ -157,7 +154,7 @@ namespace Pis.Models
         }
 
         private ActiveEntity activeEntity;
-        private bool isEdit;
+        private IsEdit isEdit;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -314,6 +311,7 @@ namespace Pis.Models
                         contex2.SaveChanges();
                         UpdateInfo();
                         dataGridView1.DataSource = contex2.PerformanceReports.ToList();
+                        dataGridView1.Columns[5].Visible = false;
                     }
                     catch (Exception ex)
                     {
@@ -340,6 +338,8 @@ namespace Pis.Models
                         contex3.SaveChanges();
                         UpdateInfo();
                         dataGridView1.DataSource = contex3.MonitoringData.ToList();
+                        dataGridView1.Columns[5].Visible = false;
+                        dataGridView1.Columns[7].Visible = false;
                     }
                     catch (Exception ex)
                     {
@@ -366,6 +366,9 @@ namespace Pis.Models
                         contex4.SaveChanges();
                         UpdateInfo();
                         dataGridView1.DataSource = contex4.PlcDevices.ToList();
+                        dataGridView1.Columns[4].Visible = false;
+                        dataGridView1.Columns[5].Visible = false;
+                        dataGridView1.Columns[6].Visible = false;
 
                     }
                     catch (Exception ex)
@@ -393,6 +396,7 @@ namespace Pis.Models
                         contex5.SaveChanges();
                         UpdateInfo();
                         dataGridView1.DataSource = contex5.Severities.ToList();
+                        dataGridView1.Columns[3].Visible = false;
 
                     }
                     catch (Exception ex)
@@ -437,6 +441,7 @@ namespace Pis.Models
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
+            isEdit = IsEdit.Y;
             if (activeEntity == ActiveEntity.AlertLogs)
             {
                 try
@@ -624,14 +629,14 @@ namespace Pis.Models
 
         private void bt_add_Click(object sender, EventArgs e)
         {
-            isEdit = false;
+            isEdit = IsEdit.N;
             if (activeEntity == ActiveEntity.AlertLogs)
             {
                 try
                 {
                     var alertLogs = new AlertLog
                     {
-                        IdAlertLogs = 0,
+                        IdAlertLogs = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
                         Timestamp = DateTime.MinValue,
                         AlertMessage = "",
                         Severity = "",
@@ -658,8 +663,8 @@ namespace Pis.Models
                 {
                     var deviceType = new DeviceType
                     {
-                        IdDeviceType = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        Device = (string)dataGridView1.SelectedRows[0].Cells[1].Value
+                        IdDeviceType = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value+1,
+                        Device = ""
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Device_Type, deviceType);
@@ -682,13 +687,13 @@ namespace Pis.Models
                 {
                     var performanceReport = new PerformanceReport
                     {
-                        IdPerformanceReports = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        StartTime = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
-                        EndTime = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
-                        TotalRuntime = (decimal)dataGridView1.SelectedRows[0].Cells[3].Value,
-                        Downtime = (decimal)dataGridView1.SelectedRows[0].Cells[4].Value,
-                        Efficiency = (decimal)dataGridView1.SelectedRows[0].Cells[5].Value,
-                        PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[6].Value,
+                        IdPerformanceReports = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        StartTime = "", //ПЕРЕДЕДЛАТЬ
+                        EndTime = "", //ПЕРЕДЕДЛАТЬ
+                        TotalRuntime = 0,
+                        Downtime = 0,
+                        Efficiency = 0,
+                        PlcDevicesIdPlcDevices = 0,
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
@@ -711,11 +716,11 @@ namespace Pis.Models
                 {
                     var monitoringDatum = new MonitoringDatum
                     {
-                        IdMonitoringData = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        Timestamp = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
-                        Temperature = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
-                        Load = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
-                        PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[4].Value,
+                        IdMonitoringData = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Timestamp = "", //ПЕРЕДЕДЛАТЬ
+                        Temperature = "", //ПЕРЕДЕДЛАТЬ
+                        Load = "", //ПЕРЕДЕДЛАТЬ
+                        PlcDevicesIdPlcDevices = 0,
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
@@ -738,10 +743,10 @@ namespace Pis.Models
                 {
                     var pLC_Devices = new PlcDevice
                     {
-                        IdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        DeviceName = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
-                        DeviceType = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
-                        Status = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
+                        IdPlcDevices = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        DeviceName = "",
+                        DeviceType = "",
+                        Status = "",
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
@@ -764,9 +769,9 @@ namespace Pis.Models
                 {
                     var severity = new Severity
                     {
-                        IdSeverity = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        Severity1 = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
-                        AlertLogsIdAlertLogs = (int)dataGridView1.SelectedRows[0].Cells[2].Value,
+                        IdSeverity = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Severity1 = "",
+                        AlertLogsIdAlertLogs = 0,
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Severity, severity);
@@ -789,8 +794,8 @@ namespace Pis.Models
                 {
                     var status = new Status
                     {
-                        IdStatus = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        Status1 = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        IdStatus = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Status1 = "",
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Status, status);
