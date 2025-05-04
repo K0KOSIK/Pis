@@ -80,7 +80,7 @@ namespace Pis
 
         public ActiveEntity x { get; set; }
 
-        public IsEdit isEdit;
+        public IsEdit isEdit { get; set; }
         public IsError isError;
 
 
@@ -90,6 +90,7 @@ namespace Pis
             InitializeComponent();
             x = activeEntity;
             ConfigureForm(entityData);
+            isError = IsError.N;
         }
 
         private void ConfigureForm(object entityData)
@@ -290,6 +291,7 @@ namespace Pis
                     {
                         MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        isError = IsError.Y;
                         break;
                     }
                     Ispr2525PiskunovDvKursovayaContext context = new();
@@ -305,9 +307,13 @@ namespace Pis
                     deviceType.Device = input2.Text;
                     Ispr2525PiskunovDvKursovayaContext context2 = new();
                     if (isEdit == IsEdit.Y)
+                    {
                         context2.Update(deviceType);
-                    if (isEdit == IsEdit.N) 
+                    }
+                    if (isEdit == IsEdit.N)
+                    {
                         context2.Add(deviceType);
+                    }
                     context2.SaveChanges();
                     break;
                 case ActiveEntity.PerformanceReports:

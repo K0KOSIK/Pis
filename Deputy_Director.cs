@@ -17,8 +17,8 @@ namespace Pis.Models
         private Avtorisation _form1;
 
 
-        private ActiveEntity activeEntity;
-        private IsEdit isEdit;
+        public ActiveEntity activeEntity;
+        public IsEdit isEdit;
 
         private void UpdateInfo()
         {
@@ -315,6 +315,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Device_Type, deviceType);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context1 = new();
@@ -344,6 +345,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context2 = new();
@@ -371,6 +373,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context3 = new();
@@ -397,6 +400,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context4 = new();
@@ -427,6 +431,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Device_Type, deviceType);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context1 = new();
@@ -454,6 +459,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context3 = new();
@@ -483,6 +489,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context2 = new();
@@ -509,6 +516,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context4 = new();

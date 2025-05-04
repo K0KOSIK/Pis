@@ -16,6 +16,8 @@ namespace Pis.Models
     public partial class Admin : Form
     {
         private Avtorisation _form1;
+        public ActiveEntity activeEntity;
+        public IsEdit isEdit;
         public Admin(Avtorisation form1)
         {
             InitializeComponent();
@@ -152,10 +154,6 @@ namespace Pis.Models
 
                 });
         }
-
-        private ActiveEntity activeEntity;
-        private IsEdit isEdit;
-
         private void button1_Click(object sender, EventArgs e)
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
@@ -456,6 +454,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.AlertLogs, alertLogs);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context = new();
@@ -480,6 +479,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Device_Type, deviceType);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context1 = new();
@@ -509,6 +509,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context2 = new();
@@ -536,6 +537,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context3 = new();
@@ -562,6 +564,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context4 = new();
@@ -587,6 +590,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Severity, severity);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context5 = new();
@@ -611,6 +615,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Status, status);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context6 = new();
@@ -644,6 +649,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.AlertLogs, alertLogs);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context = new();
@@ -668,6 +674,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Device_Type, deviceType);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context1 = new();
@@ -697,6 +704,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context2 = new();
@@ -724,6 +732,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context3 = new();
@@ -750,6 +759,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context4 = new();
@@ -775,6 +785,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Severity, severity);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context5 = new();
@@ -799,6 +810,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Status, status);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context6 = new();
