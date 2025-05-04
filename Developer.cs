@@ -108,18 +108,20 @@ namespace Pis.Models
             button1.Visible = false;
             button2.Visible = false;
             button6.Visible = false;
-            activeEntity = ActiveEntity.AlertLogs;
-
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.MonitoringData.ToList();
+            dataGridView1.Columns[5].Visible = false;
+            activeEntity = ActiveEntity.MonitoringData;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            activeEntity = ActiveEntity.AlertLogs;
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            activeEntity = ActiveEntity.AlertLogs;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -135,8 +137,8 @@ namespace Pis.Models
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PerformanceReports.ToList();
             dataGridView1.Columns[5].Visible = false;
-            activeEntity = ActiveEntity.PerformanceReports;
             dataGridView1.Columns[7].Visible = false;
+            activeEntity = ActiveEntity.PerformanceReports;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -151,13 +153,14 @@ namespace Pis.Models
 
         private void button6_Click(object sender, EventArgs e)
         {
-            activeEntity = ActiveEntity.AlertLogs;
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.Statuses.ToList();
+            activeEntity = ActiveEntity.Status;
         }
 
         private void bt_exit_Click(object sender, EventArgs e)

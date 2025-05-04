@@ -31,6 +31,10 @@ namespace Pis.Models
         }
         private void Admin_Load(object sender, EventArgs e)
         {
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.AlertLogs.ToList();
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
             activeEntity = ActiveEntity.AlertLogs;
         }
 
