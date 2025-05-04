@@ -205,6 +205,7 @@ namespace Pis.Models
                         contex3.SaveChanges();
                         UpdateInfo();
                         dataGridView1.DataSource = contex3.MonitoringData.ToList();
+                        dataGridView1.Columns[5].Visible = false;
                     }
                     catch (Exception ex)
                     {
@@ -231,6 +232,8 @@ namespace Pis.Models
                         contex2.SaveChanges();
                         UpdateInfo();
                         dataGridView1.DataSource = contex2.PerformanceReports.ToList();
+                        dataGridView1.Columns[5].Visible = false;
+                        dataGridView1.Columns[7].Visible = false;
                     }
                     catch (Exception ex)
                     {
@@ -257,6 +260,9 @@ namespace Pis.Models
                         contex4.SaveChanges();
                         UpdateInfo();
                         dataGridView1.DataSource = contex4.PlcDevices.ToList();
+                        dataGridView1.Columns[4].Visible = false;
+                        dataGridView1.Columns[5].Visible = false;
+                        dataGridView1.Columns[6].Visible = false;
                     }
                     catch (Exception ex)
                     {
