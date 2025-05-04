@@ -325,6 +325,13 @@ namespace Pis
                     performanceReport.Downtime = Convert.ToDecimal(input5.Text);
                     performanceReport.Efficiency = Convert.ToDecimal(input6.Text);
                     performanceReport.PlcDevicesIdPlcDevices = Convert.ToInt32(input7.Text);
+                    if (Convert.ToInt32(input7.Text) < 1 || Convert.ToInt32(input7.Text) > 5)
+                    {
+                        MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        isError = IsError.Y;
+                        break;
+                    }
                     Ispr2525PiskunovDvKursovayaContext context3 = new();
                     if (isEdit == IsEdit.Y)
                         context3.Update(performanceReport);
@@ -339,6 +346,13 @@ namespace Pis
                     monitoringDatum.Temperature = input3.Text;
                     monitoringDatum.Load = input8.Text;
                     monitoringDatum.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
+                    if (Convert.ToInt32(input5.Text) < 1 || Convert.ToInt32(input5.Text) > 5)
+                    {
+                        MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        isError = IsError.Y;
+                        break;
+                    }
                     Ispr2525PiskunovDvKursovayaContext context4 = new();
                     if (isEdit == IsEdit.Y)
                         context4.Update(monitoringDatum);
@@ -363,7 +377,14 @@ namespace Pis
                     Severity severity = new();
                     severity.IdSeverity = Convert.ToInt32(input.Text);
                     severity.Severity1 = input4.Text;
-                    severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text);
+                    severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text); 
+                    if (Convert.ToInt32(input3.Text) < 1 || Convert.ToInt32(input3.Text) > 5)
+                    {
+                        MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        isError = IsError.Y;
+                        break;
+                    }
                     Ispr2525PiskunovDvKursovayaContext context6 = new();
                     if (isEdit == IsEdit.Y)
                         context6.Update(severity);
