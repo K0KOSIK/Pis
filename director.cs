@@ -152,8 +152,9 @@ namespace Pis.Models
                 });
         }
 
-        
-        private ActiveEntity activeEntity;
+
+        public ActiveEntity activeEntity;
+        public IsEdit isEdit;
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -430,6 +431,7 @@ namespace Pis.Models
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
+            isEdit = IsEdit.Y;
             if (activeEntity == ActiveEntity.AlertLogs)
             {
                 try
@@ -444,6 +446,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.AlertLogs, alertLogs);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context = new();
@@ -468,6 +471,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Device_Type, deviceType);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context1 = new();
@@ -497,6 +501,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context2 = new();
@@ -524,6 +529,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context3 = new();
@@ -550,6 +556,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context4 = new();
@@ -575,6 +582,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Severity, severity);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context5 = new();
@@ -599,6 +607,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Status, status);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context6 = new();
@@ -613,6 +622,200 @@ namespace Pis.Models
                 }
             }
 
+        }
+
+        private void bt_add_Click(object sender, EventArgs e)
+        {
+            isEdit = IsEdit.N;
+            if (activeEntity == ActiveEntity.AlertLogs)
+            {
+                try
+                {
+                    var alertLogs = new AlertLog
+                    {
+                        IdAlertLogs = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Timestamp = DateTime.Now,
+                        AlertMessage = "",
+                        Severity = "",
+                        PlcDevicesIdPlcDevices = 0
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.AlertLogs, alertLogs);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context = new();
+                        dataGridView1.DataSource = context.AlertLogs.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.Device_Type)
+            {
+                try
+                {
+                    var deviceType = new DeviceType
+                    {
+                        IdDeviceType = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Device = ""
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.Device_Type, deviceType);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context1 = new();
+                        dataGridView1.DataSource = context1.DeviceTypes.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.PerformanceReports)
+            {
+                try
+                {
+                    var performanceReport = new PerformanceReport
+                    {
+                        IdPerformanceReports = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        StartTime = "", //ПЕРЕДЕДЛАТЬ
+                        EndTime = "", //ПЕРЕДЕДЛАТЬ
+                        TotalRuntime = 0,
+                        Downtime = 0,
+                        Efficiency = 0,
+                        PlcDevicesIdPlcDevices = 0,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context2 = new();
+                        dataGridView1.DataSource = context2.PerformanceReports.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.MonitoringData)
+            {
+                try
+                {
+                    var monitoringDatum = new MonitoringDatum
+                    {
+                        IdMonitoringData = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Timestamp = "", //ПЕРЕДЕДЛАТЬ
+                        Temperature = "", //ПЕРЕДЕДЛАТЬ
+                        Load = "", //ПЕРЕДЕДЛАТЬ
+                        PlcDevicesIdPlcDevices = 0,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context3 = new();
+                        dataGridView1.DataSource = context3.MonitoringData.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.PLC_Devices)
+            {
+                try
+                {
+                    var pLC_Devices = new PlcDevice
+                    {
+                        IdPlcDevices = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        DeviceName = "",
+                        DeviceType = "",
+                        Status = "",
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context4 = new();
+                        dataGridView1.DataSource = context4.PlcDevices.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.Severity)
+            {
+                try
+                {
+                    var severity = new Severity
+                    {
+                        IdSeverity = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Severity1 = "",
+                        AlertLogsIdAlertLogs = 0,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.Severity, severity);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context5 = new();
+                        dataGridView1.DataSource = context5.Severities.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.Status)
+            {
+                try
+                {
+                    var status = new Status
+                    {
+                        IdStatus = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Status1 = "",
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.Status, status);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context6 = new();
+                        dataGridView1.DataSource = context6.Statuses.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
         }
     }
 }

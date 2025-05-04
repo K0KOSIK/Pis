@@ -17,8 +17,9 @@ namespace Pis.Models
         private Avtorisation _form1;
 
 
-       
-        private ActiveEntity activeEntity;
+
+        public ActiveEntity activeEntity;
+        public IsEdit isEdit;
 
         public Developer(Avtorisation form1)
         {
@@ -299,8 +300,7 @@ namespace Pis.Models
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
-           
-           
+            isEdit = IsEdit.Y;
             if (activeEntity == ActiveEntity.PerformanceReports)
             {
                 try
@@ -317,6 +317,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context2 = new();
@@ -344,6 +345,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context3 = new();
@@ -370,6 +372,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context4 = new();
@@ -383,7 +386,7 @@ namespace Pis.Models
                     MessageBox.Show("Не получилось изменить: " + ex.Message);
                 }
             }
-            
+
             if (activeEntity == ActiveEntity.Status)
             {
                 try
@@ -395,6 +398,7 @@ namespace Pis.Models
                     };
                     this.Hide();
                     var editing = new Editing(ActiveEntity.Status, status);
+                    editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
                         Ispr2525PiskunovDvKursovayaContext context6 = new();
@@ -409,6 +413,121 @@ namespace Pis.Models
                 }
             }
 
+        }
+
+        private void bt_add_Click(object sender, EventArgs e)
+        {
+            isEdit = IsEdit.N;
+            if (activeEntity == ActiveEntity.PerformanceReports)
+            {
+                try
+                {
+                    var performanceReport = new PerformanceReport
+                    {
+                        IdPerformanceReports = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        StartTime = "", //ПЕРЕДЕДЛАТЬ
+                        EndTime = "", //ПЕРЕДЕДЛАТЬ
+                        TotalRuntime = 0,
+                        Downtime = 0,
+                        Efficiency = 0,
+                        PlcDevicesIdPlcDevices = 0,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context2 = new();
+                        dataGridView1.DataSource = context2.PerformanceReports.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.MonitoringData)
+            {
+                try
+                {
+                    var monitoringDatum = new MonitoringDatum
+                    {
+                        IdMonitoringData = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Timestamp = "", //ПЕРЕДЕДЛАТЬ
+                        Temperature = "", //ПЕРЕДЕДЛАТЬ
+                        Load = "", //ПЕРЕДЕДЛАТЬ
+                        PlcDevicesIdPlcDevices = 0,
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context3 = new();
+                        dataGridView1.DataSource = context3.MonitoringData.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.PLC_Devices)
+            {
+                try
+                {
+                    var pLC_Devices = new PlcDevice
+                    {
+                        IdPlcDevices = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        DeviceName = "",
+                        DeviceType = "",
+                        Status = "",
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context4 = new();
+                        dataGridView1.DataSource = context4.PlcDevices.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
+            if (activeEntity == ActiveEntity.Status)
+            {
+                try
+                {
+                    var status = new Status
+                    {
+                        IdStatus = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
+                        Status1 = "",
+                    };
+                    this.Hide();
+                    var editing = new Editing(ActiveEntity.Status, status);
+                    editing.isEdit = isEdit;
+                    if (editing.ShowDialog() == DialogResult.OK)
+                    {
+                        Ispr2525PiskunovDvKursovayaContext context6 = new();
+                        dataGridView1.DataSource = context6.Statuses.ToList();
+                        dataGridView1.Refresh();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
+                }
+            }
         }
     }
 }

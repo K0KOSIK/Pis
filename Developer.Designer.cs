@@ -263,6 +263,7 @@
             bt_add.TabIndex = 0;
             bt_add.Text = "Добавить";
             bt_add.UseVisualStyleBackColor = false;
+            bt_add.Click += bt_add_Click;
             // 
             // Developer
             // 

@@ -442,7 +442,7 @@ namespace Pis.Models
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
                 }
             }
             if (activeEntity == ActiveEntity.MonitoringData)
@@ -470,7 +470,7 @@ namespace Pis.Models
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
                 }
             }
             if (activeEntity == ActiveEntity.PerformanceReports)
@@ -500,7 +500,7 @@ namespace Pis.Models
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
                 }
             }
             if (activeEntity == ActiveEntity.PLC_Devices)
@@ -527,7 +527,7 @@ namespace Pis.Models
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не получилось изменить: " + ex.Message);
+                    MessageBox.Show("Не получилось добавить: " + ex.Message);
                 }
             }
         }
