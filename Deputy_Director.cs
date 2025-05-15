@@ -199,6 +199,7 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
+
                     Ispr2525PiskunovDvKursovayaContext context = new();
                     var Device_Type = context.DeviceTypes.Where(x => x.IdDeviceType == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
