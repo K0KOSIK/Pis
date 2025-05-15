@@ -50,6 +50,7 @@
             bt_max = new Button();
             bt_min = new Button();
             bt_exit = new Button();
+            dateTimePicker2 = new DateTimePicker();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -292,12 +293,22 @@
             bt_exit.UseVisualStyleBackColor = false;
             bt_exit.Click += bt_exit_Click;
             // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.Location = new Point(12, 212);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(200, 23);
+            dateTimePicker2.TabIndex = 20;
+            // 
             // Editing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(dateTimePicker2);
             Controls.Add(panel1);
             Controls.Add(dateTimePicker1);
             Controls.Add(input8);
@@ -351,5 +362,6 @@
         private Button bt_exit;
         private Button bt_max;
         private Button bt_min;
+        private DateTimePicker dateTimePicker2;
     }
 }

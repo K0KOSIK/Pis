@@ -7,7 +7,7 @@ public partial class MonitoringDatum
 {
     public int IdMonitoringData { get; set; }
 
-    public string Timestamp { get; set; } = null!;
+    public DateTime Timestamp { get; set; } 
 
     public string Temperature { get; set; } = null!;
 
