@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -212,7 +213,7 @@ namespace Pis
             input4.Items.AddRange(statesPLCDev);
 
             // Скрыть ненужные поля
-            input5.Visible = false; 
+            input5.Visible = false;
             input6.Visible = false;
             table6.Visible = false;
             input7.Visible = false;
@@ -377,7 +378,7 @@ namespace Pis
                     Severity severity = new();
                     severity.IdSeverity = Convert.ToInt32(input.Text);
                     severity.Severity1 = input4.Text;
-                    severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text); 
+                    severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text);
                     if (Convert.ToInt32(input3.Text) < 1 || Convert.ToInt32(input3.Text) > 5)
                     {
                         MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
@@ -458,8 +459,58 @@ namespace Pis
                         break;
                 }
             }
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+        private void bt_max_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void bt_min_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void bt_exit_Click(object sender, EventArgs e)
+        {
+            cancellation_Click(sender, e);
+        }
+
+        private void cancellation_MouseEnter(object sender, EventArgs e)
+        {
+            cancellation.ForeColor = Color.Blue;
+        }
+
+        private void cancellation_MouseLeave(object sender, EventArgs e)
+        {
+            cancellation.ForeColor = Color.White;
+        }
+
+        private void save_MouseLeave(object sender, EventArgs e)
+        {
+            save.ForeColor = Color.White;
+        }
+
+        private void save_MouseEnter(object sender, EventArgs e)
+        {
+            save.ForeColor = Color.Blue;
         }
     }
 }

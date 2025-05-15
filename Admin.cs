@@ -57,8 +57,6 @@ namespace Pis.Models
                     x.PlcDevicesIdPlcDevices
 
                 });
-            //dataGridView1.Columns[5].Visible = false;
-            //dataGridView1.Columns[6].Visible = false;
 
             if (dataGridView1.DataSource != null)
             {

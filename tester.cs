@@ -33,7 +33,10 @@ namespace Pis.Models
             button2.Visible = false;
             button6.Visible = false;
             button7.Visible = false;
-            activeEntity = ActiveEntity.AlertLogs;
+            activeEntity = ActiveEntity.MonitoringData;
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.MonitoringData.ToList();
+            dataGridView1.Columns[5].Visible = false;
         }
 
         private void UpdateInfo()

@@ -109,6 +109,8 @@ namespace Pis.Models
             button6.Visible = false;
             button7.Visible = false;
             activeEntity = ActiveEntity.AlertLogs;
+            Ispr2525PiskunovDvKursovayaContext context = new();
+            dataGridView1.DataSource = context.DeviceTypes.ToList();
         }
 
         private void button1_Click(object sender, EventArgs e)
