@@ -186,22 +186,25 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex2 = new();
-                    var PerformanceReports = contex2.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        PerformanceReports.ExecuteDelete();
-                        contex2.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex2.PerformanceReports.ToList();
-                        dataGridView1.Columns[5].Visible = false;
-                        dataGridView1.Columns[7].Visible = false;
+                        Ispr2525PiskunovDvKursovayaContext contex2 = new();
+                        var PerformanceReports = contex2.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            PerformanceReports.ExecuteDelete();
+                            contex2.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex2.PerformanceReports.ToList();
+                            dataGridView1.Columns[5].Visible = false;
+                            dataGridView1.Columns[7].Visible = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -214,21 +217,24 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex3 = new();
-                    var MonitoringData = contex3.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        MonitoringData.ExecuteDelete();
-                        contex3.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex3.MonitoringData.ToList();
-                        dataGridView1.Columns[5].Visible = false;
+                        Ispr2525PiskunovDvKursovayaContext contex3 = new();
+                        var MonitoringData = contex3.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            MonitoringData.ExecuteDelete();
+                            contex3.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex3.MonitoringData.ToList();
+                            dataGridView1.Columns[5].Visible = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -241,23 +247,26 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex4 = new();
-                    var PLC_Devices = contex4.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        PLC_Devices.ExecuteDelete();
-                        contex4.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex4.PlcDevices.ToList();
-                        dataGridView1.Columns[4].Visible = false;
-                        dataGridView1.Columns[5].Visible = false;
-                        dataGridView1.Columns[6].Visible = false;
+                        Ispr2525PiskunovDvKursovayaContext contex4 = new();
+                        var PLC_Devices = contex4.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            PLC_Devices.ExecuteDelete();
+                            contex4.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex4.PlcDevices.ToList();
+                            dataGridView1.Columns[4].Visible = false;
+                            dataGridView1.Columns[5].Visible = false;
+                            dataGridView1.Columns[6].Visible = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {

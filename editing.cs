@@ -234,8 +234,7 @@ namespace Pis
         };
             input4.Items.Clear();
             input4.Items.AddRange(statesSeverity);
-            input2.Visible = false;
-            table4.Visible = false;
+            dateTimePicker1.Visible=false;
             input5.Visible = false;
             table5.Visible = false;
             input6.Visible = false;
@@ -244,6 +243,7 @@ namespace Pis
             table7.Visible = false;
             input8.Visible = false;
             table2.Visible = false;
+            input2.Visible = false;
 
             // ... остальные поля
         }
