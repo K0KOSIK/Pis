@@ -18,7 +18,7 @@ namespace Pis
         {
             Application.Exit();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -30,30 +30,40 @@ namespace Pis
                 if (user.Role == "Администратор")
                 {
                     MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    await Task.Delay(1500);
                     Admin form2 = new Admin(this);
                     form2.Show();
                 }
                 if (user.Role == "зам директора")
                 {
                     MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    await Task.Delay(1500);
                     Deputy_Director form3 = new Deputy_Director(this);
                     form3.Show();
                 }
                 if (user.Role == "директор")
                 {
                     MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    await Task.Delay(1500);
                     director form3 = new director(this);
                     form3.Show();
                 }
                 if (user.Role == "разработчик")
                 {
                     MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    await Task.Delay(1500);
                     Developer form4 = new Developer(this);
                     form4.Show();
                 }
                 if (user.Role == "тестировщик")
                 {
                     MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    await Task.Delay(1500);
                     tester form5 = new tester(this);
                     form5.Show();
                 }
@@ -108,6 +118,11 @@ namespace Pis
         private void Avtorises_MouseLeave(object sender, EventArgs e)
         {
             Avtorises.ForeColor = Color.FromKnownColor(KnownColor.White);
+        }
+
+        private void Avtorisation_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

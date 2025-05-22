@@ -39,6 +39,7 @@
             bt_max = new Button();
             SMS = new Label();
             logs = new Label();
+            Avtoris_role = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -186,12 +187,23 @@
             logs.TabIndex = 11;
             logs.Text = "АВТОМАТИЗАЦИЯ";
             // 
+            // Avtoris_role
+            // 
+            Avtoris_role.AutoSize = true;
+            Avtoris_role.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            Avtoris_role.ForeColor = SystemColors.ButtonHighlight;
+            Avtoris_role.Location = new Point(411, 339);
+            Avtoris_role.Name = "Avtoris_role";
+            Avtoris_role.Size = new Size(0, 21);
+            Avtoris_role.TabIndex = 12;
+            // 
             // Avtorisation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(Avtoris_role);
             Controls.Add(logs);
             Controls.Add(SMS);
             Controls.Add(panel1);
@@ -202,8 +214,9 @@
             Controls.Add(Avtorises);
             Name = "Avtorisation";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Avtorisation";
             FormClosed += Form1_FormClosed;
+            Load += Avtorisation_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -222,5 +235,6 @@
         private Button bt_max;
         private Label SMS;
         private Label logs;
+        private Label Avtoris_role;
     }
 }

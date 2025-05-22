@@ -59,7 +59,7 @@
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(800, 372);
+            dataGridView1.Size = new Size(800, 365);
             dataGridView1.TabIndex = 0;
             // 
             // panel1
@@ -208,9 +208,9 @@
             // 
             panel2.Controls.Add(dataGridView1);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 78);
+            panel2.Location = new Point(0, 85);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 372);
+            panel2.Size = new Size(800, 365);
             panel2.TabIndex = 2;
             // 
             // panel3
@@ -222,7 +222,7 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 25);
             panel3.Name = "panel3";
-            panel3.Size = new Size(800, 53);
+            panel3.Size = new Size(800, 60);
             panel3.TabIndex = 7;
             // 
             // bt_delete
