@@ -29,7 +29,9 @@ namespace Pis
                     .FirstOrDefault();
                 if (user.Role == "Администратор")
                 {
-                    MessageBox.Show(user.Role);
+                    //MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
                     Admin form2 = new Admin(this);
@@ -37,7 +39,9 @@ namespace Pis
                 }
                 if (user.Role == "зам директора")
                 {
-                    MessageBox.Show(user.Role);
+                    //MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
                     Deputy_Director form3 = new Deputy_Director(this);
@@ -45,7 +49,9 @@ namespace Pis
                 }
                 if (user.Role == "директор")
                 {
-                    MessageBox.Show(user.Role);
+                    //MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
                     director form3 = new director(this);
@@ -53,7 +59,9 @@ namespace Pis
                 }
                 if (user.Role == "разработчик")
                 {
-                    MessageBox.Show(user.Role);
+                    //MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
                     Developer form4 = new Developer(this);
@@ -61,7 +69,9 @@ namespace Pis
                 }
                 if (user.Role == "тестировщик")
                 {
-                    MessageBox.Show(user.Role);
+                    //MessageBox.Show(user.Role);
+                    Avtoris_role.Text = user.Role;
+                    Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
                     tester form5 = new tester(this);
@@ -73,7 +83,9 @@ namespace Pis
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Неправильный логин или пароль:");
+                //MessageBox.Show("Неправильный логин или пароль:");
+                Avtoris_role.Text = "Неправильный логин или пароль";
+                Avtoris_role.ForeColor = Color.IndianRed;
                 textBox1.Text = "";
                 textBox2.Text = "";
             }
