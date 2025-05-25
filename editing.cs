@@ -147,6 +147,11 @@ namespace Pis
             input7.Visible = false;
             table7.Visible = false;
             dateTimePicker2.Visible = false;
+            table1.Text = "IdAlertLogs";
+            table2.Text = "Timestamp";
+            table3.Text = "AlertMessage";
+            table4.Text = "Severity";
+            table5.Text = "PlcDevicesIdPlcDevices";
         }
 
         private void BindDeviceType(DeviceType deviceType)
@@ -167,6 +172,8 @@ namespace Pis
             input8.Visible = false;
             dateTimePicker1.Visible = false;
             dateTimePicker2.Visible = false;
+            table1.Text = "IdDeviceType";
+            table2.Text = "Device";
 
             // ... остальные поля
         }
@@ -183,6 +190,13 @@ namespace Pis
             input6.DataBindings.Add("Text", performanceReports, nameof(performanceReports.Efficiency));
             input7.DataBindings.Add("Text", performanceReports, nameof(performanceReports.PlcDevicesIdPlcDevices));
             input3.Visible = false;
+            table1.Text = "IdPerformanceReports";
+            table2.Text = "StartTime";
+            table3.Text = "EndTime";
+            table4.Text = "TotalRuntime";
+            table5.Text = "Downtime";
+            table6.Text = "Efficiency";
+            table7.Text = "PlcDevicesIdPlcDevices";
         }
 
         private void BindMonitoringData(MonitoringDatum MonitoringDatum)
@@ -201,6 +215,11 @@ namespace Pis
             table7.Visible = false;
             input4.Visible = false;
             dateTimePicker2.Visible = false;
+            table1.Text = "IdMonitoringData";
+            table2.Text = "Timestamp";
+            table3.Text = "Temperature";
+            table4.Text = "Load";
+            table5.Text = "PlcDevicesIdPlcDevices";
 
 
         }
@@ -228,6 +247,10 @@ namespace Pis
             table5.Visible = false;
             dateTimePicker1.Visible = false;
             dateTimePicker2.Visible = false;
+            table1.Text = "IdPlcDevices";
+            table2.Text = "DeviceName";
+            table3.Text = "DeviceType";
+            table4.Text = "Status";
         }
         private void BindSeverity(Severity severity)
         {
@@ -252,6 +275,9 @@ namespace Pis
             table2.Visible = false;
             input2.Visible = false;
             dateTimePicker2.Visible = false;
+            table1.Text = "IdSeverity";
+            table4.Text = "Severity";
+            table3.Text = "AlertLogsIdAlertLogs";
 
             // ... остальные поля
         }
@@ -281,6 +307,8 @@ namespace Pis
             table3.Visible = false;
             dateTimePicker1.Visible = false;
             dateTimePicker2.Visible = false;
+            table1.Text = "IdStatus";
+            table4.Text = "Status";
         }
 
 

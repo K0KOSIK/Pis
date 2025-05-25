@@ -221,7 +221,7 @@
             // 
             // input8
             // 
-            input8.Location = new Point(244, 80);
+            input8.Location = new Point(244, 81);
             input8.Name = "input8";
             input8.Size = new Size(100, 23);
             input8.TabIndex = 17;
