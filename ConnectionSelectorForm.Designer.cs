@@ -59,6 +59,7 @@
             Controls.Add(cmbConnections);
             Name = "ConnectionSelectorForm";
             Text = "ConnectionSelectorForm";
+            Load += ConnectionSelectorForm_Load;
             ResumeLayout(false);
         }
 

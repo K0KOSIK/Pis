@@ -33,5 +33,10 @@ namespace Pis
             DialogResult = DialogResult.OK;
             Close();
         }
+
+        private void ConnectionSelectorForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
