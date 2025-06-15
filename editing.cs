@@ -265,7 +265,7 @@ namespace Pis
         };
             input4.Items.Clear();
             input4.Items.AddRange(statesSeverity);
-            dateTimePicker1.Visible=false;
+            dateTimePicker1.Visible = false;
             input5.Visible = false;
             table5.Visible = false;
             input6.Visible = false;
@@ -633,6 +633,11 @@ namespace Pis
         private void save_MouseEnter(object sender, EventArgs e)
         {
             save.ForeColor = Color.Blue;
+        }
+
+        private void Editing_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
