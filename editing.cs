@@ -146,6 +146,12 @@ namespace Pis
             table6.Visible = false;
             input7.Visible = false;
             table7.Visible = false;
+            dateTimePicker2.Visible = false;
+            table1.Text = "IdAlertLogs";
+            table2.Text = "Timestamp";
+            table3.Text = "AlertMessage";
+            table4.Text = "Severity";
+            table5.Text = "PlcDevicesIdPlcDevices";
         }
 
         private void BindDeviceType(DeviceType deviceType)
@@ -165,6 +171,9 @@ namespace Pis
             table7.Visible = false;
             input8.Visible = false;
             dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+            table1.Text = "IdDeviceType";
+            table2.Text = "Device";
 
             // ... остальные поля
         }
@@ -180,6 +189,14 @@ namespace Pis
             input5.DataBindings.Add("Text", performanceReports, nameof(performanceReports.Downtime));
             input6.DataBindings.Add("Text", performanceReports, nameof(performanceReports.Efficiency));
             input7.DataBindings.Add("Text", performanceReports, nameof(performanceReports.PlcDevicesIdPlcDevices));
+            input3.Visible = false;
+            table1.Text = "IdPerformanceReports";
+            table2.Text = "StartTime";
+            table3.Text = "EndTime";
+            table4.Text = "TotalRuntime";
+            table5.Text = "Downtime";
+            table6.Text = "Efficiency";
+            table7.Text = "PlcDevicesIdPlcDevices";
         }
 
         private void BindMonitoringData(MonitoringDatum MonitoringDatum)
@@ -197,6 +214,14 @@ namespace Pis
             input7.Visible = false;
             table7.Visible = false;
             input4.Visible = false;
+            dateTimePicker2.Visible = false;
+            table1.Text = "IdMonitoringData";
+            table2.Text = "Timestamp";
+            table3.Text = "Temperature";
+            table4.Text = "Load";
+            table5.Text = "PlcDevicesIdPlcDevices";
+
+
         }
         private void BindPLC_Devices(PlcDevice pLC_Devices)
         {
@@ -221,6 +246,11 @@ namespace Pis
             input8.Visible = false;
             table5.Visible = false;
             dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+            table1.Text = "IdPlcDevices";
+            table2.Text = "DeviceName";
+            table3.Text = "DeviceType";
+            table4.Text = "Status";
         }
         private void BindSeverity(Severity severity)
         {
@@ -234,8 +264,7 @@ namespace Pis
         };
             input4.Items.Clear();
             input4.Items.AddRange(statesSeverity);
-            input2.Visible = false;
-            table4.Visible = false;
+            dateTimePicker1.Visible=false;
             input5.Visible = false;
             table5.Visible = false;
             input6.Visible = false;
@@ -244,6 +273,11 @@ namespace Pis
             table7.Visible = false;
             input8.Visible = false;
             table2.Visible = false;
+            input2.Visible = false;
+            dateTimePicker2.Visible = false;
+            table1.Text = "IdSeverity";
+            table4.Text = "Severity";
+            table3.Text = "AlertLogsIdAlertLogs";
 
             // ... остальные поля
         }
@@ -272,6 +306,9 @@ namespace Pis
             table5.Visible = false;
             table3.Visible = false;
             dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+            table1.Text = "IdStatus";
+            table4.Text = "Status";
         }
 
 
@@ -320,8 +357,8 @@ namespace Pis
                 case ActiveEntity.PerformanceReports:
                     PerformanceReport performanceReport = new();
                     performanceReport.IdPerformanceReports = Convert.ToInt32(input.Text);
-                    performanceReport.StartTime = input2.Text;
-                    performanceReport.EndTime = input3.Text;
+                    performanceReport.StartTime = dateTimePicker1.Value;
+                    performanceReport.EndTime = dateTimePicker2.Value;
                     performanceReport.TotalRuntime = Convert.ToDecimal(input8.Text);
                     performanceReport.Downtime = Convert.ToDecimal(input5.Text);
                     performanceReport.Efficiency = Convert.ToDecimal(input6.Text);
@@ -343,7 +380,7 @@ namespace Pis
                 case ActiveEntity.MonitoringData:
                     MonitoringDatum monitoringDatum = new();
                     monitoringDatum.IdMonitoringData = Convert.ToInt32(input.Text);
-                    monitoringDatum.Timestamp = input2.Text;
+                    monitoringDatum.Timestamp = dateTimePicker1.Value;
                     monitoringDatum.Temperature = input3.Text;
                     monitoringDatum.Load = input8.Text;
                     monitoringDatum.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);

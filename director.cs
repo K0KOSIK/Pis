@@ -257,20 +257,23 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext context = new();
-                    var AlertLogs = context.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        AlertLogs.ExecuteDelete();
-                        context.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = context.AlertLogs.ToList();
+                        Ispr2525PiskunovDvKursovayaContext context = new();
+                        var AlertLogs = context.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            AlertLogs.ExecuteDelete();
+                            context.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = context.AlertLogs.ToList();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -282,20 +285,23 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex = new();
-                    var DeviceTypes = contex.DeviceTypes.Where(x => x.IdDeviceType == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        DeviceTypes.ExecuteDelete();
-                        contex.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex.DeviceTypes.ToList();
+                        Ispr2525PiskunovDvKursovayaContext contex = new();
+                        var DeviceTypes = contex.DeviceTypes.Where(x => x.IdDeviceType == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            DeviceTypes.ExecuteDelete();
+                            contex.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex.DeviceTypes.ToList();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -306,20 +312,23 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex2 = new();
-                    var PerformanceReports = contex2.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        PerformanceReports.ExecuteDelete();
-                        contex2.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex2.PerformanceReports.ToList();
+                        Ispr2525PiskunovDvKursovayaContext contex2 = new();
+                        var PerformanceReports = contex2.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            PerformanceReports.ExecuteDelete();
+                            contex2.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex2.PerformanceReports.ToList();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -332,20 +341,23 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex3 = new();
-                    var MonitoringData = contex3.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        MonitoringData.ExecuteDelete();
-                        contex3.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex3.MonitoringData.ToList();
+                        Ispr2525PiskunovDvKursovayaContext contex3 = new();
+                        var MonitoringData = contex3.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            MonitoringData.ExecuteDelete();
+                            contex3.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex3.MonitoringData.ToList();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -358,20 +370,26 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex4 = new();
-                    var PLC_Devices = contex4.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        PLC_Devices.ExecuteDelete();
-                        contex4.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex4.PlcDevices.ToList();
+                        Ispr2525PiskunovDvKursovayaContext contex4 = new();
+                        var PLC_Devices = contex4.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            PLC_Devices.ExecuteDelete();
+                            contex4.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex4.PlcDevices.ToList();
+                            dataGridView1.Columns[4].Visible = false;
+                            dataGridView1.Columns[5].Visible = false;
+                            dataGridView1.Columns[6].Visible = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -384,20 +402,23 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex5 = new();
-                    var Severity = contex5.Severities.Where(x => x.IdSeverity == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        Severity.ExecuteDelete();
-                        contex5.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex5.Severities.ToList();
+                        Ispr2525PiskunovDvKursovayaContext contex5 = new();
+                        var Severity = contex5.Severities.Where(x => x.IdSeverity == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            Severity.ExecuteDelete();
+                            contex5.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex5.Severities.ToList();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -410,20 +431,23 @@ namespace Pis.Models
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    Ispr2525PiskunovDvKursovayaContext contex6 = new();
-                    var Status = contex6.Statuses.Where(x => x.IdStatus == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
-                    try
+                    var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        Status.ExecuteDelete();
-                        contex6.SaveChanges();
-                        UpdateInfo();
-                        dataGridView1.DataSource = contex6.Statuses.ToList();
+                        Ispr2525PiskunovDvKursovayaContext contex6 = new();
+                        var Status = contex6.Statuses.Where(x => x.IdStatus == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        try
+                        {
+                            Status.ExecuteDelete();
+                            contex6.SaveChanges();
+                            UpdateInfo();
+                            dataGridView1.DataSource = contex6.Statuses.ToList();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Не получилось удалить: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Не получилось удалить: " + ex.Message);
-                    }
-
                 }
                 else
                 {
@@ -496,8 +520,8 @@ namespace Pis.Models
                     var performanceReport = new PerformanceReport
                     {
                         IdPerformanceReports = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        StartTime = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
-                        EndTime = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
+                        StartTime = (DateTime)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        EndTime = (DateTime)dataGridView1.SelectedRows[0].Cells[2].Value,
                         TotalRuntime = (decimal)dataGridView1.SelectedRows[0].Cells[3].Value,
                         Downtime = (decimal)dataGridView1.SelectedRows[0].Cells[4].Value,
                         Efficiency = (decimal)dataGridView1.SelectedRows[0].Cells[5].Value,
@@ -526,7 +550,7 @@ namespace Pis.Models
                     var monitoringDatum = new MonitoringDatum
                     {
                         IdMonitoringData = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        Timestamp = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        Timestamp = (DateTime)dataGridView1.SelectedRows[0].Cells[1].Value,
                         Temperature = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
                         Load = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
                         PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[4].Value,
@@ -691,8 +715,8 @@ namespace Pis.Models
                     var performanceReport = new PerformanceReport
                     {
                         IdPerformanceReports = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
-                        StartTime = "", //ПЕРЕДЕДЛАТЬ
-                        EndTime = "", //ПЕРЕДЕДЛАТЬ
+                        StartTime = DateTime.Now, 
+                        EndTime = DateTime.Now, 
                         TotalRuntime = 0,
                         Downtime = 0,
                         Efficiency = 0,
@@ -721,9 +745,9 @@ namespace Pis.Models
                     var monitoringDatum = new MonitoringDatum
                     {
                         IdMonitoringData = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
-                        Timestamp = "", //ПЕРЕДЕДЛАТЬ
-                        Temperature = "", //ПЕРЕДЕДЛАТЬ
-                        Load = "", //ПЕРЕДЕДЛАТЬ
+                        Timestamp = DateTime.Now, 
+                        Temperature = "", 
+                        Load = "", 
                         PlcDevicesIdPlcDevices = 0,
                     };
                     this.Hide();

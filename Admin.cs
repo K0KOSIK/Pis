@@ -187,6 +187,8 @@ namespace Pis.Models
             //dataGridView1.Columns[5].Visible = false;
             //dataGridView1.Columns[7].Visible = false;
             activeEntity = ActiveEntity.PerformanceReports;
+            dataGridView1.Columns[7].Visible = false;
+
 
         }
 
@@ -418,6 +420,7 @@ namespace Pis.Models
                             dataGridView1.DataSource = contex5.Severities.ToList();
                             dataGridView1.Columns[3].Visible = false;
 
+
                         }
                         catch (Exception ex)
                         {
@@ -525,8 +528,8 @@ namespace Pis.Models
                     var performanceReport = new PerformanceReport
                     {
                         IdPerformanceReports = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        StartTime = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
-                        EndTime = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
+                        StartTime = (DateTime)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        EndTime = (DateTime)dataGridView1.SelectedRows[0].Cells[2].Value,
                         TotalRuntime = (decimal)dataGridView1.SelectedRows[0].Cells[3].Value,
                         Downtime = (decimal)dataGridView1.SelectedRows[0].Cells[4].Value,
                         Efficiency = (decimal)dataGridView1.SelectedRows[0].Cells[5].Value,
@@ -555,7 +558,7 @@ namespace Pis.Models
                     var monitoringDatum = new MonitoringDatum
                     {
                         IdMonitoringData = (int)dataGridView1.SelectedRows[0].Cells[0].Value,
-                        Timestamp = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
+                        Timestamp = (DateTime)dataGridView1.SelectedRows[0].Cells[1].Value,
                         Temperature = (string)dataGridView1.SelectedRows[0].Cells[2].Value,
                         Load = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
                         PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[4].Value,
@@ -720,8 +723,8 @@ namespace Pis.Models
                     var performanceReport = new PerformanceReport
                     {
                         IdPerformanceReports = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
-                        StartTime = "", //ПЕРЕДЕДЛАТЬ
-                        EndTime = "", //ПЕРЕДЕДЛАТЬ
+                        StartTime = DateTime.Now, 
+                        EndTime = DateTime.Now, 
                         TotalRuntime = 0,
                         Downtime = 0,
                         Efficiency = 0,
@@ -750,9 +753,9 @@ namespace Pis.Models
                     var monitoringDatum = new MonitoringDatum
                     {
                         IdMonitoringData = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
-                        Timestamp = "", //ПЕРЕДЕДЛАТЬ
-                        Temperature = "", //ПЕРЕДЕДЛАТЬ
-                        Load = "", //ПЕРЕДЕДЛАТЬ
+                        Timestamp = DateTime.Now, 
+                        Temperature = "", 
+                        Load = "", 
                         PlcDevicesIdPlcDevices = 0,
                     };
                     this.Hide();
