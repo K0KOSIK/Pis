@@ -6,13 +6,30 @@ namespace Pis
 {
     public partial class Avtorisation : Form
     {
+        private Ispr2525PiskunovDvKursovayaContext _dbContext;
         public Avtorisation()
         {
             InitializeComponent();
+            InitializeDatabase();
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+        }
+        private void InitializeDatabase()
+        {
+            using (var selector = new ConnectionSelectorForm())
+            {
+                if (selector.ShowDialog() == DialogResult.OK)
+                {
+                    _dbContext = new Ispr2525PiskunovDvKursovayaContext(selector.SelectedConnection);
+                }
+                else
+                {
+                    MessageBox.Show("Не выбрано подключение к базе данных");
+                    Close();
+                }
+            }
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -22,8 +39,8 @@ namespace Pis
         {
             try
             {
-                Ispr2525PiskunovDvKursovayaContext context = new();
-                User? user = context.Users
+                //Ispr2525PiskunovDvKursovayaContext context = new();
+                User? user = _dbContext.Users
                     .Where(user => user.Username == textBox1.Text && user.Password == textBox2.Text)
                     .Include(user => user.Roles)
                     .FirstOrDefault();

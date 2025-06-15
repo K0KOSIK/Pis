@@ -7,8 +7,13 @@ namespace Pis.Models;
 
 public partial class Ispr2525PiskunovDvKursovayaContext : DbContext
 {
-    public Ispr2525PiskunovDvKursovayaContext()
+    private readonly string _connectionString;
+    public Ispr2525PiskunovDvKursovayaContext(string connectionName = null)
     {
+        var config = AppConfig.Load();
+        _connectionString = config.ConnectionStrings[
+            connectionName ?? config.DefaultConnection
+        ];
     }
 
     public Ispr2525PiskunovDvKursovayaContext(DbContextOptions<Ispr2525PiskunovDvKursovayaContext> options)
@@ -34,10 +39,19 @@ public partial class Ispr2525PiskunovDvKursovayaContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+    //        => optionsBuilder.UseMySql("server=cfif31.ru;database=ISPr25-25_PiskunovDV_Kursovaya;uid=ISPr25-25_PiskunovDV;pwd=ISPr25-25_PiskunovDV", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.41-mysql"));
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=cfif31.ru;database=ISPr25-25_PiskunovDV_Kursovaya;uid=ISPr25-25_PiskunovDV;pwd=ISPr25-25_PiskunovDV", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.41-mysql"));
-
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseMySql(
+                _connectionString,
+                ServerVersion.Parse("8.0.41-mysql")
+            );
+        }
+    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
