@@ -253,9 +253,9 @@ namespace Pis
             input.DataBindings.Add("Text", status, nameof(status.IdStatus));
             input4.DataBindings.Add("Text", status, nameof(status.Status1));
             List<string> Status = new List<string>
-        {
+            {
             "Работает", "Остановлено", "В ремонте",
-        };
+            };
             input4.Items.Clear();
             input4.Items.AddRange(Status);
 

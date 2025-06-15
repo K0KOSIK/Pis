@@ -184,8 +184,8 @@ namespace Pis.Models
         {
             Ispr2525PiskunovDvKursovayaContext context = new();
             dataGridView1.DataSource = context.PerformanceReports.ToList();
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[7].Visible = false;
+            //dataGridView1.Columns[5].Visible = false;
+            //dataGridView1.Columns[7].Visible = false;
             activeEntity = ActiveEntity.PerformanceReports;
 
         }
@@ -321,7 +321,7 @@ namespace Pis.Models
                             contex2.SaveChanges();
                             UpdateInfo();
                             dataGridView1.DataSource = contex2.PerformanceReports.ToList();
-                            dataGridView1.Columns[5].Visible = false;
+                            //dataGridView1.Columns[5].Visible = false;
                         }
                         catch (Exception ex)
                         {
