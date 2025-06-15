@@ -84,10 +84,11 @@ namespace Pis
         public IsEdit isEdit { get; set; }
         public IsError isError;
 
+        private readonly Ispr2525PiskunovDvKursovayaContext _dbContext;
 
-
-        public Editing(ActiveEntity activeEntity, object entityData)
+        public Editing(ActiveEntity activeEntity, object entityData, Ispr2525PiskunovDvKursovayaContext dbContext)
         {
+            _dbContext = dbContext;
             InitializeComponent();
             x = activeEntity;
             ConfigureForm(entityData);
@@ -315,142 +316,226 @@ namespace Pis
 
         private void save_Click(object sender, EventArgs e)
         {
-
-            switch (x)
+            try
             {
-                case ActiveEntity.AlertLogs:
-                    AlertLog alertLog = new();
-                    alertLog.IdAlertLogs = Convert.ToInt32(input.Text);
-                    alertLog.Timestamp = dateTimePicker1.Value;
-                    alertLog.AlertMessage = input3.Text;
-                    alertLog.Severity = input4.Text;
-                    alertLog.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
-                    if (Convert.ToInt32(input5.Text) < 1 || Convert.ToInt32(input5.Text) > 5)
-                    {
-                        MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
-                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        isError = IsError.Y;
-                        break;
-                    }
-                    Ispr2525PiskunovDvKursovayaContext context = new();
-                    if (isEdit == IsEdit.Y)
-                        context.Update(alertLog);
-                    if (isEdit == IsEdit.N)
-                        context.Add(alertLog);
-                    context.SaveChanges();
-                    break;
-                case ActiveEntity.Device_Type:
-                    DeviceType deviceType = new();
-                    deviceType.IdDeviceType = Convert.ToInt32(input.Text);
-                    deviceType.Device = input2.Text;
-                    Ispr2525PiskunovDvKursovayaContext context2 = new();
-                    if (isEdit == IsEdit.Y)
-                    {
-                        context2.Update(deviceType);
-                    }
-                    if (isEdit == IsEdit.N)
-                    {
-                        context2.Add(deviceType);
-                    }
-                    context2.SaveChanges();
-                    break;
-                case ActiveEntity.PerformanceReports:
-                    PerformanceReport performanceReport = new();
-                    performanceReport.IdPerformanceReports = Convert.ToInt32(input.Text);
-                    performanceReport.StartTime = dateTimePicker1.Value;
-                    performanceReport.EndTime = dateTimePicker2.Value;
-                    performanceReport.TotalRuntime = Convert.ToDecimal(input8.Text);
-                    performanceReport.Downtime = Convert.ToDecimal(input5.Text);
-                    performanceReport.Efficiency = Convert.ToDecimal(input6.Text);
-                    performanceReport.PlcDevicesIdPlcDevices = Convert.ToInt32(input7.Text);
-                    if (Convert.ToInt32(input7.Text) < 1 || Convert.ToInt32(input7.Text) > 5)
-                    {
-                        MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
-                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        isError = IsError.Y;
-                        break;
-                    }
-                    Ispr2525PiskunovDvKursovayaContext context3 = new();
-                    if (isEdit == IsEdit.Y)
-                        context3.Update(performanceReport);
-                    if (isEdit == IsEdit.N)
-                        context3.Add(performanceReport);
-                    context3.SaveChanges();
-                    break;
-                case ActiveEntity.MonitoringData:
-                    MonitoringDatum monitoringDatum = new();
-                    monitoringDatum.IdMonitoringData = Convert.ToInt32(input.Text);
-                    monitoringDatum.Timestamp = dateTimePicker1.Value;
-                    monitoringDatum.Temperature = input3.Text;
-                    monitoringDatum.Load = input8.Text;
-                    monitoringDatum.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
-                    if (Convert.ToInt32(input5.Text) < 1 || Convert.ToInt32(input5.Text) > 5)
-                    {
-                        MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
-                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        isError = IsError.Y;
-                        break;
-                    }
-                    Ispr2525PiskunovDvKursovayaContext context4 = new();
-                    if (isEdit == IsEdit.Y)
-                        context4.Update(monitoringDatum);
-                    if (isEdit == IsEdit.N)
-                        context4.Add(monitoringDatum);
-                    context4.SaveChanges();
-                    break;
-                case ActiveEntity.PLC_Devices:
-                    PlcDevice plcDevice = new();
-                    plcDevice.IdPlcDevices = Convert.ToInt32(input.Text);
-                    plcDevice.DeviceName = input2.Text;
-                    plcDevice.DeviceType = input3.Text;
-                    plcDevice.Status = input4.Text;
-                    Ispr2525PiskunovDvKursovayaContext context5 = new();
-                    if (isEdit == IsEdit.Y)
-                        context5.Update(plcDevice);
-                    if (isEdit == IsEdit.N)
-                        context5.Add(plcDevice);
-                    context5.SaveChanges();
-                    break;
-                case ActiveEntity.Severity:
-                    Severity severity = new();
-                    severity.IdSeverity = Convert.ToInt32(input.Text);
-                    severity.Severity1 = input4.Text;
-                    severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text);
-                    if (Convert.ToInt32(input3.Text) < 1 || Convert.ToInt32(input3.Text) > 5)
-                    {
-                        MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
-                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        isError = IsError.Y;
-                        break;
-                    }
-                    Ispr2525PiskunovDvKursovayaContext context6 = new();
-                    if (isEdit == IsEdit.Y)
-                        context6.Update(severity);
-                    if (isEdit == IsEdit.N)
-                        context6.Add(severity);
-                    context6.SaveChanges();
-                    break;
-                case ActiveEntity.Status:
-                    Status status = new();
-                    status.IdStatus = Convert.ToInt32(input.Text);
-                    status.Status1 = input4.Text;
-                    Ispr2525PiskunovDvKursovayaContext context7 = new();
-                    if (isEdit == IsEdit.Y)
-                        context7.Update(status);
-                    if (isEdit == IsEdit.N)
-                        context7.Add(status);
-                    context7.SaveChanges();
-                    break;
-                default:
-                    break;
-            }
-            if (isError == IsError.N)
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
+                switch (x)
+                {
+                    case ActiveEntity.AlertLogs:
+                        AlertLog alertLog;
+                        if (isEdit == IsEdit.Y)
+                        {
+                            alertLog = _dbContext.AlertLogs.Find(Convert.ToInt32(input.Text));
+                            if (alertLog == null) throw new Exception("Запись не найдена");
+                        }
+                        else
+                        {
+                            alertLog = new AlertLog();
+                        }
 
-            //  другая форма (переход)
+                        alertLog.IdAlertLogs = Convert.ToInt32(input.Text);
+                        alertLog.Timestamp = dateTimePicker1.Value;
+                        alertLog.AlertMessage = input3.Text;
+                        alertLog.Severity = input4.Text;
+                        alertLog.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
+
+                        if (Convert.ToInt32(input5.Text) < 1 || Convert.ToInt32(input5.Text) > 5)
+                        {
+                            MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
+                                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            isError = IsError.Y;
+                            break;
+                        }
+
+                        if (isEdit == IsEdit.N)
+                        {
+                            _dbContext.Add(alertLog);
+                        }
+                        _dbContext.SaveChanges();
+                        break;
+
+                    case ActiveEntity.Device_Type:
+                        DeviceType deviceType;
+                        if (isEdit == IsEdit.Y)
+                        {
+                            deviceType = _dbContext.DeviceTypes.Find(Convert.ToInt32(input.Text));
+                            if (deviceType == null) throw new Exception("Запись не найдена");
+                        }
+                        else
+                        {
+                            deviceType = new DeviceType();
+                        }
+
+                        deviceType.IdDeviceType = Convert.ToInt32(input.Text);
+                        deviceType.Device = input2.Text;
+
+                        if (isEdit == IsEdit.N)
+                        {
+                            _dbContext.Add(deviceType);
+                        }
+                        _dbContext.SaveChanges();
+                        break;
+
+                    case ActiveEntity.PerformanceReports:
+                        PerformanceReport performanceReport;
+                        if (isEdit == IsEdit.Y)
+                        {
+                            performanceReport = _dbContext.PerformanceReports.Find(Convert.ToInt32(input.Text));
+                            if (performanceReport == null) throw new Exception("Запись не найдена");
+                        }
+                        else
+                        {
+                            performanceReport = new PerformanceReport();
+                        }
+
+                        performanceReport.IdPerformanceReports = Convert.ToInt32(input.Text);
+                        performanceReport.StartTime = dateTimePicker1.Value;
+                        performanceReport.EndTime = dateTimePicker2.Value;
+                        performanceReport.TotalRuntime = Convert.ToDecimal(input8.Text);
+                        performanceReport.Downtime = Convert.ToDecimal(input5.Text);
+                        performanceReport.Efficiency = Convert.ToDecimal(input6.Text);
+                        performanceReport.PlcDevicesIdPlcDevices = Convert.ToInt32(input7.Text);
+
+                        if (Convert.ToInt32(input7.Text) < 1 || Convert.ToInt32(input7.Text) > 5)
+                        {
+                            MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
+                                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            isError = IsError.Y;
+                            break;
+                        }
+
+                        if (isEdit == IsEdit.N)
+                        {
+                            _dbContext.Add(performanceReport);
+                        }
+                        _dbContext.SaveChanges();
+                        break;
+
+                    case ActiveEntity.MonitoringData:
+                        MonitoringDatum monitoringDatum;
+                        if (isEdit == IsEdit.Y)
+                        {
+                            monitoringDatum = _dbContext.MonitoringData.Find(Convert.ToInt32(input.Text));
+                            if (monitoringDatum == null) throw new Exception("Запись не найдена");
+                        }
+                        else
+                        {
+                            monitoringDatum = new MonitoringDatum();
+                        }
+
+                        monitoringDatum.IdMonitoringData = Convert.ToInt32(input.Text);
+                        monitoringDatum.Timestamp = dateTimePicker1.Value;
+                        monitoringDatum.Temperature = input3.Text;
+                        monitoringDatum.Load = input8.Text;
+                        monitoringDatum.PlcDevicesIdPlcDevices = Convert.ToInt32(input5.Text);
+
+                        if (Convert.ToInt32(input5.Text) < 1 || Convert.ToInt32(input5.Text) > 5)
+                        {
+                            MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
+                                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            isError = IsError.Y;
+                            break;
+                        }
+
+                        if (isEdit == IsEdit.N)
+                        {
+                            _dbContext.Add(monitoringDatum);
+                        }
+                        _dbContext.SaveChanges();
+                        break;
+
+                    case ActiveEntity.PLC_Devices:
+                        PlcDevice plcDevice;
+                        if (isEdit == IsEdit.Y)
+                        {
+                            plcDevice = _dbContext.PlcDevices.Find(Convert.ToInt32(input.Text));
+                            if (plcDevice == null) throw new Exception("Запись не найдена");
+                        }
+                        else
+                        {
+                            plcDevice = new PlcDevice();
+                        }
+
+                        plcDevice.IdPlcDevices = Convert.ToInt32(input.Text);
+                        plcDevice.DeviceName = input2.Text;
+                        plcDevice.DeviceType = input3.Text;
+                        plcDevice.Status = input4.Text;
+
+                        if (isEdit == IsEdit.N)
+                        {
+                            _dbContext.Add(plcDevice);
+                        }
+                        _dbContext.SaveChanges();
+                        break;
+
+                    case ActiveEntity.Severity:
+                        Severity severity;
+                        if (isEdit == IsEdit.Y)
+                        {
+                            severity = _dbContext.Severities.Find(Convert.ToInt32(input.Text));
+                            if (severity == null) throw new Exception("Запись не найдена");
+                        }
+                        else
+                        {
+                            severity = new Severity();
+                        }
+
+                        severity.IdSeverity = Convert.ToInt32(input.Text);
+                        severity.Severity1 = input4.Text;
+                        severity.AlertLogsIdAlertLogs = Convert.ToInt32(input3.Text);
+
+                        if (Convert.ToInt32(input3.Text) < 1 || Convert.ToInt32(input3.Text) > 5)
+                        {
+                            MessageBox.Show("Значение должно быть от 1 до 5", "Ошибка",
+                                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            isError = IsError.Y;
+                            break;
+                        }
+
+                        if (isEdit == IsEdit.N)
+                        {
+                            _dbContext.Add(severity);
+                        }
+                        _dbContext.SaveChanges();
+                        break;
+
+                    case ActiveEntity.Status:
+                        Status status;
+                        if (isEdit == IsEdit.Y)
+                        {
+                            status = _dbContext.Statuses.Find(Convert.ToInt32(input.Text));
+                            if (status == null) throw new Exception("Запись не найдена");
+                        }
+                        else
+                        {
+                            status = new Status();
+                        }
+
+                        status.IdStatus = Convert.ToInt32(input.Text);
+                        status.Status1 = input4.Text;
+
+                        if (isEdit == IsEdit.N)
+                        {
+                            _dbContext.Add(status);
+                        }
+                        _dbContext.SaveChanges();
+                        break;
+
+                    default:
+                        break;
+                }
+
+                if (isError == IsError.N)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+                ExceptionToFile.SaveExceptionToDesktop(ex);
+                isError = IsError.Y;
+            }
         }
 
         private void editing_Load(object sender, EventArgs e)
@@ -465,32 +550,32 @@ namespace Pis
                 switch (x)
                 {
                     case ActiveEntity.AlertLogs:
-                        Ispr2525PiskunovDvKursovayaContext context = new();
-                        context.SaveChanges();
+                        
+                        _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.Device_Type:
-                        Ispr2525PiskunovDvKursovayaContext context2 = new();
-                        context2.SaveChanges();
+                        
+                        _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.PerformanceReports:
-                        Ispr2525PiskunovDvKursovayaContext context3 = new();
-                        context3.SaveChanges();
+                        
+                        _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.MonitoringData:
-                        Ispr2525PiskunovDvKursovayaContext context4 = new();
-                        context4.SaveChanges();
+                        
+                        _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.PLC_Devices:
-                        Ispr2525PiskunovDvKursovayaContext context5 = new();
-                        context5.SaveChanges();
+                        
+                        _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.Severity:
-                        Ispr2525PiskunovDvKursovayaContext context6 = new();
-                        context6.SaveChanges();
+                        
+                        _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.Status:
-                        Ispr2525PiskunovDvKursovayaContext context7 = new();
-                        context7.SaveChanges();
+                        
+                        _dbContext.SaveChanges();
                         break;
                     default:
                         break;

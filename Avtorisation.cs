@@ -6,7 +6,7 @@ namespace Pis
 {
     public partial class Avtorisation : Form
     {
-        private Ispr2525PiskunovDvKursovayaContext _dbContext;
+        public Ispr2525PiskunovDvKursovayaContext _dbContext;
         public Avtorisation()
         {
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace Pis
                     Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
-                    Admin form2 = new Admin(this);
+                    Admin form2 = new Admin(this, _dbContext);
                     form2.Show();
                 }
                 if (user.Role == "зам директора")
@@ -61,7 +61,7 @@ namespace Pis
                     Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
-                    Deputy_Director form3 = new Deputy_Director(this);
+                    Deputy_Director form3 = new Deputy_Director(this, _dbContext);
                     form3.Show();
                 }
                 if (user.Role == "директор")
@@ -71,7 +71,7 @@ namespace Pis
                     Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
-                    director form3 = new director(this);
+                    director form3 = new director(this, _dbContext);
                     form3.Show();
                 }
                 if (user.Role == "разработчик")
@@ -81,7 +81,7 @@ namespace Pis
                     Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
-                    Developer form4 = new Developer(this);
+                    Developer form4 = new Developer(this, _dbContext);
                     form4.Show();
                 }
                 if (user.Role == "тестировщик")
@@ -91,7 +91,7 @@ namespace Pis
                     Avtoris_role.ForeColor = Color.ForestGreen;
                     Avtoris_role.Text = user.Role;
                     await Task.Delay(1500);
-                    tester form5 = new tester(this);
+                    tester form5 = new tester(this, _dbContext);
                     form5.Show();
                 }
                 this.Hide();

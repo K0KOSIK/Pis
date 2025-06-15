@@ -59,5 +59,15 @@ namespace Pis.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] appsettings {
+            get {
+                object obj = ResourceManager.GetObject("appsettings", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

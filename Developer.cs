@@ -15,17 +15,18 @@ namespace Pis.Models
     public partial class Developer : Form
     {
         private Avtorisation _form1;
-
+        private readonly Ispr2525PiskunovDvKursovayaContext _dbContext;
 
 
         public ActiveEntity activeEntity;
         public IsEdit isEdit;
 
-        public Developer(Avtorisation form1)
+        public Developer(Avtorisation form1, Ispr2525PiskunovDvKursovayaContext dbContext)
         {
             InitializeComponent();
             _form1 = form1;
             this.FormClosed += Developer_FormClosed;
+            _dbContext = dbContext;
         }
 
         private void UpdateInfo()
@@ -34,8 +35,8 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            Ispr2525PiskunovDvKursovayaContext context3 = new();
-            var MonitoringData = context3.MonitoringData
+            
+            var MonitoringData = _dbContext.MonitoringData
                 .Include(x => x.PlcDevicesIdPlcDevices)
                 .OrderBy(x => x.IdMonitoringData)
                 .Select(x => new
@@ -52,8 +53,8 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            Ispr2525PiskunovDvKursovayaContext context2 = new();
-            var PerformanceReports = context2.PerformanceReports
+            
+            var PerformanceReports = _dbContext.PerformanceReports
                 .Include(x => x.PlcDevicesIdPlcDevices)
                 .OrderBy(x => x.IdPerformanceReports)
                 .Select(x => new
@@ -73,8 +74,8 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            Ispr2525PiskunovDvKursovayaContext context4 = new();
-            var PLC_Devices = context4.PlcDevices
+            
+            var PLC_Devices = _dbContext.PlcDevices
                 .OrderBy(x => x.IdPlcDevices)
                 .Select(x => new
                 {
@@ -88,8 +89,8 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            Ispr2525PiskunovDvKursovayaContext context6 = new();
-            var Status = context6.Statuses
+            
+            var Status = _dbContext.Statuses
                 .OrderBy(x => x.IdStatus)
                 .Select(x => new
                 {
@@ -108,8 +109,8 @@ namespace Pis.Models
             button1.Visible = false;
             button2.Visible = false;
             button6.Visible = false;
-            Ispr2525PiskunovDvKursovayaContext context = new();
-            dataGridView1.DataSource = context.MonitoringData.ToList();
+            
+            dataGridView1.DataSource = _dbContext.MonitoringData.ToList();
             dataGridView1.Columns[5].Visible = false;
             activeEntity = ActiveEntity.MonitoringData;
         }
@@ -126,16 +127,16 @@ namespace Pis.Models
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Ispr2525PiskunovDvKursovayaContext context = new();
-            dataGridView1.DataSource = context.MonitoringData.ToList();
+            
+            dataGridView1.DataSource = _dbContext.MonitoringData.ToList();
             dataGridView1.Columns[5].Visible = false;
             activeEntity = ActiveEntity.MonitoringData;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Ispr2525PiskunovDvKursovayaContext context = new();
-            dataGridView1.DataSource = context.PerformanceReports.ToList();
+            
+            dataGridView1.DataSource = _dbContext.PerformanceReports.ToList();
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[7].Visible = false;
             activeEntity = ActiveEntity.PerformanceReports;
@@ -143,8 +144,8 @@ namespace Pis.Models
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Ispr2525PiskunovDvKursovayaContext context = new();
-            dataGridView1.DataSource = context.PlcDevices.ToList();
+            
+            dataGridView1.DataSource = _dbContext.PlcDevices.ToList();
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
@@ -158,8 +159,8 @@ namespace Pis.Models
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Ispr2525PiskunovDvKursovayaContext context = new();
-            dataGridView1.DataSource = context.Statuses.ToList();
+            
+            dataGridView1.DataSource = _dbContext.Statuses.ToList();
             activeEntity = ActiveEntity.Status;
         }
 
@@ -203,14 +204,14 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Ispr2525PiskunovDvKursovayaContext contex3 = new();
-                        var MonitoringData = contex3.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        
+                        var MonitoringData = _dbContext.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
                             MonitoringData.ExecuteDelete();
-                            contex3.SaveChanges();
+                            _dbContext.SaveChanges();
                             UpdateInfo();
-                            dataGridView1.DataSource = contex3.MonitoringData.ToList();
+                            dataGridView1.DataSource = _dbContext.MonitoringData.ToList();
                             dataGridView1.Columns[5].Visible = false;
                         }
                         catch (Exception ex)
@@ -233,14 +234,14 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Ispr2525PiskunovDvKursovayaContext contex2 = new();
-                        var PerformanceReports = contex2.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        
+                        var PerformanceReports = _dbContext.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
                             PerformanceReports.ExecuteDelete();
-                            contex2.SaveChanges();
+                            _dbContext.SaveChanges();
                             UpdateInfo();
-                            dataGridView1.DataSource = contex2.PerformanceReports.ToList();
+                            dataGridView1.DataSource = _dbContext.PerformanceReports.ToList();
                             dataGridView1.Columns[5].Visible = false;
                             dataGridView1.Columns[7].Visible = false;
                         }
@@ -264,14 +265,14 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Ispr2525PiskunovDvKursovayaContext contex4 = new();
-                        var PLC_Devices = contex4.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        
+                        var PLC_Devices = _dbContext.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
                             PLC_Devices.ExecuteDelete();
-                            contex4.SaveChanges();
+                            _dbContext.SaveChanges();
                             UpdateInfo();
-                            dataGridView1.DataSource = contex4.PlcDevices.ToList();
+                            dataGridView1.DataSource = _dbContext.PlcDevices.ToList();
                             dataGridView1.Columns[4].Visible = false;
                             dataGridView1.Columns[5].Visible = false;
                             dataGridView1.Columns[6].Visible = false;
@@ -296,14 +297,14 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Ispr2525PiskunovDvKursovayaContext contex6 = new();
-                        var Status = contex6.Statuses.Where(x => x.IdStatus == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
+                        
+                        var Status = _dbContext.Statuses.Where(x => x.IdStatus == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
                             Status.ExecuteDelete();
-                            contex6.SaveChanges();
+                            _dbContext.SaveChanges();
                             UpdateInfo();
-                            dataGridView1.DataSource = contex6.Statuses.ToList();
+                            dataGridView1.DataSource = _dbContext.Statuses.ToList();
                         }
                         catch (Exception ex)
                         {
@@ -337,12 +338,12 @@ namespace Pis.Models
                         PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[6].Value,
                     };
                     this.Hide();
-                    var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport, _dbContext);
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        Ispr2525PiskunovDvKursovayaContext context2 = new();
-                        dataGridView1.DataSource = context2.PerformanceReports.ToList();
+                        
+                        dataGridView1.DataSource = _dbContext.PerformanceReports.ToList();
                         dataGridView1.Refresh();
                         this.Show();
                     }
@@ -365,12 +366,12 @@ namespace Pis.Models
                         PlcDevicesIdPlcDevices = (int)dataGridView1.SelectedRows[0].Cells[4].Value,
                     };
                     this.Hide();
-                    var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum, _dbContext);
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        Ispr2525PiskunovDvKursovayaContext context3 = new();
-                        dataGridView1.DataSource = context3.MonitoringData.ToList();
+                        
+                        dataGridView1.DataSource = _dbContext.MonitoringData.ToList();
                         dataGridView1.Refresh();
                         this.Show();
                     }
@@ -392,12 +393,12 @@ namespace Pis.Models
                         Status = (string)dataGridView1.SelectedRows[0].Cells[3].Value,
                     };
                     this.Hide();
-                    var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices, _dbContext);
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        Ispr2525PiskunovDvKursovayaContext context4 = new();
-                        dataGridView1.DataSource = context4.PlcDevices.ToList();
+                        
+                        dataGridView1.DataSource = _dbContext.PlcDevices.ToList();
                         dataGridView1.Refresh();
                         this.Show();
                     }
@@ -418,12 +419,12 @@ namespace Pis.Models
                         Status1 = (string)dataGridView1.SelectedRows[0].Cells[1].Value,
                     };
                     this.Hide();
-                    var editing = new Editing(ActiveEntity.Status, status);
+                    var editing = new Editing(ActiveEntity.Status, status, _dbContext);
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        Ispr2525PiskunovDvKursovayaContext context6 = new();
-                        dataGridView1.DataSource = context6.Statuses.ToList();
+                        
+                        dataGridView1.DataSource = _dbContext.Statuses.ToList();
                         dataGridView1.Refresh();
                         this.Show();
                     }
@@ -454,12 +455,12 @@ namespace Pis.Models
                         PlcDevicesIdPlcDevices = 0,
                     };
                     this.Hide();
-                    var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport);
+                    var editing = new Editing(ActiveEntity.PerformanceReports, performanceReport, _dbContext);
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        Ispr2525PiskunovDvKursovayaContext context2 = new();
-                        dataGridView1.DataSource = context2.PerformanceReports.ToList();
+                        
+                        dataGridView1.DataSource = _dbContext.PerformanceReports.ToList();
                         dataGridView1.Refresh();
                         this.Show();
                     }
@@ -482,12 +483,12 @@ namespace Pis.Models
                         PlcDevicesIdPlcDevices = 0,
                     };
                     this.Hide();
-                    var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum);
+                    var editing = new Editing(ActiveEntity.MonitoringData, monitoringDatum, _dbContext);
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        Ispr2525PiskunovDvKursovayaContext context3 = new();
-                        dataGridView1.DataSource = context3.MonitoringData.ToList();
+                        
+                        dataGridView1.DataSource = _dbContext.MonitoringData.ToList();
                         dataGridView1.Refresh();
                         this.Show();
                     }
@@ -509,12 +510,12 @@ namespace Pis.Models
                         Status = "",
                     };
                     this.Hide();
-                    var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices);
+                    var editing = new Editing(ActiveEntity.PLC_Devices, pLC_Devices, _dbContext);
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        Ispr2525PiskunovDvKursovayaContext context4 = new();
-                        dataGridView1.DataSource = context4.PlcDevices.ToList();
+                        
+                        dataGridView1.DataSource = _dbContext.PlcDevices.ToList();
                         dataGridView1.Refresh();
                         this.Show();
                     }
@@ -534,12 +535,12 @@ namespace Pis.Models
                         Status1 = "",
                     };
                     this.Hide();
-                    var editing = new Editing(ActiveEntity.Status, status);
+                    var editing = new Editing(ActiveEntity.Status, status, _dbContext);
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        Ispr2525PiskunovDvKursovayaContext context6 = new();
-                        dataGridView1.DataSource = context6.Statuses.ToList();
+                        
+                        dataGridView1.DataSource = _dbContext.Statuses.ToList();
                         dataGridView1.Refresh();
                         this.Show();
                     }
