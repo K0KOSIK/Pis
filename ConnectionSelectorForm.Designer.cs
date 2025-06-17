@@ -40,9 +40,9 @@
             cmbConnections.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             cmbConnections.ForeColor = SystemColors.ButtonHighlight;
             cmbConnections.FormattingEnabled = true;
-            cmbConnections.Location = new Point(320, 215);
+            cmbConnections.Location = new Point(249, 216);
             cmbConnections.Name = "cmbConnections";
-            cmbConnections.Size = new Size(145, 33);
+            cmbConnections.Size = new Size(302, 33);
             cmbConnections.TabIndex = 0;
             // 
             // logs
@@ -51,7 +51,7 @@
             logs.AutoSize = true;
             logs.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             logs.ForeColor = SystemColors.ButtonHighlight;
-            logs.Location = new Point(255, 95);
+            logs.Location = new Point(249, 95);
             logs.Name = "logs";
             logs.Size = new Size(302, 50);
             logs.TabIndex = 12;
@@ -63,7 +63,7 @@
             btnConnect.FlatStyle = FlatStyle.Flat;
             btnConnect.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnConnect.ForeColor = SystemColors.ButtonHighlight;
-            btnConnect.Location = new Point(320, 300);
+            btnConnect.Location = new Point(328, 300);
             btnConnect.Name = "btnConnect";
             btnConnect.Size = new Size(145, 34);
             btnConnect.TabIndex = 1;
@@ -77,7 +77,7 @@
             SMS.AutoSize = true;
             SMS.Font = new Font("Segoe UI Semibold", 48F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
             SMS.ForeColor = SystemColors.ButtonHighlight;
-            SMS.Location = new Point(320, 9);
+            SMS.Location = new Point(322, 9);
             SMS.Name = "SMS";
             SMS.Size = new Size(157, 86);
             SMS.TabIndex = 11;
