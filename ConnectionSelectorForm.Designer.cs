@@ -32,7 +32,6 @@
             logs = new Label();
             btnConnect = new Button();
             SMS = new Label();
-            panel1 = new Panel();
             SuspendLayout();
             // 
             // cmbConnections
@@ -84,20 +83,12 @@
             SMS.TabIndex = 11;
             SMS.Text = "SMS";
             // 
-            // panel1
-            // 
-            panel1.Location = new Point(587, 230);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(200, 100);
-            panel1.TabIndex = 13;
-            // 
             // ConnectionSelectorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
-            Controls.Add(panel1);
             Controls.Add(btnConnect);
             Controls.Add(SMS);
             Controls.Add(cmbConnections);
@@ -115,6 +106,5 @@
         private Label logs;
         private Button btnConnect;
         private Label SMS;
-        private Panel panel1;
     }
 }

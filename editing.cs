@@ -286,13 +286,13 @@ namespace Pis
         {
             // Привязка данных к TextBox'ам
             input.DataBindings.Add("Text", status, nameof(status.IdStatus));
-            input4.DataBindings.Add("Text", status, nameof(status.Status1));
-            List<string> Status = new List<string>
-            {
-            "Работает", "Остановлено", "В ремонте",
-            };
-            input4.Items.Clear();
-            input4.Items.AddRange(Status);
+            input8.DataBindings.Add("Text", status, nameof(status.Status1));
+            //List<string> Status = new List<string>
+            //{
+            //"Работает", "Остановлено", "В ремонте",
+            //};
+            //input4.Items.Clear();
+            //input4.Items.AddRange(Status);
 
             // Скрыть ненужные поля
             table2.Visible = false;
@@ -303,7 +303,7 @@ namespace Pis
             table6.Visible = false;
             input7.Visible = false;
             table7.Visible = false;
-            input8.Visible = false;
+            input4.Visible = false;
             table5.Visible = false;
             table3.Visible = false;
             dateTimePicker1.Visible = false;
@@ -511,7 +511,7 @@ namespace Pis
                         }
 
                         status.IdStatus = Convert.ToInt32(input.Text);
-                        status.Status1 = input4.Text;
+                        status.Status1 = input8.Text;
 
                         if (isEdit == IsEdit.N)
                         {
@@ -536,11 +536,6 @@ namespace Pis
                 ExceptionToFile.SaveExceptionToDesktop(ex);
                 isError = IsError.Y;
             }
-        }
-
-        private void editing_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void cancellation_Click(object sender, EventArgs e)
@@ -633,11 +628,6 @@ namespace Pis
         private void save_MouseEnter(object sender, EventArgs e)
         {
             save.ForeColor = Color.Blue;
-        }
-
-        private void Editing_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
