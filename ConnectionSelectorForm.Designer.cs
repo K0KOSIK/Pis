@@ -63,9 +63,9 @@
             btnConnect.FlatStyle = FlatStyle.Flat;
             btnConnect.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnConnect.ForeColor = SystemColors.ButtonHighlight;
-            btnConnect.Location = new Point(348, 274);
+            btnConnect.Location = new Point(320, 300);
             btnConnect.Name = "btnConnect";
-            btnConnect.Size = new Size(91, 34);
+            btnConnect.Size = new Size(145, 34);
             btnConnect.TabIndex = 1;
             btnConnect.Text = "ВОЙТИ";
             btnConnect.UseVisualStyleBackColor = false;
