@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace Pis.Models
 {
+
     public partial class Admin : Form
     {
         private Avtorisation _form1;
