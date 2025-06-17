@@ -102,6 +102,7 @@ namespace Pis
             {
                 //MessageBox.Show("Неправильный логин или пароль:");
                 Avtoris_role.Text = "Неправильный логин или пароль";
+                ExceptionToFile.SaveExceptionToAppData(ex);
                 Avtoris_role.ForeColor = Color.IndianRed;
                 textBox1.Text = "";
                 textBox2.Text = "";

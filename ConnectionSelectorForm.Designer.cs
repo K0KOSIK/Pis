@@ -96,6 +96,7 @@
             Name = "ConnectionSelectorForm";
             Text = "ConnectionSelectorForm";
             Load += ConnectionSelectorForm_Load;
+            KeyDown += ConnectionSelectorForm_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }

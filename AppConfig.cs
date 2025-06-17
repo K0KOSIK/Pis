@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -17,7 +18,8 @@ namespace Pis
         public static AppConfig Load()
         {
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string appFolder = Path.Combine(appDataPath, "Automation");
+            string appName = Assembly.GetEntryAssembly()?.GetName().Name;
+            string appFolder = Path.Combine(appDataPath, appName);
             string configPath = Path.Combine(appFolder, "appsettings.json");
 
             if (!Directory.Exists(appFolder))

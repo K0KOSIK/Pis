@@ -533,7 +533,7 @@ namespace Pis
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
-                ExceptionToFile.SaveExceptionToDesktop(ex);
+                ExceptionToFile.SaveExceptionToAppData(ex);
                 isError = IsError.Y;
             }
         }
