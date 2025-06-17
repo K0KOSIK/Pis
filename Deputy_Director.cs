@@ -270,6 +270,7 @@ namespace Pis.Models
                             _dbContext.SaveChanges();
                             UpdateInfo();
                             dataGridView1.DataSource = _dbContext.PerformanceReports.ToList();
+                            dataGridView1.Columns[7].Visible = false;
                         }
                         catch (Exception ex)
                         {
