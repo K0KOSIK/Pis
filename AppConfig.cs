@@ -33,7 +33,8 @@ namespace Pis
                 {
                     ConnectionStrings = new Dictionary<string, string>
                     {
-                        ["ISPr25-25_PiskunovDV"] = "server=cfif31.ru;database=ISPr25-25_PiskunovDV_Kursovaya;uid=ISPr25-25_PiskunovDV;pwd=ISPr25-25_PiskunovDV"
+                        ["ISPr25-25_PiskunovDV"] = "server=cfif31.ru;database=ISPr25-25_PiskunovDV_Kursovaya;uid=ISPr25-25_PiskunovDV;pwd=ISPr25-25_PiskunovDV",
+                        ["Backup"] = "server=195.46.190.185;database=Pis;uid=remote_user;pwd=ISPr35-35"
                     },
                     DefaultConnection = "ISPr25-25_PiskunovDV"
                 };
