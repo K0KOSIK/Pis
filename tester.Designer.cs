@@ -231,6 +231,7 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(800, 53);
             panel3.TabIndex = 7;
+            panel3.Paint += panel3_Paint;
             // 
             // bt_delete
             // 

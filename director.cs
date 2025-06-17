@@ -32,7 +32,7 @@ namespace Pis.Models
         private void director_Load(object sender, EventArgs e)
         {
             activeEntity = ActiveEntity.AlertLogs;
-            
+
             dataGridView1.DataSource = _dbContext.AlertLogs.ToList();
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
@@ -44,7 +44,7 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            
+
             var AlertLogs = _dbContext.AlertLogs
                 .Include(x => x.PlcDevicesIdPlcDevices)
                 .OrderBy(x => x.IdAlertLogs)
@@ -62,7 +62,7 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            
+
             var DeviceTypes = _dbContext.DeviceTypes
                 .OrderBy(x => x.IdDeviceType)
                 .Select(x => new
@@ -76,7 +76,7 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            
+
             var PerformanceReports = _dbContext.PerformanceReports
                 .Include(x => x.PlcDevicesIdPlcDevices)
                 .OrderBy(x => x.IdPerformanceReports)
@@ -97,7 +97,7 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            
+
             var MonitoringData = _dbContext.MonitoringData
                 .Include(x => x.PlcDevicesIdPlcDevices)
                 .OrderBy(x => x.IdMonitoringData)
@@ -115,7 +115,7 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            
+
             var PLC_Devices = _dbContext.PlcDevices
                 .OrderBy(x => x.IdPlcDevices)
                 .Select(x => new
@@ -130,7 +130,7 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            
+
             var Severity = _dbContext.Severities
                 .Include(x => x.AlertLogsIdAlertLogs)
                 .OrderBy(x => x.IdSeverity)
@@ -146,7 +146,7 @@ namespace Pis.Models
             {
                 dataGridView1.DataSource = null;
             }
-            
+
             var Status = _dbContext.Statuses
                 .OrderBy(x => x.IdStatus)
                 .Select(x => new
@@ -164,7 +164,7 @@ namespace Pis.Models
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DataSource = _dbContext.AlertLogs.ToList();
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
@@ -173,14 +173,14 @@ namespace Pis.Models
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DataSource = _dbContext.DeviceTypes.ToList();
             activeEntity = ActiveEntity.Device_Type;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DataSource = _dbContext.MonitoringData.ToList();
             dataGridView1.Columns[5].Visible = false;
             activeEntity = ActiveEntity.MonitoringData;
@@ -188,7 +188,7 @@ namespace Pis.Models
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DataSource = _dbContext.PerformanceReports.ToList();
             dataGridView1.Columns[5].Visible = false;
             activeEntity = ActiveEntity.PerformanceReports;
@@ -198,7 +198,7 @@ namespace Pis.Models
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DataSource = _dbContext.PlcDevices.ToList();
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
@@ -208,7 +208,7 @@ namespace Pis.Models
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DataSource = _dbContext.Severities.ToList();
             dataGridView1.Columns[3].Visible = false;
             activeEntity = ActiveEntity.Severity;
@@ -216,7 +216,7 @@ namespace Pis.Models
 
         private void button7_Click(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DataSource = _dbContext.Statuses.ToList();
             activeEntity = ActiveEntity.Status;
         }
@@ -261,7 +261,7 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        
+
                         var AlertLogs = _dbContext.AlertLogs.Where(x => x.IdAlertLogs == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
@@ -289,7 +289,7 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        
+
                         var DeviceTypes = _dbContext.DeviceTypes.Where(x => x.IdDeviceType == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
@@ -316,7 +316,7 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        
+
                         var PerformanceReports = _dbContext.PerformanceReports.Where(x => x.IdPerformanceReports == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
@@ -345,7 +345,7 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        
+
                         var MonitoringData = _dbContext.MonitoringData.Where(x => x.IdMonitoringData == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
@@ -374,7 +374,7 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        
+
                         var PLC_Devices = _dbContext.PlcDevices.Where(x => x.IdPlcDevices == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
@@ -406,7 +406,7 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        
+
                         var Severity = _dbContext.Severities.Where(x => x.IdSeverity == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
@@ -435,7 +435,7 @@ namespace Pis.Models
                     var result = MessageBox.Show("Удалить?", "?", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        
+
                         var Status = _dbContext.Statuses.Where(x => x.IdStatus == (int)dataGridView1.SelectedRows[0].Cells[0].Value);
                         try
                         {
@@ -478,7 +478,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.AlertLogs.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -503,7 +503,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.DeviceTypes.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -533,7 +533,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.PerformanceReports.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -561,7 +561,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.MonitoringData.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -588,7 +588,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.PlcDevices.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -614,7 +614,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.Severities.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -639,7 +639,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.Statuses.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -673,7 +673,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.AlertLogs.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -698,7 +698,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.DeviceTypes.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -716,8 +716,8 @@ namespace Pis.Models
                     var performanceReport = new PerformanceReport
                     {
                         IdPerformanceReports = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
-                        StartTime = DateTime.Now, 
-                        EndTime = DateTime.Now, 
+                        StartTime = DateTime.Now,
+                        EndTime = DateTime.Now,
                         TotalRuntime = 0,
                         Downtime = 0,
                         Efficiency = 0,
@@ -728,7 +728,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.PerformanceReports.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -746,9 +746,9 @@ namespace Pis.Models
                     var monitoringDatum = new MonitoringDatum
                     {
                         IdMonitoringData = (int)dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value + 1,
-                        Timestamp = DateTime.Now, 
-                        Temperature = "", 
-                        Load = "", 
+                        Timestamp = DateTime.Now,
+                        Temperature = "",
+                        Load = "",
                         PlcDevicesIdPlcDevices = 0,
                     };
                     this.Hide();
@@ -756,7 +756,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.MonitoringData.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -783,7 +783,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.PlcDevices.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -809,7 +809,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.Severities.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -834,7 +834,7 @@ namespace Pis.Models
                     editing.isEdit = isEdit;
                     if (editing.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                         dataGridView1.DataSource = _dbContext.Statuses.ToList();
                         dataGridView1.Refresh();
                         this.Show();
@@ -845,6 +845,11 @@ namespace Pis.Models
                     MessageBox.Show("Не получилось добавить: " + ex.Message);
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

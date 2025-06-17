@@ -332,6 +332,7 @@
             Name = "Editing";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "editing";
+            Load += this.Editing_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

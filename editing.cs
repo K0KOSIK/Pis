@@ -545,31 +545,31 @@ namespace Pis
                 switch (x)
                 {
                     case ActiveEntity.AlertLogs:
-                        
+
                         _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.Device_Type:
-                        
+
                         _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.PerformanceReports:
-                        
+
                         _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.MonitoringData:
-                        
+
                         _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.PLC_Devices:
-                        
+
                         _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.Severity:
-                        
+
                         _dbContext.SaveChanges();
                         break;
                     case ActiveEntity.Status:
-                        
+
                         _dbContext.SaveChanges();
                         break;
                     default:
@@ -628,6 +628,11 @@ namespace Pis
         private void save_MouseEnter(object sender, EventArgs e)
         {
             save.ForeColor = Color.Blue;
+        }
+
+        private void Editing_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
